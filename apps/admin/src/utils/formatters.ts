@@ -1,5 +1,3 @@
-import { format, parseISO } from 'date-fns';
-
 export const formatCurrency = (amount: number) => {
   return new Intl.NumberFormat('en-IN', {
     style: 'currency',
@@ -12,8 +10,10 @@ export const formatCurrency = (amount: number) => {
 export const formatDate = (dateString: string) => {
   if (!dateString) return 'N/A';
   try {
-    return format(parseISO(dateString), 'dd MMM yyyy');
-  } catch (e) {
+    const d = new Date(dateString);
+    if (isNaN(d.getTime())) return dateString;
+    return d.toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+  } catch {
     return dateString;
   }
 };
@@ -21,8 +21,17 @@ export const formatDate = (dateString: string) => {
 export const formatDateTime = (dateString: string) => {
   if (!dateString) return 'N/A';
   try {
-    return format(parseISO(dateString), 'dd MMM yyyy, hh:mm a');
-  } catch (e) {
+    const d = new Date(dateString);
+    if (isNaN(d.getTime())) return dateString;
+    return d.toLocaleDateString('en-IN', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    });
+  } catch {
     return dateString;
   }
 };

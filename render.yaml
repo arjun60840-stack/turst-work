@@ -1,0 +1,43 @@
+services:
+  # -------------------------------------------------------------------
+  # Work Trust — Backend REST API
+  # -------------------------------------------------------------------
+  - type: web
+    name: worktrust-api
+    runtime: node
+    plan: free
+    region: oregon
+    rootDir: apps/backend
+    buildCommand: npm install && npm run build
+    startCommand: npx knex migrate:latest && npx knex seed:run && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DB_CLIENT
+        value: sqlite3
+      - key: DB_FILE
+        value: ./worktrust.sqlite
+      - key: JWT_SECRET
+        generateValue: true
+      - key: OTP_MODE
+        value: demo
+      - key: PAYMENT_MODE
+        value: demo
+
+  # -------------------------------------------------------------------
+  # Work Trust — Admin Web Portal (Static Site)
+  # -------------------------------------------------------------------
+  - type: web
+    name: worktrust-admin
+    runtime: static
+    plan: free
+    region: oregon
+    rootDir: apps/admin
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

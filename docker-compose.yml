@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: infrastructure/docker/Dockerfile.backend
-    container_name: nexvion-backend
+    container_name: worktrust-backend
     ports:
       - "3000:3000"
     environment:
@@ -12,10 +12,10 @@ services:
       - DB_CLIENT=pg
       - DB_HOST=postgres
       - DB_PORT=5432
-      - DB_NAME=nexvion
-      - DB_USER=nexvion_user
-      - DB_PASSWORD=nexvion_secure_pass_2026
-      - JWT_SECRET=nexvion_jwt_production_secret_2026
+      - DB_NAME=worktrust
+      - DB_USER=worktrust_user
+      - DB_PASSWORD=worktrust_secure_pass_2026
+      - JWT_SECRET=worktrust_jwt_production_secret_2026
       - JWT_EXPIRES_IN=1d
       - OTP_MODE=demo
       - PAYMENT_MODE=demo
@@ -26,17 +26,17 @@ services:
 
   postgres:
     image: postgis/postgis:15-3.3-alpine
-    container_name: nexvion-postgres
+    container_name: worktrust-postgres
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_DB=nexvion
-      - POSTGRES_USER=nexvion_user
-      - POSTGRES_PASSWORD=nexvion_secure_pass_2026
+      - POSTGRES_DB=worktrust
+      - POSTGRES_USER=worktrust_user
+      - POSTGRES_PASSWORD=worktrust_secure_pass_2026
     volumes:
-      - nexvion_pgdata:/var/lib/postgresql/data
+      - worktrust_pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U nexvion_user -d nexvion"]
+      test: ["CMD-SHELL", "pg_isready -U worktrust_user -d worktrust"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -46,7 +46,7 @@ services:
     build:
       context: .
       dockerfile: infrastructure/docker/Dockerfile.admin
-    container_name: nexvion-admin
+    container_name: worktrust-admin
     ports:
       - "5173:80"
     depends_on:
@@ -54,4 +54,4 @@ services:
     restart: unless-stopped
 
 volumes:
-  nexvion_pgdata:
+  worktrust_pgdata:
