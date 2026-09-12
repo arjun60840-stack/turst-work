@@ -2,7 +2,7 @@
 // ============================================================
 
 export const APP_NAME = 'Work Trust';
-export const APP_TAGLINE = 'Cooperative Gig Services Platform';
+export const APP_TAGLINE = 'Right Worker • Right Job • Right Location • Transparent Payment';
 
 export const API_BASE_URL = 'http://localhost:3000/api';
 

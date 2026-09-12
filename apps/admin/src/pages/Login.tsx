@@ -20,10 +20,14 @@ export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg border border-slate-100">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-slate-900 flex items-center justify-center">
-            <span className="text-blue-600">WORK</span>TRUST Admin
+        <div className="text-center">
+          <img src="/logo.png" alt="Work Trust" className="h-20 w-20 mx-auto object-contain" />
+          <h2 className="mt-4 text-center text-3xl font-extrabold text-slate-900 flex items-center justify-center">
+            <span className="text-blue-600 mr-1.5">WORK</span>TRUST Admin
           </h2>
+          <p className="mt-1 text-xs text-slate-500">
+            Right Worker • Right Job • Right Location • Transparent Payment
+          </p>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleLogin}>
           <div className="rounded-md shadow-sm -space-y-px">

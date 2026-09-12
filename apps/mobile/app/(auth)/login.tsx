@@ -23,8 +23,15 @@ export default function LoginScreen() {
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
       <View style={styles.formContainer}>
-        <Text variant="displaySmall" style={styles.title}>Work Trust</Text>
-        <Text variant="titleMedium" style={styles.subtitle}>Cooperative Gig Services</Text>
+        <Image
+          source={require('../../assets/logo.png')}
+          style={{ width: 110, height: 110, alignSelf: 'center', marginBottom: 12 }}
+          resizeMode="contain"
+        />
+        <Text variant="headlineMedium" style={styles.title}>Work Trust</Text>
+        <Text variant="bodySmall" style={[styles.subtitle, { textAlign: 'center', marginBottom: 20 }]}>
+          Right Worker • Right Job • Right Location • Transparent Payment
+        </Text>
 
         <TextInput
           label="Email"
