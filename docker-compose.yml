@@ -1,0 +1,57 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: infrastructure/docker/Dockerfile.backend
+    container_name: nexvion-backend
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+      - DB_CLIENT=pg
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=nexvion
+      - DB_USER=nexvion_user
+      - DB_PASSWORD=nexvion_secure_pass_2026
+      - JWT_SECRET=nexvion_jwt_production_secret_2026
+      - JWT_EXPIRES_IN=1d
+      - OTP_MODE=demo
+      - PAYMENT_MODE=demo
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+  postgres:
+    image: postgis/postgis:15-3.3-alpine
+    container_name: nexvion-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=nexvion
+      - POSTGRES_USER=nexvion_user
+      - POSTGRES_PASSWORD=nexvion_secure_pass_2026
+    volumes:
+      - nexvion_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nexvion_user -d nexvion"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  admin:
+    build:
+      context: .
+      dockerfile: infrastructure/docker/Dockerfile.admin
+    container_name: nexvion-admin
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  nexvion_pgdata:

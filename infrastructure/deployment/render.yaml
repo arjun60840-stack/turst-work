@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: nexvion-api
+    env: node
+    plan: free
+    buildCommand: cd apps/backend && npm install && npm run build
+    startCommand: cd apps/backend && npx knex migrate:latest && npx knex seed:run && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DB_CLIENT
+        value: sqlite3
+      - key: DB_FILE
+        value: /var/data/nexvion.sqlite
+      - key: JWT_SECRET
+        generateValue: true
+      - key: OTP_MODE
+        value: demo
+      - key: PAYMENT_MODE
+        value: demo
+    disk:
+      name: nexvion-data
+      mountPath: /var/data
+      sizeGB: 1

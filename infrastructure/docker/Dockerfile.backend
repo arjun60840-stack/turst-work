@@ -1,0 +1,29 @@
+FROM node:20-alpine AS builder
+
+WORKDIR /app
+
+# Copy root configuration and packages
+COPY package.json ./
+COPY packages/shared ./packages/shared
+COPY apps/backend ./apps/backend
+
+WORKDIR /app/apps/backend
+RUN npm install
+RUN npm run build
+
+FROM node:20-alpine AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV PORT=3000
+
+COPY --from=builder /app/apps/backend/package.json ./package.json
+COPY --from=builder /app/apps/backend/node_modules ./node_modules
+COPY --from=builder /app/apps/backend/dist ./dist
+COPY --from=builder /app/apps/backend/migrations ./migrations
+COPY --from=builder /app/apps/backend/seeds ./seeds
+COPY --from=builder /app/apps/backend/knexfile.ts ./knexfile.ts
+
+EXPOSE 3000
+
+CMD ["node", "dist/app.js"]

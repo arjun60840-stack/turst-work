@@ -1,0 +1,32 @@
+{
+  "name": "nexvion",
+  "version": "1.0.0",
+  "description": "NEXVION — AI-Powered Cooperative Gig Services Platform for SIH 2026",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:backend": "npm --prefix apps/backend run dev",
+    "dev:admin": "npm --prefix apps/admin run dev",
+    "dev:mobile": "npm --prefix apps/mobile run web",
+    "test": "npm --prefix apps/backend test",
+    "migrate": "npm --prefix apps/backend run migrate",
+    "seed": "npm --prefix apps/backend run seed",
+    "build:backend": "npm --prefix apps/backend run build",
+    "build:admin": "npm --prefix apps/admin run build"
+  },
+  "keywords": [
+    "sih2026",
+    "nexvion",
+    "cooperative",
+    "gig-economy",
+    "rural-development",
+    "skill-passport",
+    "group-hiring",
+    "ai-matching"
+  ],
+  "author": "NEXVION Team",
+  "license": "ISC"
+}
