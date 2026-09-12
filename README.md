@@ -1,103 +1,192 @@
-# NEXVION — AI-Powered Cooperative Gig Platform
+<p align="center">
+  <img src="docs/assets/logo.png" alt="Work Trust Logo" width="220" />
+</p>
 
-> **Smart India Hackathon (SIH) 2026**  
-> **Problem Statement ID**: 26089  
-> **Title**: Cooperative Gig Services platform for household & community services  
-> **Theme**: Agriculture, Foodtech & Rural Development
+<h1 align="center">WORK TRUST</h1>
+
+<p align="center">
+  <strong>Cooperative Gig Services Platform for Household & Community Services</strong><br>
+  <em>Right Worker • Right Job • Right Location • Transparent Payment</em>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/SIH%202026-Problem%20ID%2026089-blue?style=for-the-badge" alt="SIH 2026" />
+  <img src="https://img.shields.io/badge/Theme-Agriculture%2C%20Foodtech%20%26%20Rural%20Dev-green?style=for-the-badge" alt="Theme" />
+  <img src="https://img.shields.io/badge/Tests-20%20Passed%20(100%25)-brightgreen?style=for-the-badge" alt="Tests" />
+  <img src="https://img.shields.io/badge/Node.js-v18%2B%20%7C%20v25-informational?style=for-the-badge" alt="Node" />
+  <img src="https://img.shields.io/badge/License-MIT-orange?style=for-the-badge" alt="License" />
+</p>
 
 ---
 
-## 1. Project Overview
+## 📌 Problem Statement Overview
 
-**NEXVION** is a purpose-built, full-stack digital cooperative workforce platform. It bridges the gap between household/community gig seekers and informal workers by organizing them into resilient, self-governing **Worker Cooperatives & Teams**.
+- **Hackathon**: Smart India Hackathon (SIH) 2026
+- **Problem Statement ID**: **26089**
+- **Title**: *Cooperative Gig Services platform for household & community services*
+- **Theme**: *Agriculture, Foodtech & Rural Development*
 
-### Core Problems Solved
-1. **Irregular Employment**: Individual gig workers face volatile, sporadic work. NEXVION aggregates community & rural demand, funneling group contracts to cooperative rosters.
-2. **Unfair Wages & Hidden Commissions**: Typical aggregators extract 20–35% opaque commissions. NEXVION enforces a **Transparent Wage Split** directly audited by workers and customers.
-3. **Time & Transit Wastage**: Workers spend excessive time traveling. NEXVION's **Explainable AI Matching Engine** factors in precise geolocation and travel radius.
-4. **Lack of Safety & Social Protection**: Informality leaves workers without recourse. NEXVION introduces the **Welfare & Safety Shield** (micro-insurance tracking, emergency SOS, and cooperative safety reserves).
+### The Informal Workforce Crisis in India
+Informal gig workers in India face severe structural vulnerabilities:
+1. **Irregular Employment**: Work is erratic, volatile, and dependent on localized word-of-mouth.
+2. **Unfair Wages & Hidden Cuts**: Conventional gig aggregators siphon 20% to 35% in opaque commissions.
+3. **Time & Transit Wastage**: Workers spend hours traveling across long distances without travel compensation.
+4. **Lack of Safety & Welfare**: Zero insurance, no emergency safety nets, and no institutional credibility.
 
 ---
 
-## 2. The 4 Innovation Pillars
+## 💡 The Work Trust Solution
+
+**Work Trust** transforms informal labor by organizing individual workers into self-governing **Worker Cooperatives & Teams**, powered by an **Explainable AI Matching Engine** and a **Transparent Wage-Splitting Architecture**.
+
+```
+                           +---------------------------+
+                           |        WORK TRUST         |
+                           |   Full-Stack Platform     |
+                           +-------------+-------------+
+                                         |
+      +--------------------+-------------+-------------+--------------------+
+      |                    |                           |                    |
+      v                    v                           v                    v
++---------------+  +---------------+           +---------------+  +---------------+
+|     🪪        |  |      🤝       |           |      🧠       |  |      🛡️       |
+| Skill         |  | Group         |           | Explainable   |  | Welfare &     |
+| Passport      |  | Hiring        |           | AI Matching   |  | Safety Shield |
++---------------+  +---------------+           +---------------+  +---------------+
+```
+
+### The 4 Innovation Pillars
 
 | Pillar | Description |
 |---|---|
-| 🪪 **Skill Passport** | Verifiable digital credentials, certified trade experience, NSDC badges, and real-time reliability metrics. |
-| 🤝 **Group Hiring** | Dynamic assembly and booking of 2 to 10+ worker teams for agricultural harvesting, community maintenance, and construction. |
-| 🛡️ **Welfare & Safety Shield** | Built-in micro-insurance status, platform welfare contributions, on-site SOS, and incident management. |
-| 🧠 **Explainable AI Engine** | Transparent multi-criteria candidate ranking (Skills 30%, Availability 15%, Distance 15%, Reliability 15%, Experience 10%, Rating 5%, Verification 5%, Wage 5%). |
+| 🪪 **Skill Passport** | Verifiable digital credentials, certified trade experience, NSDC badges, and real-time reliability ratings (0–100%). |
+| 🤝 **Group Hiring** | Enables customers to book 2 to 10+ worker teams for agricultural harvesting, community sanitation, and complex repairs with dynamic cooperative roster allocation. |
+| 🧠 **Explainable AI Matching** | Deterministic multi-factor candidate scoring with transparent audit reasons (Skills 30%, Availability 15%, Distance 15%, Reliability 15%, Experience 10%, Rating 5%, Verification 5%, Wage 5%). |
+| 🛡️ **Welfare & Safety Shield** | Built-in micro-insurance status, platform welfare contributions, on-site emergency SOS, and hazard escalation workflows. |
 
 ---
 
-## 3. Technology Stack
+## 🏗️ System Architecture
 
-- **Backend API**: Node.js, TypeScript, Express.js
-- **Database**: SQLite (local development with zero native compilation) / PostgreSQL 15+ with PostGIS (production) via Knex.js
-- **Mobile Client**: React Native + Expo (Expo Router, Zustand, React Query, React Native Paper)
-- **Admin Portal**: React 19, Vite, Tailwind CSS, Recharts
-- **Testing**: Jest, ts-jest, Supertest
-- **Security**: JWT Access & Refresh tokens, bcryptjs, Helmet, CORS, rate limiting
+```
+               +--------------------------------------------+
+               |         Clients: Mobile & Web Apps         |
+               | (Worker App, Customer App, Admin Dashboard)|
+               +---------------------+----------------------+
+                                     |
+                                     | REST JSON / JWT
+                                     v
+               +--------------------------------------------+
+               |          Work Trust API Gateway            |
+               |         (Express.js + TypeScript)          |
+               +---------------------+----------------------+
+                                     |
+         +---------------------------+---------------------------+
+         |                           |                           |
+         v                           v                           v
++------------------+       +------------------+       +------------------+
+| AI Matching &    |       | Job State        |       | Transparent Wage |
+| Reliability      |       | Machine & OTP    |       | Split & Payment  |
+| Engine           |       | Attendance       |       | Service          |
++------------------+       +------------------+       +------------------+
+         |                           |                           |
+         +---------------------------+---------------------------+
+                                     |
+                                     v
+               +--------------------------------------------+
+               |           Relational Persistence           |
+               |     SQLite (Dev) / PostgreSQL (Prod)       |
+               |         27 Normalized Tables (Knex)        |
+               +--------------------------------------------+
+```
 
 ---
 
-## 4. Demo Accounts (Local / Presentation)
+## 🛠️ Technology Stack
 
-All demo accounts are pre-seeded with realistic data:
+| Layer | Technologies |
+|---|---|
+| **Backend REST API** | Node.js (v18+ / v25+), TypeScript, Express.js, Winston, Helmet, CORS |
+| **Database & ORM** | Knex.js, SQLite (Dev zero-native dependencies), PostgreSQL 15+ & PostGIS (Prod) |
+| **Authentication** | JWT (Access + Rotating Refresh Tokens), bcryptjs, Role-Based Access Control (RBAC) |
+| **AI Matching Engine** | Multi-factor weighted candidate scoring, Haversine spatial calculation |
+| **Admin Web Portal** | React 19, Vite, Tailwind CSS, Recharts, TanStack Query |
+| **Mobile Application** | React Native, Expo (Expo Router), Zustand, React Native Paper |
+| **Testing Suite** | Jest, ts-jest, Supertest |
+| **DevOps & Cloud** | Docker, Docker Compose, Render (`render.yaml`), GitHub Actions CI/CD |
 
-| Role | Email | Password | Details |
+---
+
+## 👥 Pre-Seeded Demo Accounts
+
+All credentials work out of the box with the pre-seeded dataset:
+
+| Role | Email | Password | Persona |
 |---|---|---|---|
-| **Admin** | `admin@nexvion.demo` | `NexvionDemo@2026` | Platform governance, verification review, demand insights |
-| **Customer** | `customer@nexvion.demo` | `Demo@12345` | Ananya Sharma (Bandra, Mumbai) |
-| **Worker** | `worker@nexvion.demo` | `Demo@12345` | Rahul Kumar (Master Electrician, Skill Passport verified) |
-| **Cooperative** | `cooperative@nexvion.demo` | `Demo@12345` | Team Alpha Leader (Electrical & Repair Cooperative) |
+| **Admin** | `admin@nexvion.demo` | `NexvionDemo@2026` | Platform Governance Officer (verification, demand analytics, dispute tickets) |
+| **Customer** | `customer@nexvion.demo` | `Demo@12345` | Ananya Sharma (Community secretary posting a 4-worker group gig) |
+| **Worker** | `worker@nexvion.demo` | `Demo@12345` | Rahul Kumar (Verified Master Electrician, Skill Passport verified) |
+| **Cooperative** | `cooperative@nexvion.demo` | `Demo@12345` | Sunil Patil (Leader, Team Alpha - Electrical & Repair Collective) |
 
 *(Additional pre-seeded accounts: `customer1`–`customer10@nexvion.demo`, `worker1`–`worker20@nexvion.demo`, `coop1`–`coop5@nexvion.demo` with password `Demo@12345`)*
 
 ---
 
-## 5. Quick Start Instructions
+## 💰 Transparent Wage Splitting Formula
 
-### Prerequisites
-- **Node.js**: v18+ (tested on Node.js v25.8.1)
-- **npm**: v9+
+Work Trust eliminates hidden aggregator commissions. For every job with budget $B$:
 
-### A. Backend Setup & Startup
+$$\text{Platform Safety Fee: } F_{\text{platform}} = B \times 10\%$$
+$$\text{Cooperative Welfare Fund: } C_{\text{coop}} = (B - F_{\text{platform}}) \times 10\%$$
+$$\text{Total Worker Wages: } W_{\text{total}} = B - F_{\text{platform}} - C_{\text{coop}}$$
+$$\text{Per Worker Payout: } W_i = \frac{W_{\text{total}}}{N} \quad (\text{for } N \text{ workers})$$
+
+### Example for a ₹5,000 Group Job (4 Workers):
+- 👷 **Worker 1 (Rahul Kumar)**: ₹1,013
+- 👷 **Worker 2 (Amit Verma)**: ₹1,013
+- 👷 **Worker 3 (Suresh Shinde)**: ₹1,012
+- 👷 **Worker 4 (Pooja Nair)**: ₹1,012
+- 🤝 **Cooperative Welfare & Equipment Fund (10%)**: ₹450
+- 🛡️ **Work Trust Platform Safety Shield (10%)**: ₹500
+- **Total**: **₹5,000** *(100% transparently accounted for)*
+
+---
+
+## ⚡ Quick Start Guide
+
+### 1. Clone the Repository
 ```bash
-# 1. Navigate to backend directory
-cd apps/backend
+git clone https://github.com/arjun60840-stack/turst-work.git
+cd turst-work
+```
 
-# 2. Install dependencies
+### 2. Backend Setup & Startup
+```bash
+cd apps/backend
 npm install
-
-# 3. Run database migrations (creates all 27 tables)
 npx knex migrate:latest
-
-# 4. Seed realistic demo dataset (20 workers, 5 coops, 10 customers, 32 jobs)
 npx knex seed:run
-
-# 5. Start the backend server
 npm run dev
-# Server will run at http://localhost:3000/api
-# Health check at http://localhost:3000/api/health
 ```
+- API Base URL: `http://localhost:3000/api`
+- Health Check: `http://localhost:3000/api/health`
 
-### B. Run Automated Test Suite
+### 3. Run Automated Tests
 ```bash
 cd apps/backend
-npm test
-# Runs Unit Tests (Matching, Reliability, Wage Split, State Machine) and E2E Demo Scenario
+npm test -- --forceExit
 ```
+Runs 5 Jest test suites (Matching, Reliability, Wage Split, State Machine, and the complete 9-step End-to-End demonstration scenario).
 
-### C. Admin Web Portal
+### 4. Admin Web Portal
 ```bash
 cd apps/admin
 npm install
 npm run dev
-# Dashboard available at http://localhost:5173
 ```
+Portal available at `http://localhost:5173`.
 
-### D. Mobile Application (Web Preview / Expo Go)
+### 5. Mobile Application Preview
 ```bash
 cd apps/mobile
 npm install
@@ -106,41 +195,59 @@ npx expo start --web
 
 ---
 
-## 6. Transparent Wage Split Formula
+## 🧪 Test Suite Results (100% Passing)
 
-For any job with budget $B$:
-- **Platform Safety & Operations Fee**: $F_{\text{platform}} = B \times 10\%$
-- **Cooperative Equipment & Welfare Reserve**: $C_{\text{coop}} = (B - F_{\text{platform}}) \times 10\%$
-- **Net Direct Worker Wages**: $W_{\text{total}} = B - F_{\text{platform}} - C_{\text{coop}}$
-- **Per Worker Wage** (for $N$ workers): $W_i = \frac{W_{\text{total}}}{N}$
+```
+PASS tests/wage-split.test.ts
+PASS tests/reliability.test.ts
+PASS tests/job-state.test.ts
+PASS tests/matching.test.ts
+PASS tests/e2e-demo.test.ts
+  Work Trust SIH 2026 End-to-End Demonstration Scenario
+    ✓ Step 1: Customer creates a Group Hiring Job Request (4 workers) (47 ms)
+    ✓ Step 2: AI Matching Engine executes candidate filtering, scoring, and explanation (88 ms)
+    ✓ Step 3: Customer books the recommended team and accepts Digital Agreement (40 ms)
+    ✓ Step 4: Customer generates OTP for on-site attendance (13 ms)
+    ✓ Step 5: Worker/Team enters OTP + GPS to verify attendance and start job (142 ms)
+    ✓ Step 6: Job marked completed and transparent wage split is verified (32 ms)
+    ✓ Step 7: Demo payment processed and line-item transaction recorded (48 ms)
+    ✓ Step 8: Customer submits review and ratings are persisted (34 ms)
+    ✓ Step 9: Admin dashboard KPI reflects active jobs and transactions (97 ms)
 
-*Example for ₹5,000 Group Job (4 Workers):*
-- Worker 1: ₹1,013
-- Worker 2: ₹1,013
-- Worker 3: ₹1,012
-- Worker 4: ₹1,012
-- Cooperative Reserve: ₹450
-- Platform Shield: ₹500
-
----
-
-## 7. SIH 2026 End-to-End Demonstration Flow
-
-1. **Customer Login**: Login as `customer@nexvion.demo`
-2. **Post Group Gig**: Request 4 Electricians for a Community Hall Wiring project (Budget: ₹5,000)
-3. **AI Matching**: System runs multi-factor scoring $\rightarrow$ recommends **Team Alpha (95% Match)** with explainable reasons
-4. **Booking & Agreement**: Customer books Team Alpha and signs the Digital Job Agreement
-5. **On-Site Attendance**: Customer shares Demo OTP `123456`. Worker logs in, inputs OTP + GPS coordinates $\rightarrow$ status advances to `IN_PROGRESS`
-6. **Completion & Wage Split**: Work completed $\rightarrow$ transparent line-item wage split displayed $\rightarrow$ Demo payment processed
-7. **Dual Review**: Customer reviews Team Alpha $\rightarrow$ Reliability & ratings updated
-8. **Admin Verification**: Administrator reviews audit logs, verification requests, and demand analytics charts
+Test Suites: 5 passed, 5 total
+Tests:       20 passed, 20 total
+Snapshots:   0 total
+Time:        4.072 s
+```
 
 ---
 
-## 8. Documentation Index
+## 🎯 10-Minute Live SIH Demonstration Flow
+
+1. **Customer Login**: Sign in as `customer@nexvion.demo` (`Demo@12345`).
+2. **Create Group Gig**: Select **Electrical**, toggle **Group Hiring**, request **4 workers**, budget **₹5,000**.
+3. **AI Smart Matching**: System computes multi-factor score $\rightarrow$ displays **Team Alpha (95% Match)** with explainable audit reasons (*skills matched, capacity verified, 2.8 km away, verified team, 95% reliability*).
+4. **Digital Job Agreement**: Customer confirms terms with upfront financial split.
+5. **On-Site Attendance**: Customer presents Demo OTP `123456`. Worker logs in as `worker@nexvion.demo`, enters OTP + GPS coordinates $\rightarrow$ job status advances to `IN_PROGRESS`.
+6. **Completion & Transparent Split**: Job completed $\rightarrow$ transparent line-item wage split displayed $\rightarrow$ Demo payment processed.
+7. **Dual Review**: 5-star rating submitted $\rightarrow$ reliability and ratings updated in real time.
+8. **Admin Portal**: Sign in as `admin@nexvion.demo` at `http://localhost:5173` to view live transaction KPIs, verify Skill Passports, and inspect demand forecasting trends.
+
+---
+
+## 📚 In-Depth Documentation
 
 - [Architecture Specification](docs/architecture.md)
-- [Database Schema Reference](docs/database.md)
+- [Database Schema Reference (27 Tables)](docs/database.md)
 - [REST API Specification](docs/api.md)
 - [Explainable AI & Reliability Engine](docs/ai.md)
 - [SIH Master Demonstration Guide](docs/demo.md)
+- [Security Hardening Guide](docs/security.md)
+- [Operational Troubleshooting](docs/troubleshooting.md)
+- [Production Deployment Guide](DEPLOYMENT.md)
+
+---
+
+<p align="center">
+  Built with ❤️ for <strong>Smart India Hackathon 2026</strong> • Problem Statement 26089
+</p>
