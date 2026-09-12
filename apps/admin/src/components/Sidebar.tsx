@@ -32,7 +32,7 @@ export default function Sidebar() {
     <div className="flex h-screen flex-col bg-[#1E293B] w-64 fixed left-0 top-0 text-white">
       <div className="flex h-16 shrink-0 items-center px-6 bg-slate-900">
         <h1 className="text-2xl font-bold tracking-tight text-white flex items-center">
-          <span className="text-blue-500 mr-2">NEX</span>VION
+          <span className="text-blue-500 mr-2">WORK</span>TRUST
         </h1>
       </div>
       <div className="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">

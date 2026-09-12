@@ -22,7 +22,7 @@ export default function Login() {
       <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow-lg border border-slate-100">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-slate-900 flex items-center justify-center">
-            <span className="text-blue-600">NEX</span>VION Admin
+            <span className="text-blue-600">WORK</span>TRUST Admin
           </h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleLogin}>

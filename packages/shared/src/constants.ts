@@ -1,8 +1,7 @@
-// ============================================================
-// NEXVION — Shared Constants
+// Work Trust — Shared Constants
 // ============================================================
 
-export const APP_NAME = 'NEXVION';
+export const APP_NAME = 'Work Trust';
 export const APP_TAGLINE = 'Cooperative Gig Services Platform';
 
 export const API_BASE_URL = 'http://localhost:3000/api';

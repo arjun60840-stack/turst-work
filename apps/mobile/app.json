@@ -1,18 +1,18 @@
 {
   "expo": {
-    "name": "NEXVION",
-    "slug": "nexvion-mobile",
+    "name": "Work Trust",
+    "slug": "work-trust-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "scheme": "nexvion",
+    "scheme": "worktrust",
     "plugins": [
       "expo-router",
       [
         "expo-location",
         {
-          "locationAlwaysAndWhenInUsePermission": "Allow NEXVION to use your location for finding nearby jobs and attendance."
+          "locationAlwaysAndWhenInUsePermission": "Allow Work Trust to use your location for finding nearby jobs and attendance."
         }
       ]
     ],

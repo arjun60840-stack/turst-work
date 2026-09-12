@@ -13,7 +13,7 @@ const router = Router();
 
 // ===================== HEALTH =====================
 router.get('/health', (_req, res) => {
-  res.json({ success: true, message: 'NEXVION API is running', timestamp: new Date().toISOString() });
+  res.json({ success: true, message: 'Work Trust API is running', timestamp: new Date().toISOString() });
 });
 
 // ===================== AUTH =====================
@@ -854,7 +854,7 @@ router.post('/payments', authenticate, async (req: AuthRequest, res) => {
   await db('payment_splits').insert({
     id: generateId(), payment_id: paymentId, booking_id,
     recipient_type: 'platform', recipient_id: null,
-    amount: booking.platform_fee, description: 'Platform service fee',
+    amount: booking.platform_fee, description: 'Work Trust platform service fee',
     created_at: now, updated_at: now,
   });
 

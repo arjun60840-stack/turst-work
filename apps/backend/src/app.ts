@@ -33,7 +33,7 @@ const PORT = env.PORT || 3000;
 
 if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, () => {
-    logger.info(`🚀 NEXVION Backend API running at http://localhost:${PORT}/api`);
+    logger.info(`🚀 Work Trust Backend API running at http://localhost:${PORT}/api`);
     logger.info(`📡 Health check: http://localhost:${PORT}/api/health`);
   });
 }

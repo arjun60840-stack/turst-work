@@ -23,7 +23,7 @@ export default function LoginScreen() {
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={styles.container}>
       <View style={styles.formContainer}>
-        <Text variant="displaySmall" style={styles.title}>NEXVION</Text>
+        <Text variant="displaySmall" style={styles.title}>Work Trust</Text>
         <Text variant="titleMedium" style={styles.subtitle}>Cooperative Gig Services</Text>
 
         <TextInput
