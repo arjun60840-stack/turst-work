@@ -100,25 +100,31 @@ export default function Dashboard() {
       {/* High-Tech Mission Control Hero Banner */}
       <div className={`relative overflow-hidden rounded-3xl p-6 sm:p-8 transition-all duration-300 ${
         isLight
-          ? 'bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 text-white shadow-xl border border-blue-900/40'
-          : 'tech-glass-card p-6 sm:p-8 text-white shadow-2xl border border-cyan-500/20'
+          ? 'bg-white text-slate-900 shadow-sm border border-slate-200'
+          : 'tech-glass-card text-white shadow-2xl border border-cyan-500/20'
       }`}>
-        {/* Animated Neon Ambient Background */}
-        <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-cyan-500/15 blur-3xl pointer-events-none"></div>
-        <div className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full bg-blue-600/15 blur-3xl pointer-events-none"></div>
+        {/* Animated Neon Ambient Background in Dark Mode */}
+        {!isLight && (
+          <>
+            <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-cyan-500/15 blur-3xl pointer-events-none"></div>
+            <div className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full bg-blue-600/15 blur-3xl pointer-events-none"></div>
+          </>
+        )}
 
         <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
           <div className="space-y-2 max-w-2xl">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-[11px] font-mono font-bold text-cyan-300">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+            <div className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold border ${
+              isLight ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-cyan-950/80 border-cyan-500/40 text-cyan-300'
+            }`}>
+              <span className={`w-2 h-2 rounded-full ${isLight ? 'bg-blue-600' : 'bg-cyan-400'} animate-ping`}></span>
               <span>NEURAL DISPATCH ENGINE • LIVE ENTERPRISE</span>
             </div>
 
-            <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
-              Work Trust <span className="gradient-text-tech">Command Center</span>
+            <h1 className={`text-2xl sm:text-3xl font-black tracking-tight leading-tight mt-3 ${isLight ? 'text-slate-900' : 'text-white'}`}>
+              Work Trust <span className={isLight ? 'text-blue-600' : 'gradient-text-tech'}>Command Center</span>
             </h1>
 
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            <p className={`text-xs sm:text-sm leading-relaxed ${isLight ? 'text-slate-600' : 'text-slate-300'}`}>
               Decentralized cooperative platform for agricultural & rural household services. Combining AI geospatial dispatch, DigiLocker KYC, and instant 80/10/10 UPI escrow settlements.
             </p>
           </div>
@@ -127,43 +133,49 @@ export default function Dashboard() {
           <div className="flex flex-wrap items-center gap-2.5">
             <Link
               to="/customer-portal"
-              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 !text-white font-bold text-xs shadow-lg shadow-cyan-500/20 transition-all flex items-center space-x-2"
+              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 !text-white font-bold text-xs shadow-md shadow-blue-500/20 transition-all flex items-center space-x-2"
             >
-              <BoltIcon className="w-4 h-4 text-cyan-200" />
+              <BoltIcon className="w-4 h-4 text-white" />
               <span>Launch Client App</span>
             </Link>
 
             <Link
               to="/worker-portal"
-              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 !text-white font-bold text-xs shadow-lg shadow-emerald-500/20 transition-all flex items-center space-x-2"
+              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 !text-white font-bold text-xs shadow-md shadow-emerald-500/20 transition-all flex items-center space-x-2"
             >
-              <CpuChipIcon className="w-4 h-4 text-emerald-200" />
+              <CpuChipIcon className="w-4 h-4 text-white" />
               <span>Launch Worker App</span>
             </Link>
 
             <Link
               to="/technical-approach"
-              className="px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-amber-300 border border-amber-500/40 font-bold text-xs transition-all flex items-center space-x-2"
+              className={`px-4 py-2.5 rounded-xl font-bold text-xs transition-all flex items-center space-x-2 border ${
+                isLight 
+                  ? 'bg-slate-100 hover:bg-slate-200 text-slate-800 border-slate-300' 
+                  : 'bg-slate-800/80 hover:bg-slate-700/80 text-amber-300 border-amber-500/40'
+              }`}
             >
-              <SparklesIcon className="w-4 h-4 text-amber-400" />
+              <SparklesIcon className={`w-4 h-4 ${isLight ? 'text-amber-600' : 'text-amber-400'}`} />
               <span>System Architecture</span>
             </Link>
           </div>
         </div>
 
         {/* Telemetry Status Bar */}
-        <div className="mt-6 pt-4 border-t border-slate-800/80 grid grid-cols-1 sm:grid-cols-3 gap-3 font-mono text-[11px] text-slate-400">
+        <div className={`mt-6 pt-4 border-t grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs ${
+          isLight ? 'border-slate-200 text-slate-600' : 'border-slate-800/80 text-slate-400 font-mono'
+        }`}>
           <div className="flex items-center space-x-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-            <span>AI MATCHING ENGINE: <strong className="text-white">ONLINE (1.8s)</strong></span>
+            <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span>AI MATCHING ENGINE: <strong className={isLight ? 'text-slate-900 font-bold' : 'text-white'}>ONLINE (1.8s)</strong></span>
           </div>
           <div className="flex items-center space-x-2">
-            <span className="w-2 h-2 rounded-full bg-cyan-400"></span>
-            <span>ZERO-TRUST GEOFENCE: <strong className="text-white">ACTIVE (100%)</strong></span>
+            <span className="w-2 h-2 rounded-full bg-blue-500"></span>
+            <span>ZERO-TRUST GEOFENCE: <strong className={isLight ? 'text-slate-900 font-bold' : 'text-white'}>ACTIVE (100%)</strong></span>
           </div>
           <div className="flex items-center space-x-2">
-            <span className="w-2 h-2 rounded-full bg-purple-400"></span>
-            <span>ESCROW VAULT: <strong className="text-white">₹1.84L SECURED</strong></span>
+            <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+            <span>ESCROW VAULT: <strong className={isLight ? 'text-slate-900 font-bold' : 'text-white'}>₹1.84L SECURED</strong></span>
           </div>
         </div>
       </div>

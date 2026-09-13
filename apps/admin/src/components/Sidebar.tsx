@@ -88,25 +88,31 @@ export default function Sidebar() {
                 className={({ isActive }) =>
                   `group flex items-center justify-between px-3 py-2 text-xs font-bold rounded-xl transition-all ${
                     isActive
-                      ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-md shadow-cyan-600/30'
+                      ? 'bg-gradient-to-r from-cyan-600 to-blue-600 !text-white shadow-md shadow-blue-500/20'
                       : isLight 
                         ? 'text-slate-700 hover:bg-slate-100 hover:text-slate-900' 
                         : 'text-slate-300 hover:bg-slate-900 hover:text-white'
                   }`
                 }
               >
-                <div className="flex items-center truncate mr-1">
-                  <item.icon className={`mr-2.5 h-4 w-4 shrink-0 ${item.color}`} />
-                  <span className="truncate">{item.name}</span>
-                </div>
-                {item.badge && (
-                  <span className={`px-1.5 py-0.5 text-[9px] font-mono font-bold rounded shrink-0 ${
-                    isLight 
-                      ? 'bg-slate-100 text-slate-700 border border-slate-200' 
-                      : 'bg-slate-800 text-slate-300 border border-slate-700/60'
-                  }`}>
-                    {item.badge}
-                  </span>
+                {({ isActive }) => (
+                  <>
+                    <div className="flex items-center truncate mr-1">
+                      <item.icon className={`mr-2.5 h-4 w-4 shrink-0 ${isActive ? 'text-white' : item.color}`} />
+                      <span className={`truncate ${isActive ? '!text-white' : ''}`}>{item.name}</span>
+                    </div>
+                    {item.badge && (
+                      <span className={`px-2 py-0.5 text-[10px] font-mono font-bold rounded shrink-0 ${
+                        isActive
+                          ? 'bg-white/20 text-white'
+                          : isLight 
+                            ? 'bg-slate-100 text-slate-700 border border-slate-200' 
+                            : 'bg-slate-800 text-slate-300 border border-slate-700/60'
+                      }`}>
+                        {item.badge}
+                      </span>
+                    )}
+                  </>
                 )}
               </NavLink>
             ))}
@@ -128,35 +134,45 @@ export default function Sidebar() {
                 className={({ isActive }) =>
                   `group flex items-center justify-between px-3 py-2 text-xs font-semibold rounded-lg transition-all ${
                     isActive
-                      ? 'bg-blue-600 text-white shadow-xs border-l-2 border-cyan-400 pl-2.5 font-bold'
+                      ? 'bg-blue-600 !text-white shadow-sm font-bold'
                       : isLight 
-                        ? 'text-slate-600 hover:bg-slate-100 hover:text-slate-900' 
+                        ? 'text-slate-700 hover:bg-slate-100 hover:text-slate-900' 
                         : 'text-slate-400 hover:bg-slate-900 hover:text-slate-200'
                   }`
                 }
               >
-                <div className="flex items-center truncate mr-1">
-                  <item.icon
-                    className={`mr-2.5 h-4 w-4 shrink-0 transition-colors ${
-                      isLight ? 'text-slate-500 group-hover:text-blue-600' : 'text-slate-400 group-hover:text-cyan-400'
-                    }`}
-                    aria-hidden="true"
-                  />
-                  <span className="truncate">{item.name}</span>
-                </div>
-                {item.alertBadge && (
-                  <span className={`px-1.5 py-0.5 text-[10px] font-mono font-bold rounded-full shrink-0 ${
-                    isLight ? 'bg-rose-100 text-rose-700 border border-rose-200' : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
-                  }`}>
-                    {item.alertBadge}
-                  </span>
-                )}
-                {item.badge && !item.alertBadge && (
-                  <span className={`px-1.5 py-0.5 text-[10px] font-mono shrink-0 ${
-                    isLight ? 'text-slate-400' : 'text-slate-500'
-                  }`}>
-                    {item.badge}
-                  </span>
+                {({ isActive }) => (
+                  <>
+                    <div className="flex items-center truncate mr-1">
+                      <item.icon
+                        className={`mr-2.5 h-4 w-4 shrink-0 transition-colors ${
+                          isActive 
+                            ? 'text-white' 
+                            : isLight ? 'text-slate-500 group-hover:text-blue-600' : 'text-slate-400 group-hover:text-cyan-400'
+                        }`}
+                        aria-hidden="true"
+                      />
+                      <span className={`truncate ${isActive ? '!text-white font-bold' : ''}`}>{item.name}</span>
+                    </div>
+                    {item.alertBadge && (
+                      <span className={`px-2 py-0.5 text-[10px] font-mono font-bold rounded-full shrink-0 ${
+                        isActive
+                          ? 'bg-white text-blue-700 font-black shadow-xs'
+                          : isLight ? 'bg-rose-100 text-rose-700 border border-rose-200' : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
+                      }`}>
+                        {item.alertBadge}
+                      </span>
+                    )}
+                    {item.badge && !item.alertBadge && (
+                      <span className={`px-1.5 py-0.5 text-[10px] font-mono shrink-0 ${
+                        isActive
+                          ? 'bg-blue-700 text-white'
+                          : isLight ? 'text-slate-500' : 'text-slate-500'
+                      }`}>
+                        {item.badge}
+                      </span>
+                    )}
+                  </>
                 )}
               </NavLink>
             ))}
