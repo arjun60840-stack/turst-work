@@ -11,10 +11,15 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/SIH%202026-Problem%20ID%2026089-blue?style=for-the-badge" alt="SIH 2026" />
-  <img src="https://img.shields.io/badge/Theme-Agriculture%2C%20Foodtech%20%26%20Rural%20Dev-green?style=for-the-badge" alt="Theme" />
+  <img src="https://img.shields.io/badge/Live%20API-Active-brightgreen?style=for-the-badge" alt="Live API" />
+  <img src="https://img.shields.io/badge/Live%20Admin-Active-success?style=for-the-badge" alt="Live Admin" />
   <img src="https://img.shields.io/badge/Tests-20%20Passed%20(100%25)-brightgreen?style=for-the-badge" alt="Tests" />
-  <img src="https://img.shields.io/badge/Node.js-v18%2B%20%7C%20v25-informational?style=for-the-badge" alt="Node" />
   <img src="https://img.shields.io/badge/License-MIT-orange?style=for-the-badge" alt="License" />
+</p>
+
+<p align="center">
+  🌐 <strong>Live Admin Web Portal</strong>: <a href="https://worktrust-admin.onrender.com">https://worktrust-admin.onrender.com</a><br>
+  ⚡ <strong>Live Backend REST API</strong>: <a href="https://worktrust-api.onrender.com/api/health">https://worktrust-api.onrender.com/api/health</a>
 </p>
 
 ---
