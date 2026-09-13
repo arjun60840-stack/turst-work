@@ -31,23 +31,39 @@ app.use(errorHandler);
 
 import db from './config/database';
 
+import fs from 'fs';
+import path from 'path';
+
 const PORT = env.PORT || 3000;
 
 if (process.env.NODE_ENV !== 'test') {
   (async () => {
     try {
-      logger.info('Running database migrations...');
-      await db.migrate.latest();
+      const migrationsDir = fs.existsSync(path.resolve(process.cwd(), 'migrations'))
+        ? path.resolve(process.cwd(), 'migrations')
+        : path.resolve(__dirname, '../migrations');
+      const seedsDir = fs.existsSync(path.resolve(process.cwd(), 'seeds'))
+        ? path.resolve(process.cwd(), 'seeds')
+        : path.resolve(__dirname, '../seeds');
+
+      logger.info(`Running database migrations from ${migrationsDir}...`);
+      await db.migrate.latest({
+        directory: migrationsDir,
+        loadExtensions: ['.js', '.ts'],
+      });
       logger.info('Database migrations up to date.');
       
       const workerCount = await db('workers').count('id as count').first();
       if (!workerCount || Number(workerCount.count) === 0) {
         logger.info('Seeding database with demo data...');
-        await db.seed.run();
+        await db.seed.run({
+          directory: seedsDir,
+          loadExtensions: ['.js', '.ts'],
+        });
         logger.info('Database seeding completed.');
       }
     } catch (err: any) {
-      logger.warn(`Database initialization notice: ${err?.message || err}`);
+      logger.error(`Database initialization notice: ${err?.message || err}`);
     }
 
     app.listen(PORT, () => {
