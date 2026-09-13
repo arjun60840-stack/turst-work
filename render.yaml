@@ -1,6 +1,6 @@
 services:
   # -------------------------------------------------------------------
-  # Work Trust — Backend REST API
+  # Work Trust - Backend REST API
   # -------------------------------------------------------------------
   - type: web
     name: worktrust-api
@@ -27,16 +27,14 @@ services:
         value: demo
 
   # -------------------------------------------------------------------
-  # Work Trust — Admin Web Portal (Static Site)
+  # Work Trust - Admin Web Portal (Static Site)
   # -------------------------------------------------------------------
   - type: web
     name: worktrust-admin
     runtime: static
-    plan: free
-    region: oregon
     rootDir: apps/admin
     buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
+    staticPublishPath: dist
     routes:
       - type: rewrite
         source: /*
