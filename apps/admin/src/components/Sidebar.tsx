@@ -22,7 +22,6 @@ const userPortals = [
   { name: 'Client Booking App', href: '/customer-portal', icon: DevicePhoneMobileIcon, badge: 'Voice / SOS', color: 'text-cyan-400' },
   { name: 'Worker Gig & Wallet App', href: '/worker-portal', icon: CpuChipIcon, badge: 'Rapido 30s', color: 'text-emerald-400' },
   { name: 'Worker Welfare & e-Shram', href: '/welfare', icon: HeartIcon, badge: '10% Fund', color: 'text-rose-400' },
-  { name: 'SIH Tech Architecture', href: '/technical-approach', icon: BookOpenIcon, highlight: true, color: 'text-amber-400' },
 ];
 
 const adminNavigation = [
@@ -81,9 +80,7 @@ export default function Sidebar() {
                   `group flex items-center justify-between px-3 py-2 text-xs font-bold rounded-xl transition-all ${
                     isActive
                       ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-lg shadow-cyan-600/30'
-                      : item.highlight
-                        ? 'bg-amber-500/10 text-amber-300 border border-amber-500/30 hover:bg-amber-500/20'
-                        : 'text-slate-300 hover:bg-slate-900 hover:text-white'
+                      : 'text-slate-300 hover:bg-slate-900 hover:text-white'
                   }`
                 }
               >
