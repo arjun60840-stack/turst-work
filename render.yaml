@@ -8,8 +8,8 @@ services:
     plan: free
     region: oregon
     rootDir: apps/backend
-    buildCommand: npm install && npm run build
-    startCommand: npx knex migrate:latest && npx knex seed:run && npm start
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production

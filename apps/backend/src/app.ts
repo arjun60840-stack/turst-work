@@ -29,13 +29,32 @@ app.use('/api', apiRoutes);
 // Global Error Handler
 app.use(errorHandler);
 
+import db from './config/database';
+
 const PORT = env.PORT || 3000;
 
 if (process.env.NODE_ENV !== 'test') {
-  app.listen(PORT, () => {
-    logger.info(`🚀 Work Trust Backend API running at http://localhost:${PORT}/api`);
-    logger.info(`📡 Health check: http://localhost:${PORT}/api/health`);
-  });
+  (async () => {
+    try {
+      logger.info('Running database migrations...');
+      await db.migrate.latest();
+      logger.info('Database migrations up to date.');
+      
+      const workerCount = await db('workers').count('id as count').first();
+      if (!workerCount || Number(workerCount.count) === 0) {
+        logger.info('Seeding database with demo data...');
+        await db.seed.run();
+        logger.info('Database seeding completed.');
+      }
+    } catch (err: any) {
+      logger.warn(`Database initialization notice: ${err?.message || err}`);
+    }
+
+    app.listen(PORT, () => {
+      logger.info(`🚀 Work Trust Backend API running at http://localhost:${PORT}/api`);
+      logger.info(`📡 Health check: http://localhost:${PORT}/api/health`);
+    });
+  })();
 }
 
 export default app;
