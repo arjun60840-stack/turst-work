@@ -13,7 +13,8 @@ import {
   ArrowDownTrayIcon,
   BoltIcon,
   PhotoIcon,
-  PlusIcon
+  PlusIcon,
+  SignalIcon
 } from '@heroicons/react/24/outline';
 
 export default function WorkerPortal() {
@@ -43,7 +44,7 @@ export default function WorkerPortal() {
         setCountdown((prev) => prev - 1);
       }, 1000);
     } else if (countdown === 0 && incomingJob) {
-      setIncomingJob(false); // auto-reassign when expired
+      setIncomingJob(false);
     }
     return () => clearInterval(timer);
   }, [incomingJob, countdown, jobState]);
@@ -62,7 +63,7 @@ export default function WorkerPortal() {
       setOtpVerified(true);
       setJobState('in_progress');
     } else {
-      alert('Please enter a 4-digit code (Use demo OTP: 4829)');
+      alert('Please enter 4-digit code (Demo OTP: 4829)');
     }
   };
 
@@ -88,104 +89,106 @@ export default function WorkerPortal() {
 
   return (
     <div className="space-y-6 max-w-5xl mx-auto">
-      {/* Worker Header & Online Status Toggle */}
-      <div className="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+      {/* Worker Header & Telemetry Status */}
+      <div className="tech-glass-card rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden border border-emerald-500/30">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-10">
           <div className="flex items-center space-x-4">
             <div className="relative">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center text-2xl font-bold text-white shadow-lg">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center text-2xl font-black font-mono text-white shadow-lg shadow-emerald-500/20">
                 SG
               </div>
-              <span className={`absolute -bottom-1 -right-1 w-5 h-5 rounded-full border-2 border-slate-900 flex items-center justify-center ${isOnline ? 'bg-emerald-500 animate-pulse' : 'bg-slate-500'}`}>
+              <span className={`absolute -bottom-1 -right-1 w-5 h-5 rounded-full border-2 border-[#090D16] flex items-center justify-center ${isOnline ? 'bg-emerald-400 animate-pulse' : 'bg-slate-600'}`}>
               </span>
             </div>
 
             <div>
               <div className="flex items-center space-x-2">
-                <h2 className="text-xl font-black">Santosh Gavit</h2>
-                <CheckBadgeIcon className="w-5 h-5 text-blue-400" title="DigiLocker Verified" />
+                <h2 className="text-xl font-black text-white">Santosh Gavit</h2>
+                <CheckBadgeIcon className="w-5 h-5 text-cyan-400" title="DigiLocker Verified" />
+                <span className="px-2 py-0.5 rounded-md text-[9px] font-mono font-bold bg-emerald-950 text-emerald-400 border border-emerald-500/30">
+                  CREW LEAD
+                </span>
               </div>
-              <p className="text-xs text-emerald-400 font-semibold mt-0.5">
-                Primary Trade: Combine Harvester & Daily-Wage Farm Crew Lead
+              <p className="text-xs text-emerald-400 font-mono font-semibold mt-0.5">
+                Combine Harvester & Daily-Wage Agricultural Crew
               </p>
-              <p className="text-[11px] text-slate-400">
+              <p className="text-[11px] text-slate-400 font-mono">
                 Sahyadri Agro Labour Sahakari • Nashik District
               </p>
             </div>
           </div>
 
           {/* Online / Offline Switch */}
-          <div className="flex items-center space-x-3 bg-slate-800/80 p-2 rounded-2xl border border-slate-700">
-            <span className="text-xs font-bold text-slate-300">
-              {isOnline ? '🟢 Available for Gigs' : '⚪ Offline'}
+          <div className="flex items-center space-x-3 bg-slate-950/80 p-2 rounded-2xl border border-slate-800">
+            <span className="text-xs font-mono font-bold text-slate-300">
+              {isOnline ? '🟢 MESH ONLINE' : '⚪ OFFLINE'}
             </span>
             <button
               onClick={() => setIsOnline(!isOnline)}
-              className={`w-12 h-6 flex items-center rounded-full p-1 transition-colors ${isOnline ? 'bg-emerald-500' : 'bg-slate-600'}`}
+              className={`w-12 h-6 flex items-center rounded-full p-1 transition-colors ${isOnline ? 'bg-emerald-500' : 'bg-slate-700'}`}
             >
               <div className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform ${isOnline ? 'translate-x-6' : 'translate-x-0'}`}></div>
             </button>
           </div>
         </div>
 
-        {/* Quick Stats Strip */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-5 border-t border-slate-800 text-xs">
+        {/* Quick Metrics Strip */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-5 border-t border-slate-800 text-xs font-mono">
           <div>
-            <span className="text-slate-400 text-[11px] block">Customer Rating</span>
-            <span className="text-base font-extrabold text-amber-400">⭐ 4.92 / 5.0</span>
+            <span className="text-slate-500 text-[10px] uppercase block font-bold">RATING</span>
+            <span className="text-base font-black text-amber-400">⭐ 4.92 / 5.0</span>
           </div>
           <div>
-            <span className="text-slate-400 text-[11px] block">Gigs Completed</span>
-            <span className="text-base font-extrabold text-white">112 Jobs</span>
+            <span className="text-slate-500 text-[10px] uppercase block font-bold">COMPLETED GIGS</span>
+            <span className="text-base font-black text-white">112 JOBS</span>
           </div>
           <div>
-            <span className="text-slate-400 text-[11px] block">Reliability Score</span>
-            <span className="text-base font-extrabold text-emerald-400">98% Perfect</span>
+            <span className="text-slate-500 text-[10px] uppercase block font-bold">RELIABILITY INDEX</span>
+            <span className="text-base font-black text-emerald-400">98% PERFECT</span>
           </div>
           <div>
-            <span className="text-slate-400 text-[11px] block">Wallet Balance</span>
-            <span className="text-base font-extrabold text-emerald-300">₹{walletBalance.toLocaleString()}</span>
+            <span className="text-slate-500 text-[10px] uppercase block font-bold">WALLET BALANCE</span>
+            <span className="text-base font-black text-cyan-400">₹{walletBalance.toLocaleString()}</span>
           </div>
         </div>
       </div>
 
-      {/* Rapido-Style Incoming Job Card (When Online & Idle) */}
+      {/* Rapido-Style Incoming Job Card */}
       {isOnline && incomingJob && jobState === 'idle' && (
-        <div className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white rounded-3xl p-6 sm:p-8 shadow-2xl border-2 border-blue-400/50 animate-bounce-short relative overflow-hidden">
-          {/* Top Bar with 30s Countdown Ring */}
+        <div className="tech-glass-card rounded-3xl p-6 sm:p-8 shadow-2xl border-2 border-cyan-500/60 relative overflow-hidden animate-pulse-subtle">
           <div className="flex items-center justify-between">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30 text-xs font-bold">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950 text-cyan-300 border border-cyan-500/40 text-xs font-mono font-bold">
               <SparklesIcon className="w-3.5 h-3.5 text-amber-300" />
-              <span>⚡ New High-Priority Job Request</span>
+              <span>⚡ INCOMING GIG DISPATCH DETECTED</span>
             </div>
 
-            {/* Circular Countdown */}
-            <div className="w-12 h-12 rounded-full border-4 border-amber-400 flex items-center justify-center font-black text-amber-300 text-sm bg-black/40">
+            {/* Circular Countdown Timer */}
+            <div className="w-14 h-14 rounded-full border-4 border-amber-400 flex items-center justify-center font-mono font-black text-amber-300 text-base bg-slate-950 shadow-lg shadow-amber-500/20">
               {countdown}s
             </div>
           </div>
 
-          <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+          <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
             <div className="md:col-span-2 space-y-2">
               <h3 className="text-xl font-black text-white">
                 Paddy Harvesting & Threshing Crew (4 Workers)
               </h3>
-              <p className="text-xs text-blue-200 flex items-center">
-                <MapPinIcon className="w-4 h-4 mr-1 text-emerald-400" />
-                Suresh Patel Farm • Nashik Rural, MH (2.4 km away)
+              <p className="text-xs text-slate-300 flex items-center font-mono">
+                <MapPinIcon className="w-4 h-4 mr-1 text-cyan-400" />
+                Suresh Patel Farm • Nashik Rural (2.4 km away)
               </p>
-              <div className="flex flex-wrap gap-2 text-[11px] pt-1">
-                <span className="px-2 py-0.5 rounded-md bg-white/10 text-white font-medium">Daily-Wage Crew</span>
-                <span className="px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 font-medium">Full Day Contract</span>
-                <span className="px-2 py-0.5 rounded-md bg-amber-500/20 text-amber-300 font-medium">+₹150 Emergency Bonus</span>
+              <div className="flex flex-wrap gap-2 text-[10px] font-mono pt-1">
+                <span className="px-2 py-0.5 rounded-md bg-slate-900 text-cyan-400 border border-slate-800">DAILY-WAGE CREW</span>
+                <span className="px-2 py-0.5 rounded-md bg-emerald-950 text-emerald-400 border border-emerald-500/30">FULL DAY</span>
+                <span className="px-2 py-0.5 rounded-md bg-amber-950 text-amber-400 border border-amber-500/30">+₹150 EMERGENCY BONUS</span>
               </div>
             </div>
 
             {/* Guaranteed Earnings Box */}
-            <div className="bg-black/30 backdrop-blur-md p-4 rounded-2xl border border-white/10 text-center">
-              <span className="text-[11px] text-slate-300 block uppercase font-bold">Your 80% Payout:</span>
-              <span className="text-2xl font-black text-emerald-400">₹4,800</span>
-              <span className="text-[10px] text-blue-200 block mt-1">Escrow Funded (Instant Release)</span>
+            <div className="bg-slate-950/80 p-5 rounded-2xl border border-slate-800 text-center font-mono">
+              <span className="text-[10px] text-slate-500 block uppercase font-bold">GUARANTEED 80% PAYOUT:</span>
+              <span className="text-3xl font-black text-emerald-400 mt-1 block">₹4,800</span>
+              <span className="text-[10px] text-cyan-400 block mt-1">ESCROW FUNDED</span>
             </div>
           </div>
 
@@ -193,17 +196,17 @@ export default function WorkerPortal() {
           <div className="mt-6 flex space-x-3">
             <button
               onClick={handleRejectJob}
-              className="flex-1 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-slate-300 font-bold text-xs transition-colors border border-white/15 flex items-center justify-center space-x-1"
+              className="flex-1 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-400 font-mono font-bold text-xs transition-colors border border-slate-800 flex items-center justify-center space-x-1"
             >
               <XMarkIcon className="w-4 h-4" />
-              <span>Pass to Next Cooperative Member</span>
+              <span>PASS TO NEXT COOP MEMBER</span>
             </button>
             <button
               onClick={handleAcceptJob}
-              className="flex-2 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs shadow-lg shadow-emerald-600/40 transition-all flex items-center justify-center space-x-2"
+              className="flex-2 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-mono font-black text-xs shadow-lg shadow-emerald-600/40 transition-all flex items-center justify-center space-x-2"
             >
               <CheckCircleIcon className="w-5 h-5" />
-              <span>ACCEPT JOB (Book Now)</span>
+              <span>ACCEPT JOB & LOCK ESCROW</span>
             </button>
           </div>
         </div>
@@ -211,19 +214,19 @@ export default function WorkerPortal() {
 
       {/* Active Job Execution Workflow */}
       {jobState === 'en_route' && (
-        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-6">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+        <div className="tech-glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-4">
             <div>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 uppercase">
-                Step 1 of 3: Traveling to Location
+              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-cyan-950 text-cyan-400 uppercase">
+                // STEP 1: TRAVELING TO LOCATION
               </span>
-              <h3 className="text-lg font-extrabold text-slate-900 mt-1">
+              <h3 className="text-lg font-extrabold text-white mt-1">
                 Navigating to Suresh Patel Farm (Nashik Rural)
               </h3>
             </div>
             <button 
               onClick={() => alert('Launching Google Maps / MapMyIndia navigation to farmstead coordinates')}
-              className="px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 transition-colors flex items-center space-x-1.5 shadow-xs"
+              className="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold transition-colors flex items-center space-x-1.5 shadow-xs"
             >
               <MapPinIcon className="w-4 h-4" />
               <span>Open GPS Turn-by-Turn</span>
@@ -231,11 +234,11 @@ export default function WorkerPortal() {
           </div>
 
           {/* Arrival OTP Input */}
-          <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 max-w-md mx-auto text-center space-y-4">
-            <ShieldCheckIcon className="w-10 h-10 text-blue-600 mx-auto" />
+          <div className="bg-slate-950/80 p-6 rounded-2xl border border-slate-800 max-w-md mx-auto text-center space-y-4">
+            <ShieldCheckIcon className="w-10 h-10 text-cyan-400 mx-auto" />
             <div>
-              <h4 className="font-bold text-slate-900 text-sm">Customer Arrival OTP Verification</h4>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <h4 className="font-bold text-white text-sm">Customer Arrival OTP Verification</h4>
+              <p className="text-xs text-slate-400 mt-0.5 font-mono">
                 Ask customer for their 4-digit security code upon reaching the farmstead.
               </p>
             </div>
@@ -247,99 +250,99 @@ export default function WorkerPortal() {
                 value={otpInput}
                 onChange={(e) => setOtpInput(e.target.value)}
                 placeholder="4829"
-                className="w-40 py-2.5 text-center font-mono font-black text-xl rounded-xl border-2 border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-400 tracking-widest bg-white"
+                className="w-40 py-2.5 text-center font-mono font-black text-xl rounded-xl border-2 border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 tracking-widest bg-slate-900 text-white"
               />
             </div>
 
             <button
               onClick={handleVerifyOtp}
-              className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs transition-colors shadow-xs"
+              className="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs transition-colors shadow-xs font-mono"
             >
-              Verify OTP & Start Work
+              VERIFY OTP & START WORK
             </button>
           </div>
         </div>
       )}
 
-      {/* Step 2: Work in Progress with Parts / Materials Entry */}
+      {/* Step 2: Work in Progress with Parts Entry */}
       {jobState === 'in_progress' && (
-        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-6">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+        <div className="tech-glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-4">
             <div>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 uppercase">
-                Step 2 of 3: Service In-Progress
+              <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 uppercase">
+                // STEP 2: IN-PROGRESS EXECUTION
               </span>
-              <h3 className="text-lg font-extrabold text-slate-900 mt-1">
+              <h3 className="text-lg font-extrabold text-white mt-1">
                 Paddy Harvesting & Threshing Crew Execution
               </h3>
             </div>
-            <span className="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">
-              GPS Verified Arrival ✅
+            <span className="text-xs font-mono font-bold text-emerald-400 bg-emerald-950 px-3 py-1 rounded-full border border-emerald-500/40">
+              GEOFENCE CHECK-IN VERIFIED ✅
             </span>
           </div>
 
-          {/* Parts & Materials Cost Entry */}
-          <div className="space-y-4">
-            <h4 className="font-bold text-slate-900 text-sm">Parts, Fuel & Extra Consumables (Added to Bill):</h4>
+          {/* Parts & Extra Consumables */}
+          <div className="space-y-3 font-mono">
+            <h4 className="font-bold text-white text-sm">Spare Parts, Fuel & Consumables (Added to Bill):</h4>
             <div className="space-y-2">
               {parts.map((p, idx) => (
-                <div key={idx} className="flex justify-between items-center p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs">
-                  <span className="font-semibold text-slate-800">{p.name}</span>
-                  <span className="font-bold text-slate-900">₹{p.cost}</span>
+                <div key={idx} className="flex justify-between items-center p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs">
+                  <span className="font-semibold text-slate-300">{p.name}</span>
+                  <span className="font-bold text-cyan-400">₹{p.cost}</span>
                 </div>
               ))}
             </div>
 
-            <div className="flex gap-2">
+            <div className="flex gap-2 font-sans">
               <input
                 type="text"
-                placeholder="Item name (e.g., Diesel 5L, Harvester Belt)..."
+                placeholder="Item name (e.g., Diesel 5L, Belt)..."
                 value={newPartName}
                 onChange={(e) => setNewPartName(e.target.value)}
-                className="flex-2 p-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-2 p-2.5 text-xs rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
               />
               <input
                 type="number"
                 placeholder="Cost (₹)"
                 value={newPartCost}
                 onChange={(e) => setNewPartCost(e.target.value)}
-                className="flex-1 p-2.5 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="flex-1 p-2.5 text-xs rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 font-mono"
               />
               <button
                 onClick={handleAddPart}
-                className="px-4 py-2.5 rounded-xl bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 transition-colors flex items-center"
+                className="px-4 py-2.5 rounded-xl bg-cyan-600 text-white text-xs font-bold hover:bg-cyan-500 transition-colors flex items-center"
               >
                 <PlusIcon className="w-4 h-4 mr-1" /> Add
               </button>
             </div>
           </div>
 
-          {/* Photo Proof Upload */}
-          <div className="border-2 border-dashed border-slate-200 rounded-2xl p-4 bg-slate-50 text-center cursor-pointer hover:bg-slate-100 transition-colors">
-            <PhotoIcon className="w-8 h-8 text-blue-600 mx-auto mb-1" />
-            <p className="text-xs font-bold text-slate-700">Upload Completed Work Photo Proof</p>
-            <p className="text-[10px] text-slate-400">Verifies quality to eliminate dispute holds</p>
+          {/* Photo Proof */}
+          <div className="border border-dashed border-slate-700 rounded-2xl p-4 bg-slate-950 text-center cursor-pointer hover:bg-slate-900 transition-colors">
+            <PhotoIcon className="w-8 h-8 text-cyan-400 mx-auto mb-1" />
+            <p className="text-xs font-bold text-slate-300">Upload Completed Work Photo Proof</p>
+            <p className="text-[10px] text-slate-500">Verifies quality to eliminate dispute holds</p>
           </div>
 
           {/* Complete Button */}
           <button
             onClick={handleCompleteJob}
-            className="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs shadow-md shadow-emerald-600/30 transition-all flex items-center justify-center space-x-2"
+            className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-mono font-black text-xs shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center space-x-2"
           >
             <CheckCircleIcon className="w-5 h-5" />
-            <span>Mark Job Completed & Request Customer Sign-off</span>
+            <span>MARK JOB COMPLETED & RELEASE ESCROW</span>
           </button>
         </div>
       )}
 
       {/* Completed State */}
       {jobState === 'completed' && (
-        <div className="bg-white rounded-3xl p-8 max-w-lg mx-auto text-center shadow-md border border-slate-200/80 space-y-4 animate-in fade-in zoom-in-95 duration-150">
-          <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center">
+        <div className="tech-glass-card rounded-3xl p-8 max-w-lg mx-auto text-center border border-emerald-500/40 space-y-4 animate-in fade-in zoom-in-95 duration-150">
+          <div className="w-16 h-16 rounded-full bg-emerald-950 border border-emerald-500/40 text-emerald-400 mx-auto flex items-center justify-center">
             <CheckCircleIcon className="w-10 h-10" />
           </div>
-          <h3 className="text-xl font-black text-slate-900">Job Complete & Paid!</h3>
-          <p className="text-xs text-slate-500">
+          <h3 className="text-xl font-black text-white font-mono">JOB COMPLETE & PAID</h3>
+          <p className="text-xs text-slate-400">
             ₹4,800 wage deposited directly into your Work Trust wallet. 10% cooperative welfare credit recorded.
           </p>
           <button
@@ -347,66 +350,66 @@ export default function WorkerPortal() {
               setJobState('idle');
               setIncomingJob(false);
             }}
-            className="w-full py-2.5 rounded-xl bg-blue-600 text-white text-xs font-bold hover:bg-blue-500 transition-colors"
+            className="w-full py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-mono font-bold transition-colors"
           >
-            Back to Available Queue
+            RETURN TO AVAILABLE QUEUE
           </button>
         </div>
       )}
 
       {/* Worker Wallet & Transparent Earnings Card */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+      <div className="tech-glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-5">
           <div>
-            <h3 className="text-base font-extrabold text-slate-900">Worker Wallet & Direct Payouts</h3>
-            <p className="text-xs text-slate-500">Guaranteed 80% minimum payout with instant NPCI UPI transfers</p>
+            <h3 className="text-base font-black text-white font-mono uppercase tracking-wide">// WORKER WALLET & INSTANT PAYOUTS</h3>
+            <p className="text-xs text-slate-400">Guaranteed 80% minimum payout with instant NPCI UPI transfers</p>
           </div>
 
           <button
             onClick={handleWithdraw}
             disabled={walletBalance === 0}
-            className={`px-5 py-2.5 rounded-xl font-bold text-xs flex items-center space-x-2 transition-all ${
+            className={`px-5 py-2.5 rounded-xl font-mono font-bold text-xs flex items-center space-x-2 transition-all ${
               walletBalance > 0 
-                ? 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-md shadow-emerald-600/30' 
-                : 'bg-slate-100 text-slate-400 cursor-not-allowed'
+                ? 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-lg shadow-emerald-600/30' 
+                : 'bg-slate-900 text-slate-600 border border-slate-800 cursor-not-allowed'
             }`}
           >
             <ArrowDownTrayIcon className="w-4 h-4" />
-            <span>Withdraw to UPI (santosh@oksbi)</span>
+            <span>WITHDRAW TO UPI (santosh@oksbi)</span>
           </button>
         </div>
 
         {payoutSuccess && (
-          <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 font-semibold flex items-center justify-between animate-in fade-in duration-200">
-            <span>✅ ₹{walletBalance.toLocaleString()} successfully transferred to santosh@oksbi via UPI Auto-Disbursement!</span>
+          <div className="p-3 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-xs text-emerald-300 font-mono font-semibold flex items-center justify-between animate-in fade-in duration-200">
+            <span>✅ ₹{walletBalance.toLocaleString()} transferred to santosh@oksbi via UPI Auto-Disbursement!</span>
             <span className="font-mono text-[10px]">NPCI-WT-9821</span>
           </div>
         )}
 
         {/* Breakdown Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 text-xs">
-          <div className="p-4 rounded-2xl bg-blue-50/60 border border-blue-100">
-            <span className="text-slate-500 text-[11px] block">Base Labor Pay</span>
-            <span className="text-base font-extrabold text-blue-900 mt-1 block">₹3,840</span>
-            <span className="text-[10px] text-blue-600 font-medium">80% guaranteed split</span>
+        <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 text-xs font-mono">
+          <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+            <span className="text-slate-500 text-[10px] uppercase font-bold block">BASE LABOR PAY</span>
+            <span className="text-lg font-black text-cyan-400 mt-1 block">₹3,840</span>
+            <span className="text-[10px] text-slate-500 font-medium">80% guaranteed split</span>
           </div>
 
-          <div className="p-4 rounded-2xl bg-emerald-50/60 border border-emerald-100">
-            <span className="text-slate-500 text-[11px] block">Emergency & Peak Bonus</span>
-            <span className="text-base font-extrabold text-emerald-900 mt-1 block">+₹450</span>
-            <span className="text-[10px] text-emerald-700 font-medium">100% passed to worker</span>
+          <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+            <span className="text-slate-500 text-[10px] uppercase font-bold block">EMERGENCY & PEAK BONUS</span>
+            <span className="text-lg font-black text-emerald-400 mt-1 block">+₹450</span>
+            <span className="text-[10px] text-emerald-500 font-medium">100% to worker</span>
           </div>
 
-          <div className="p-4 rounded-2xl bg-purple-50/60 border border-purple-100">
-            <span className="text-slate-500 text-[11px] block">Coop Welfare Credit (10%)</span>
-            <span className="text-base font-extrabold text-purple-900 mt-1 block">₹480</span>
-            <span className="text-[10px] text-purple-700 font-medium">In your pension vault</span>
+          <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+            <span className="text-slate-500 text-[10px] uppercase font-bold block">COOP WELFARE (10%)</span>
+            <span className="text-lg font-black text-purple-400 mt-1 block">₹480</span>
+            <span className="text-[10px] text-purple-400 font-medium">In pension vault</span>
           </div>
 
-          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80">
-            <span className="text-slate-500 text-[11px] block">Platform Fee (10%)</span>
-            <span className="text-base font-extrabold text-slate-800 mt-1 block">₹480</span>
-            <span className="text-[10px] text-slate-500 font-medium">Cloud & SMS servers</span>
+          <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800">
+            <span className="text-slate-500 text-[10px] uppercase font-bold block">PLATFORM OPS (10%)</span>
+            <span className="text-lg font-black text-slate-300 mt-1 block">₹480</span>
+            <span className="text-[10px] text-slate-500 font-medium">Servers & SMS</span>
           </div>
         </div>
       </div>

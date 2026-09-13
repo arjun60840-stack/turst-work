@@ -51,48 +51,48 @@ export default function Customers() {
 
   const columns = [
     {
-      header: 'Customer',
+      header: 'Customer Node',
       accessor: (row: Customer) => (
         <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs">
+          <div className="w-8 h-8 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center font-mono font-bold text-xs shadow-xs">
             {row.name.charAt(0)}
           </div>
           <div>
-            <p className="font-semibold text-slate-800 text-xs">{row.name}</p>
-            <p className="text-[11px] text-slate-400">{row.email}</p>
+            <p className="font-bold text-white text-xs">{row.name}</p>
+            <p className="text-[11px] text-slate-400 font-mono">{row.email}</p>
           </div>
         </div>
       ),
     },
     {
-      header: 'Contact & Location',
+      header: 'Contact & Geolocation',
       accessor: (row: Customer) => (
         <div>
-          <p className="text-xs text-slate-700 flex items-center">
-            <PhoneIcon className="w-3 h-3 mr-1 text-slate-400" /> {row.phone}
+          <p className="text-xs text-slate-300 flex items-center font-mono">
+            <PhoneIcon className="w-3 h-3 mr-1 text-cyan-400" /> {row.phone}
           </p>
-          <p className="text-[11px] text-slate-400 flex items-center mt-0.5">
-            <MapPinIcon className="w-3 h-3 mr-1 text-slate-400" /> {row.location}
+          <p className="text-[11px] text-slate-400 flex items-center mt-0.5 font-mono">
+            <MapPinIcon className="w-3 h-3 mr-1 text-slate-500" /> {row.location}
           </p>
         </div>
       ),
     },
     {
-      header: 'Jobs Posted',
+      header: 'Jobs Commissioned',
       accessor: (row: Customer) => (
-        <span className="font-semibold text-slate-700 text-xs">{row.totalJobs} jobs</span>
+        <span className="font-mono font-semibold text-slate-300 text-xs">{row.totalJobs} gigs</span>
       ),
     },
     {
-      header: 'Total Paid',
+      header: 'Gross Volume Paid',
       accessor: (row: Customer) => (
-        <span className="font-bold text-emerald-700 text-xs">{row.totalSpent}</span>
+        <span className="font-mono font-bold text-emerald-400 text-xs">{row.totalSpent}</span>
       ),
     },
     {
-      header: 'Rating Given',
+      header: 'Avg Review Score',
       accessor: (row: Customer) => (
-        <span className="text-xs font-medium text-amber-600">⭐ {row.ratingGiven}</span>
+        <span className="text-xs font-mono font-bold text-amber-400">⭐ {row.ratingGiven} / 5.0</span>
       ),
     },
     {
@@ -100,16 +100,13 @@ export default function Customers() {
       accessor: (row: Customer) => <StatusBadge status={row.status} />,
     },
     {
-      header: 'Action',
+      header: 'Profile',
       accessor: (row: Customer) => (
         <button
-          onClick={(e) => {
-            e.stopPropagation();
-            setSelectedCustomer(row);
-          }}
-          className="text-xs px-2.5 py-1 rounded-md bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-600 font-medium transition-colors border border-slate-200"
+          onClick={() => setSelectedCustomer(row)}
+          className="text-xs font-mono px-2.5 py-1 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 transition-all cursor-pointer shadow-xs"
         >
-          View Profile
+          Inspect
         </button>
       ),
     },
@@ -117,143 +114,129 @@ export default function Customers() {
 
   return (
     <div className="space-y-6">
-      {/* Top Metrics */}
+      {/* 4 Metrics for Customers */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <StatCard 
-          title="Total Registered Clients" 
-          value="1,248" 
-          icon={<UserGroupIcon className="w-5 h-5" />} 
-          trend={{ value: 14, isPositive: true }} 
+          title="Active Farm Customers" 
+          value="1,420 Users" 
+          icon={<UserGroupIcon className="w-5 h-5 text-cyan-400" />} 
+          trend={{ value: 16, isPositive: true }} 
         />
         <StatCard 
-          title="Active Requesters (30d)" 
-          value="842" 
-          icon={<CheckCircleIcon className="w-5 h-5" />} 
+          title="Verified Farmsteads" 
+          value="984 Verified" 
+          icon={<CheckCircleIcon className="w-5 h-5 text-emerald-400" />} 
           trend={{ value: 9, isPositive: true }} 
         />
         <StatCard 
-          title="Total Disbursed Volume" 
-          value="₹24.8 Lakhs" 
-          icon={<CurrencyRupeeIcon className="w-5 h-5" />} 
-          trend={{ value: 22, isPositive: true }} 
+          title="Avg Escrow Ticket" 
+          value="₹2,480" 
+          icon={<CurrencyRupeeIcon className="w-5 h-5 text-blue-400" />} 
+          trend={{ value: 8, isPositive: true }} 
         />
         <StatCard 
-          title="Repeat Booking Rate" 
-          value="68.4%" 
-          icon={<ArrowTrendingUpIcon className="w-5 h-5" />} 
-          trend={{ value: 4, isPositive: true }} 
+          title="Repeat Booking Ratio" 
+          value="74.2%" 
+          icon={<ArrowTrendingUpIcon className="w-5 h-5 text-purple-400" />} 
+          trend={{ value: 12, isPositive: true }} 
         />
       </div>
 
-      {/* Filter and Search Bar */}
-      <div className="bg-white p-4 rounded-xl shadow-xs border border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+      {/* Filter and Search */}
+      <div className="tech-glass-card p-4 rounded-2xl border border-cyan-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="relative w-full sm:w-80">
-          <MagnifyingGlassIcon className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
+          <MagnifyingGlassIcon className="w-4 h-4 absolute left-3 top-3 text-cyan-400/60" />
           <input
             type="text"
-            placeholder="Search by customer, phone, city..."
+            placeholder="Search customer, location, phone..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-9 pr-3 py-2 text-xs rounded-xl bg-slate-950/80 text-white placeholder-slate-500 border border-slate-800 focus:outline-none focus:border-cyan-500 font-sans transition-colors"
           />
         </div>
 
         <div className="flex items-center space-x-2 w-full sm:w-auto">
-          <span className="text-xs text-slate-500 font-medium">Filter Status:</span>
+          <span className="text-xs text-slate-400 font-mono">STATUS FILTER:</span>
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="text-xs px-3 py-1.5 rounded-lg border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="text-xs px-3 py-2 rounded-xl bg-slate-950/80 text-cyan-300 border border-slate-800 focus:outline-none focus:border-cyan-500 font-mono"
           >
-            <option value="all">All Statuses ({initialCustomers.length})</option>
-            <option value="verified">Verified Only</option>
-            <option value="active">Active Only</option>
+            <option value="all">ALL FARM CLIENTS ({initialCustomers.length})</option>
+            <option value="verified">VERIFIED ONLY</option>
+            <option value="active">ACTIVE ONLY</option>
           </select>
         </div>
       </div>
 
-      {/* Data Table */}
-      <div className="bg-white rounded-xl shadow-xs border border-slate-200/80 overflow-hidden">
-        <div className="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
-          <h3 className="text-sm font-bold text-slate-800">Customers Directory</h3>
-          <span className="text-xs text-slate-500">{filteredData.length} records found</span>
+      {/* Table */}
+      <div className="tech-glass-card rounded-2xl border border-cyan-500/20 overflow-hidden shadow-2xl">
+        <div className="px-6 py-4 border-b border-slate-800/80 flex justify-between items-center bg-slate-900/60">
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+            <h3 className="text-sm font-bold text-white tracking-wide">Customer Account Registry</h3>
+          </div>
+          <span className="text-xs font-mono text-cyan-400">{filteredData.length} active clients</span>
         </div>
         <DataTable columns={columns} data={filteredData} />
       </div>
 
-      {/* Customer Detail Drawer / Modal */}
+      {/* Customer Modal */}
       {selectedCustomer && (
-        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 animate-in fade-in zoom-in-95 duration-150">
-            <div className="flex justify-between items-start border-b border-slate-100 pb-4">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="tech-glass-card bg-slate-950/95 rounded-3xl max-w-md w-full p-6 shadow-2xl border border-cyan-500/30 animate-in fade-in zoom-in-95 duration-150">
+            <div className="flex justify-between items-start border-b border-slate-800 pb-4">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg">
+                <div className="w-10 h-10 rounded-2xl bg-cyan-500/20 border border-cyan-400/40 text-cyan-400 flex items-center justify-center font-bold text-base font-mono">
                   {selectedCustomer.name.charAt(0)}
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 text-base">{selectedCustomer.name}</h3>
-                  <p className="text-xs text-slate-500">{selectedCustomer.id} • Joined {selectedCustomer.joinedDate}</p>
+                  <h3 className="font-bold text-white text-base">{selectedCustomer.name}</h3>
+                  <p className="text-xs text-slate-400 font-mono">{selectedCustomer.id} • Registered {selectedCustomer.joinedDate}</p>
                 </div>
               </div>
               <button 
                 onClick={() => setSelectedCustomer(null)}
-                className="text-slate-400 hover:text-slate-600 text-sm font-bold p-1"
+                className="text-slate-400 hover:text-white text-sm font-bold p-1 cursor-pointer"
               >
                 ✕
               </button>
             </div>
 
             <div className="py-4 space-y-3 text-xs">
-              <div className="grid grid-cols-2 gap-3 bg-slate-50 p-3 rounded-lg">
+              <div className="grid grid-cols-2 gap-3 bg-slate-900/60 p-3.5 rounded-2xl border border-slate-800 font-mono">
                 <div>
-                  <span className="text-slate-400 block text-[11px]">Contact Phone</span>
-                  <span className="font-semibold text-slate-800">{selectedCustomer.phone}</span>
+                  <span className="text-slate-500 block text-[11px]">TELEPHONE</span>
+                  <span className="font-semibold text-slate-200">{selectedCustomer.phone}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[11px]">Email Address</span>
-                  <span className="font-semibold text-slate-800">{selectedCustomer.email}</span>
+                  <span className="text-slate-500 block text-[11px]">LOCATION</span>
+                  <span className="font-semibold text-slate-200">{selectedCustomer.location}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[11px]">Primary Location</span>
-                  <span className="font-semibold text-slate-800">{selectedCustomer.location}</span>
+                  <span className="text-slate-500 block text-[11px]">TOTAL ESCROW SPENT</span>
+                  <span className="font-bold text-emerald-400">{selectedCustomer.totalSpent}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[11px]">Account Status</span>
-                  <StatusBadge status={selectedCustomer.status} />
+                  <span className="text-slate-500 block text-[11px]">TOTAL BOOKINGS</span>
+                  <span className="font-bold text-white">{selectedCustomer.totalJobs} jobs</span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-3 gap-2 text-center pt-2">
-                <div className="p-2 rounded-lg bg-blue-50">
-                  <span className="text-[10px] text-blue-600 uppercase font-bold block">Jobs Posted</span>
-                  <span className="text-base font-bold text-blue-900">{selectedCustomer.totalJobs}</span>
-                </div>
-                <div className="p-2 rounded-lg bg-emerald-50">
-                  <span className="text-[10px] text-emerald-600 uppercase font-bold block">Total Spend</span>
-                  <span className="text-base font-bold text-emerald-900">{selectedCustomer.totalSpent}</span>
-                </div>
-                <div className="p-2 rounded-lg bg-amber-50">
-                  <span className="text-[10px] text-amber-600 uppercase font-bold block">Avg Rating</span>
-                  <span className="text-base font-bold text-amber-900">⭐ {selectedCustomer.ratingGiven}</span>
-                </div>
+              <div className="p-3.5 bg-slate-900/40 rounded-2xl border border-slate-800">
+                <p className="text-[11px] text-slate-400 leading-relaxed">
+                  Verified Farmstead Account with direct NPCI Auto-Escrow capability. 
+                  Zero cancellation fee penalty history recorded.
+                </p>
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-100 flex justify-end space-x-2">
+            <div className="pt-3 border-t border-slate-800 flex justify-end space-x-2">
               <button
                 onClick={() => setSelectedCustomer(null)}
-                className="px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors"
+                className="px-5 py-2 rounded-xl text-xs font-mono font-bold text-cyan-300 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 transition-all cursor-pointer"
               >
                 Close
-              </button>
-              <button
-                onClick={() => {
-                  alert(`Direct communication link generated for ${selectedCustomer.name}`);
-                  setSelectedCustomer(null);
-                }}
-                className="px-4 py-1.5 rounded-lg text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors"
-              >
-                Contact Customer
               </button>
             </div>
           </div>

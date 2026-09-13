@@ -50,11 +50,11 @@ export default function AuditLogs() {
 
   const columns = [
     {
-      header: 'Timestamp & ID',
+      header: 'Timestamp & Block Hash',
       accessor: (row: AuditLog) => (
         <div>
-          <span className="font-semibold text-slate-800 text-xs block">{row.timestamp}</span>
-          <span className="font-mono text-[10px] text-slate-400">{row.id}</span>
+          <span className="font-semibold text-white text-xs block">{row.timestamp}</span>
+          <span className="font-mono text-[10px] text-cyan-400">{row.id}</span>
         </div>
       ),
     },
@@ -63,18 +63,18 @@ export default function AuditLogs() {
       accessor: (row: AuditLog) => {
         const isWarn = row.status === 'warning';
         return (
-          <span className={`inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-bold ${isWarn ? 'bg-rose-100 text-rose-700' : 'bg-blue-50 text-blue-700 border border-blue-200/60'}`}>
+          <span className={`inline-flex items-center px-2 py-0.5 rounded-lg text-[10px] font-mono font-bold ${isWarn ? 'bg-rose-950/60 text-rose-400 border border-rose-500/40' : 'bg-cyan-950/60 text-cyan-300 border border-cyan-500/40'}`}>
             {row.action}
           </span>
         );
       },
     },
     {
-      header: 'Actor (User / System)',
+      header: 'Actor Node',
       accessor: (row: AuditLog) => (
         <div>
-          <span className="text-xs font-semibold text-slate-800 block">{row.actor}</span>
-          <span className="text-[10px] text-slate-400 font-mono">IP: {row.ipAddress}</span>
+          <span className="text-xs font-semibold text-slate-200 block">{row.actor}</span>
+          <span className="text-[10px] text-slate-500 font-mono">IP: {row.ipAddress}</span>
         </div>
       ),
     },
@@ -82,8 +82,8 @@ export default function AuditLogs() {
       header: 'Target Entity',
       accessor: (row: AuditLog) => (
         <div>
-          <span className="text-xs font-medium text-slate-900 block">{row.entityId}</span>
-          <span className="text-[10px] text-slate-400 uppercase font-semibold">{row.entityType}</span>
+          <span className="text-xs font-mono font-bold text-white block">{row.entityId}</span>
+          <span className="text-[10px] text-cyan-400 uppercase font-mono">{row.entityType}</span>
         </div>
       ),
     },
@@ -91,18 +91,18 @@ export default function AuditLogs() {
       header: 'Audit Description & Integrity Hash',
       accessor: (row: AuditLog) => (
         <div className="max-w-md">
-          <p className="text-xs text-slate-700 leading-snug">{row.details}</p>
-          <span className="text-[10px] font-mono text-slate-400 block mt-0.5 truncate">
+          <p className="text-xs text-slate-300 leading-snug">{row.details}</p>
+          <span className="text-[10px] font-mono text-slate-500 block mt-0.5 truncate">
             SHA-256: {row.hash}
           </span>
         </div>
       ),
     },
     {
-      header: 'Integrity',
+      header: 'Cryptographic Proof',
       accessor: (row: AuditLog) => (
-        <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${row.status === 'success' ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'}`}>
-          {row.status === 'success' ? 'VERIFIED' : 'ALERT'}
+        <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold ${row.status === 'success' ? 'bg-emerald-950/60 text-emerald-400 border border-emerald-500/30' : 'bg-rose-950/60 text-rose-400 border border-rose-500/30'}`}>
+          {row.status === 'success' ? 'TAMPER-PROOF' : 'SECURITY ALERT'}
         </span>
       ),
     },
@@ -115,37 +115,37 @@ export default function AuditLogs() {
         <StatCard 
           title="Total Audited Events" 
           value="3,842 Events" 
-          icon={<ClipboardDocumentListIcon className="w-5 h-5 text-blue-600" />} 
+          icon={<ClipboardDocumentListIcon className="w-5 h-5 text-cyan-400" />} 
           trend={{ value: 16, isPositive: true }} 
         />
         <StatCard 
           title="Identity & KYC Audits" 
           value="1,290 Checks" 
-          icon={<ShieldCheckIcon className="w-5 h-5 text-emerald-600" />} 
+          icon={<ShieldCheckIcon className="w-5 h-5 text-emerald-400" />} 
           trend={{ value: 24, isPositive: true }} 
         />
         <StatCard 
           title="Cryptographic Hash Chain" 
           value="100% Intact" 
-          icon={<KeyIcon className="w-5 h-5 text-amber-600" />} 
+          icon={<KeyIcon className="w-5 h-5 text-amber-400" />} 
         />
         <StatCard 
-          title="System Node Status" 
-          value="Active (Render)" 
-          icon={<ServerIcon className="w-5 h-5 text-indigo-600" />} 
+          title="Consensus Node Status" 
+          value="Active (Render MUMBAI-DC1)" 
+          icon={<ServerIcon className="w-5 h-5 text-indigo-400" />} 
         />
       </div>
 
       {/* Filter and Search */}
-      <div className="bg-white p-4 rounded-xl shadow-xs border border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="tech-glass-card p-4 rounded-2xl border border-cyan-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="relative w-full sm:w-80">
-          <MagnifyingGlassIcon className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
+          <MagnifyingGlassIcon className="w-4 h-4 absolute left-3 top-3 text-cyan-400/60" />
           <input
             type="text"
             placeholder="Search action, actor, entity, IP..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-9 pr-3 py-2 text-xs rounded-xl bg-slate-950/80 text-white placeholder-slate-500 border border-slate-800 focus:outline-none focus:border-cyan-500 font-sans transition-colors"
           />
         </div>
 
@@ -153,9 +153,9 @@ export default function AuditLogs() {
           <select
             value={filterAction}
             onChange={(e) => setFilterAction(e.target.value)}
-            className="text-xs px-3 py-1.5 rounded-lg border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="text-xs px-3 py-2 rounded-xl bg-slate-950/80 text-cyan-300 border border-slate-800 focus:outline-none focus:border-cyan-500 font-mono"
           >
-            <option value="all">All Action Categories</option>
+            <option value="all">ALL ACTION CATEGORIES</option>
             <option value="WORKER_VERIFIED">WORKER_VERIFIED</option>
             <option value="ESCROW_RELEASED">ESCROW_RELEASED</option>
             <option value="DISPUTE_ARBITRATED">DISPUTE_ARBITRATED</option>
@@ -165,7 +165,7 @@ export default function AuditLogs() {
 
           <button
             onClick={() => alert('Exporting full tamper-evident audit trail (CSV + PGP Signature) for SIH 2026 jury review.')}
-            className="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold flex items-center transition-colors border border-slate-200"
+            className="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-xs font-bold flex items-center transition-all shadow-lg cursor-pointer"
           >
             <ArrowDownTrayIcon className="w-3.5 h-3.5 mr-1" />
             Export Audit Log
@@ -174,10 +174,13 @@ export default function AuditLogs() {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-xl shadow-xs border border-slate-200/80 overflow-hidden">
-        <div className="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
-          <h3 className="text-sm font-bold text-slate-800">Immutable Compliance & Security Ledger</h3>
-          <span className="text-xs text-slate-500">{filtered.length} audit entries</span>
+      <div className="tech-glass-card rounded-2xl border border-cyan-500/20 overflow-hidden shadow-2xl">
+        <div className="px-6 py-4 border-b border-slate-800/80 flex justify-between items-center bg-slate-900/60">
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+            <h3 className="text-sm font-bold text-white tracking-wide">Immutable Compliance & Security Ledger</h3>
+          </div>
+          <span className="text-xs font-mono text-cyan-400">{filtered.length} audit entries</span>
         </div>
         <DataTable columns={columns} data={filtered} />
       </div>

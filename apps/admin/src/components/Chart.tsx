@@ -9,8 +9,11 @@ interface ChartProps {
 
 const Chart: React.FC<ChartProps> = ({ title, children, height = 300 }) => {
   return (
-    <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-      <h3 className="text-lg font-semibold text-slate-800 mb-6">{title}</h3>
+    <div className="tech-glass-card p-6 rounded-2xl border border-cyan-500/20 shadow-2xl">
+      <div className="flex items-center space-x-2 mb-6">
+        <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+        <h3 className="text-base font-bold text-white tracking-wide">{title}</h3>
+      </div>
       <div style={{ height, width: '100%' }}>
         <ResponsiveContainer width="100%" height="100%">
           {children as any}

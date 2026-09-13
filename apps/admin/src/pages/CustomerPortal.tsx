@@ -71,7 +71,6 @@ export default function CustomerPortal() {
     setVoiceActive(true);
     setTimeout(() => {
       setVoiceActive(false);
-      // Auto pick Labourer for farm harvesting
       const labour = DEFAULT_SERVICE_CATEGORIES.find(c => c.id === 'labourer') || DEFAULT_SERVICE_CATEGORIES[7];
       setSelectedCategory(labour);
       setSelectedSubcat('Crop Harvesting & Threshing');
@@ -82,20 +81,20 @@ export default function CustomerPortal() {
 
   return (
     <div className="space-y-6 max-w-6xl mx-auto">
-      {/* Customer Portal Top Bar */}
-      <div className="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 rounded-3xl p-6 sm:p-8 text-white shadow-xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      {/* High-Tech Top Banner */}
+      <div className="tech-glass-card rounded-3xl p-6 sm:p-8 text-white shadow-2xl relative overflow-hidden border border-cyan-500/30">
+        <div className="absolute -top-24 -right-24 w-80 h-80 bg-cyan-500/15 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
           <div>
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-semibold mb-2">
-              <SparklesIcon className="w-3.5 h-3.5 text-blue-400" />
-              <span>Customer / Farmer Self-Service Portal</span>
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-[11px] font-mono font-bold text-cyan-300 mb-2">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              <span>// DISPATCH CLIENT CONSOLE</span>
             </div>
-            <h1 className="text-2xl sm:text-3xl font-black tracking-tight">
-              Book Verified Rural & Household Services
+            <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
+              Instant Rural & Household <span className="gradient-text-tech">Booking Console</span>
             </h1>
-            <p className="text-xs sm:text-sm text-blue-200/90 mt-1">
+            <p className="text-xs sm:text-sm text-slate-300 mt-1">
               Guaranteed fair rates, zero private aggregator exploitation, and 100% cooperative backed.
             </p>
           </div>
@@ -103,28 +102,28 @@ export default function CustomerPortal() {
           {/* Language & Emergency Controls */}
           <div className="flex flex-wrap items-center gap-3">
             {/* Language Switcher */}
-            <div className="flex bg-white/10 backdrop-blur-md rounded-xl p-1 border border-white/15 text-xs font-semibold">
+            <div className="flex bg-slate-950/80 rounded-xl p-1 border border-slate-800 text-xs font-mono font-bold">
               <button 
                 onClick={() => setLanguage('en')} 
-                className={`px-3 py-1.5 rounded-lg transition-colors ${language === 'en' ? 'bg-blue-600 text-white' : 'text-slate-300 hover:text-white'}`}
+                className={`px-3 py-1.5 rounded-lg transition-colors ${language === 'en' ? 'bg-cyan-600 text-white' : 'text-slate-400 hover:text-white'}`}
               >
-                English
+                EN
               </button>
               <button 
                 onClick={() => setLanguage('hi')} 
-                className={`px-3 py-1.5 rounded-lg transition-colors ${language === 'hi' ? 'bg-blue-600 text-white' : 'text-slate-300 hover:text-white'}`}
+                className={`px-3 py-1.5 rounded-lg transition-colors ${language === 'hi' ? 'bg-cyan-600 text-white' : 'text-slate-400 hover:text-white'}`}
               >
                 हिन्दी
               </button>
               <button 
                 onClick={() => setLanguage('mr')} 
-                className={`px-3 py-1.5 rounded-lg transition-colors ${language === 'mr' ? 'bg-blue-600 text-white' : 'text-slate-300 hover:text-white'}`}
+                className={`px-3 py-1.5 rounded-lg transition-colors ${language === 'mr' ? 'bg-cyan-600 text-white' : 'text-slate-400 hover:text-white'}`}
               >
                 मराठी
               </button>
               <button 
                 onClick={() => setLanguage('pa')} 
-                className={`px-3 py-1.5 rounded-lg transition-colors ${language === 'pa' ? 'bg-blue-600 text-white' : 'text-slate-300 hover:text-white'}`}
+                className={`px-3 py-1.5 rounded-lg transition-colors ${language === 'pa' ? 'bg-cyan-600 text-white' : 'text-slate-400 hover:text-white'}`}
               >
                 ਪੰਜਾਬੀ
               </button>
@@ -136,11 +135,11 @@ export default function CustomerPortal() {
               className={`px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center space-x-1.5 ${
                 isEmergency 
                   ? 'bg-rose-600 text-white shadow-lg shadow-rose-600/40 ring-2 ring-rose-400 animate-pulse' 
-                  : 'bg-white/10 hover:bg-white/20 text-slate-200 border border-white/20'
+                  : 'bg-slate-900 hover:bg-slate-800 text-rose-300 border border-rose-500/30'
               }`}
             >
               <BoltIcon className="w-4 h-4 text-amber-300" />
-              <span>{isEmergency ? '⚡ Emergency Mode: ON' : 'Emergency SOS'}</span>
+              <span>{isEmergency ? '⚡ Emergency: ACTIVE' : 'Emergency SOS'}</span>
             </button>
           </div>
         </div>
@@ -148,13 +147,13 @@ export default function CustomerPortal() {
         {/* Voice-First Smart Search Bar */}
         <div className="mt-6 flex flex-col sm:flex-row items-center gap-3 relative z-10">
           <div className="relative flex-1 w-full">
-            <MapPinIcon className="w-4 h-4 absolute left-3 top-3.5 text-slate-400" />
+            <MapPinIcon className="w-4 h-4 absolute left-3 top-3.5 text-cyan-400" />
             <input
               type="text"
               value={locationAddress}
               onChange={(e) => setLocationAddress(e.target.value)}
               placeholder="Your village / farm location..."
-              className="w-full pl-9 pr-4 py-2.5 text-xs rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full pl-9 pr-4 py-2.5 text-xs rounded-xl bg-slate-950/80 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-400 font-mono"
             />
           </div>
 
@@ -163,7 +162,7 @@ export default function CustomerPortal() {
             className={`px-5 py-2.5 rounded-xl text-xs font-bold text-white flex items-center justify-center space-x-2 transition-all shadow-md ${
               voiceActive 
                 ? 'bg-rose-600 ring-4 ring-rose-500/40 animate-pulse' 
-                : 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500'
+                : 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-emerald-500/20'
             }`}
           >
             <MicrophoneIcon className="w-4 h-4" />
@@ -172,16 +171,16 @@ export default function CustomerPortal() {
         </div>
       </div>
 
-      {/* Booking Flow Wizard */}
+      {/* Step 1: Category Selection */}
       {step === 'category' && (
         <div className="space-y-4">
           <div className="flex justify-between items-center px-1">
             <div>
-              <h3 className="text-base font-extrabold text-slate-900">Select Service Category</h3>
-              <p className="text-xs text-slate-500">14 Verified Trade & Agricultural Services Backed by Cooperatives</p>
+              <h3 className="text-base font-black text-white font-mono uppercase tracking-wide">// 14 VERIFIED SERVICE TRADES</h3>
+              <p className="text-xs text-slate-400">Cooperative backed daily-wage labourers, electricians, mechanics & technicians</p>
             </div>
-            <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-100">
-              14 Categories Available
+            <span className="text-xs font-mono font-bold text-cyan-400 bg-cyan-950 px-3 py-1 rounded-md border border-cyan-500/30">
+              14 TRADES ACTIVE
             </span>
           </div>
 
@@ -198,34 +197,34 @@ export default function CustomerPortal() {
                     setSelectedSubcat(cat.subcategories[0]);
                     setStep('details');
                   }}
-                  className={`p-5 rounded-2xl border cursor-pointer transition-all duration-200 flex flex-col justify-between relative overflow-hidden group ${
+                  className={`p-5 rounded-2xl border cursor-pointer transition-all duration-200 flex flex-col justify-between relative overflow-hidden group tech-glass-card ${
                     isSelected 
-                      ? 'bg-blue-50 border-blue-500 ring-2 ring-blue-500 shadow-md' 
-                      : 'bg-white border-slate-200/80 hover:border-blue-300 hover:shadow-lg hover:-translate-y-1'
+                      ? 'border-cyan-500 ring-2 ring-cyan-500 shadow-xl shadow-cyan-500/10' 
+                      : 'border-slate-800/80 hover:border-cyan-500/50 hover:shadow-xl hover:-translate-y-1'
                   }`}
                 >
                   {isLabourer && (
-                    <span className="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[9px] font-extrabold bg-amber-500 text-white uppercase tracking-wider">
-                      High Demand
+                    <span className="absolute top-2 right-2 px-2 py-0.5 rounded-full text-[9px] font-mono font-black bg-amber-500 text-black uppercase tracking-wider">
+                      HIGH DEMAND
                     </span>
                   )}
 
                   <div>
-                    <div className="w-12 h-12 rounded-xl bg-slate-100 group-hover:bg-blue-100 text-2xl flex items-center justify-center transition-colors mb-3">
+                    <div className="w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 group-hover:border-cyan-500/40 text-2xl flex items-center justify-center transition-colors mb-3">
                       {cat.icon}
                     </div>
-                    <h4 className="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition-colors">
+                    <h4 className="font-bold text-white text-sm group-hover:text-cyan-400 transition-colors">
                       {cat.name}
                     </h4>
-                    <p className="text-[11px] text-slate-500 line-clamp-2 mt-1 leading-snug">
+                    <p className="text-[11px] text-slate-400 line-clamp-2 mt-1 leading-snug">
                       {cat.description}
                     </p>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                    <span className="font-bold text-emerald-700">₹{cat.baseWage} <span className="text-[10px] font-normal text-slate-400">base</span></span>
-                    <span className="text-[11px] font-semibold text-blue-600 group-hover:translate-x-0.5 transition-transform flex items-center">
-                      Book <ArrowRightIcon className="w-3 h-3 ml-0.5" />
+                  <div className="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs font-mono">
+                    <span className="font-black text-emerald-400">₹{cat.baseWage} <span className="text-[10px] font-normal text-slate-500">BASE</span></span>
+                    <span className="text-[11px] font-bold text-cyan-400 group-hover:translate-x-1 transition-transform flex items-center">
+                      BOOK <ArrowRightIcon className="w-3 h-3 ml-0.5" />
                     </span>
                   </div>
                 </div>
@@ -237,20 +236,20 @@ export default function CustomerPortal() {
 
       {/* Step 2: Problem Details & Price Estimate */}
       {step === 'details' && selectedCategory && (
-        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-6 animate-in fade-in zoom-in-95 duration-150">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+        <div className="tech-glass-card rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-800 space-y-6 animate-in fade-in zoom-in-95 duration-150">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-4">
             <div className="flex items-center space-x-3">
               <span className="text-3xl">{selectedCategory.icon}</span>
               <div>
-                <h3 className="font-extrabold text-slate-900 text-lg">{selectedCategory.name}</h3>
-                <p className="text-xs text-slate-500">Subcategory & Problem Specifications</p>
+                <h3 className="font-extrabold text-white text-lg">{selectedCategory.name}</h3>
+                <p className="text-xs text-slate-400">Task Specifications & AI Geofence Setup</p>
               </div>
             </div>
             <button 
               onClick={() => setStep('category')}
-              className="text-xs font-semibold text-blue-600 hover:text-blue-700"
+              className="text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300"
             >
-              Change Category
+              [← CHANGE TRADE]
             </button>
           </div>
 
@@ -258,7 +257,7 @@ export default function CustomerPortal() {
             <div className="md:col-span-2 space-y-4">
               {/* Subcategories */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wide">
+                <label className="block text-xs font-mono font-bold text-slate-400 mb-2 uppercase tracking-wide">
                   Select Specific Task / Subcategory:
                 </label>
                 <div className="grid grid-cols-2 gap-2">
@@ -269,8 +268,8 @@ export default function CustomerPortal() {
                       onClick={() => setSelectedSubcat(sub)}
                       className={`p-3 rounded-xl text-left text-xs font-semibold border transition-all ${
                         selectedSubcat === sub 
-                          ? 'bg-blue-600 text-white border-blue-600 shadow-sm' 
-                          : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                          ? 'bg-cyan-600 text-white border-cyan-500 shadow-md shadow-cyan-600/30' 
+                          : 'bg-slate-950/60 text-slate-300 border-slate-800 hover:bg-slate-900'
                       }`}
                     >
                       {sub}
@@ -281,68 +280,68 @@ export default function CustomerPortal() {
 
               {/* Problem Description */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 mb-1">
-                  Describe Problem / Work Requirement:
+                <label className="block text-xs font-mono font-bold text-slate-400 mb-1">
+                  Describe Problem / Work Notes:
                 </label>
                 <textarea
                   rows={3}
                   value={problemNotes}
                   onChange={(e) => setProblemNotes(e.target.value)}
-                  placeholder="e.g., Need 2 daily-wage workers for 1 full day sugarcane cutting and field clearing..."
-                  className="w-full p-3 text-xs rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  placeholder="e.g., Need 2 daily-wage workers for sugarcane cutting & field clearing..."
+                  className="w-full p-3 text-xs rounded-xl bg-slate-950/80 border border-slate-800 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500"
                 ></textarea>
               </div>
 
               {/* Photo Upload Mockup */}
-              <div className="border-2 border-dashed border-slate-200 rounded-2xl p-4 bg-slate-50/60 flex items-center justify-center space-x-3 cursor-pointer hover:bg-slate-100 transition-colors">
+              <div className="border border-dashed border-slate-700 rounded-2xl p-4 bg-slate-950/40 flex items-center justify-center space-x-3 cursor-pointer hover:bg-slate-900 transition-colors">
                 <PhotoIcon className="w-6 h-6 text-slate-400" />
                 <div className="text-left">
-                  <p className="text-xs font-semibold text-slate-700">Attach Site / Equipment Photo (Optional)</p>
-                  <p className="text-[10px] text-slate-400">Helps the cooperative worker bring the exact tools needed</p>
+                  <p className="text-xs font-bold text-slate-300">Attach Site / Equipment Photo (Optional)</p>
+                  <p className="text-[10px] text-slate-500">Helps the cooperative worker bring the exact tools needed</p>
                 </div>
               </div>
             </div>
 
             {/* Price Estimate Card */}
-            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-200/80 flex flex-col justify-between">
+            <div className="tech-glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between">
               <div>
-                <h4 className="font-bold text-slate-900 text-sm mb-3">Transparent Price Estimate</h4>
-                <div className="space-y-2.5 text-xs">
-                  <div className="flex justify-between text-slate-600">
+                <h4 className="font-mono font-bold text-white text-sm mb-3">// ESCROW SETTLEMENT PREVIEW</h4>
+                <div className="space-y-2.5 text-xs font-mono">
+                  <div className="flex justify-between text-slate-400">
                     <span>Base Service Wage:</span>
-                    <span className="font-semibold text-slate-900">₹{selectedCategory.baseWage}</span>
+                    <span className="font-bold text-white">₹{selectedCategory.baseWage}</span>
                   </div>
                   {isEmergency && (
-                    <div className="flex justify-between text-rose-600 font-semibold">
+                    <div className="flex justify-between text-rose-400 font-bold">
                       <span>Emergency 30-min SOS:</span>
                       <span>+₹150</span>
                     </div>
                   )}
-                  <div className="flex justify-between text-slate-600">
-                    <span>Estimated Distance Fee (2.4 km):</span>
-                    <span className="font-semibold text-slate-900">₹0 (Free)</span>
+                  <div className="flex justify-between text-slate-400">
+                    <span>Geofence Distance Fee:</span>
+                    <span className="font-bold text-emerald-400">₹0 (Free)</span>
                   </div>
-                  <div className="flex justify-between text-slate-600">
-                    <span>Cooperative Welfare Guarantee:</span>
-                    <span className="text-emerald-700 font-semibold">Included</span>
+                  <div className="flex justify-between text-slate-400">
+                    <span>Welfare Social Security:</span>
+                    <span className="text-cyan-400 font-bold">INCLUDED</span>
                   </div>
-                  <div className="pt-3 border-t border-slate-200 flex justify-between items-baseline">
-                    <span className="font-bold text-slate-900">Total Escrow Deposit:</span>
-                    <span className="font-extrabold text-xl text-emerald-700">₹{calculateEstimate()}</span>
+                  <div className="pt-3 border-t border-slate-800 flex justify-between items-baseline">
+                    <span className="font-bold text-white">Escrow Deposit:</span>
+                    <span className="font-black text-2xl text-emerald-400">₹{calculateEstimate()}</span>
                   </div>
                 </div>
 
-                <div className="mt-4 p-3 bg-blue-50 rounded-xl border border-blue-100 text-[11px] text-blue-900 space-y-1">
-                  <p className="font-bold">🛡️ Escrow Guarantee:</p>
-                  <p className="text-blue-800 leading-snug">
-                    Amount is held securely in smart escrow. Released to worker only AFTER you confirm satisfaction via arrival OTP.
+                <div className="mt-4 p-3 bg-cyan-950/60 rounded-xl border border-cyan-500/30 text-[11px] text-cyan-200 space-y-1 font-mono">
+                  <p className="font-bold">🛡️ ZERO-TRUST GUARANTEE:</p>
+                  <p className="text-slate-300 leading-snug">
+                    Wage locked in smart escrow contract. Released to worker only AFTER arrival OTP is verified.
                   </p>
                 </div>
               </div>
 
               <button
                 onClick={() => setStep('matching')}
-                className="w-full mt-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md shadow-blue-600/30 transition-all flex items-center justify-center space-x-2"
+                className="w-full mt-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-xs shadow-lg shadow-cyan-600/30 transition-all flex items-center justify-center space-x-2"
               >
                 <span>Find Nearby Cooperative Worker</span>
                 <ArrowRightIcon className="w-4 h-4" />
@@ -352,48 +351,49 @@ export default function CustomerPortal() {
         </div>
       )}
 
-      {/* Step 3: Live AI Matching Radar */}
+      {/* Step 3: High-Tech Matching Radar */}
       {step === 'matching' && (
-        <div className="bg-white rounded-3xl p-10 text-center shadow-sm border border-slate-200/80 space-y-6">
-          <div className="relative w-40 h-40 mx-auto flex items-center justify-center">
-            {/* Animated Radar Rings */}
-            <div className="absolute inset-0 rounded-full border-4 border-blue-500/20 animate-ping"></div>
-            <div className="absolute inset-4 rounded-full border-4 border-emerald-500/30 animate-pulse"></div>
-            <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex flex-col items-center justify-center shadow-xl">
+        <div className="tech-glass-card rounded-3xl p-12 text-center border border-cyan-500/30 space-y-6">
+          <div className="relative w-44 h-44 mx-auto flex items-center justify-center">
+            {/* Multi-Ring Cyber Radar */}
+            <div className="absolute inset-0 rounded-full border-2 border-cyan-500/20 animate-ping"></div>
+            <div className="absolute inset-4 rounded-full border border-cyan-400/40 animate-pulse"></div>
+            <div className="absolute inset-8 rounded-full border border-dashed border-emerald-500/40"></div>
+            <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-cyan-600 to-blue-600 text-white flex flex-col items-center justify-center shadow-xl shadow-cyan-500/30">
               <SparklesIcon className="w-6 h-6 text-amber-300 animate-spin" />
-              <span className="text-xs font-bold mt-1">{matchCountdown}s</span>
+              <span className="text-xs font-mono font-black mt-1">{matchCountdown}s</span>
             </div>
           </div>
 
           <div className="max-w-md mx-auto space-y-2">
-            <h3 className="text-xl font-extrabold text-slate-900">
-              Broadcasting to Nearby Cooperative Workers...
+            <h3 className="text-xl font-black text-white font-mono">
+              // BROADCASTING GEOSPATIAL RADAR...
             </h3>
-            <p className="text-xs text-slate-500">
-              Searching within 5 km radius in Nashik District. Evaluating skill passport certifications and cooperative trust scores.
+            <p className="text-xs text-slate-400">
+              Querying nearest cooperative nodes in Nashik District. Evaluating DigiLocker credentials and rota equality scores.
             </p>
           </div>
 
-          <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-xs font-semibold text-blue-700">
-            <span>3 Verified Cooperative Workers in Queue</span>
+          <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-cyan-950 border border-cyan-500/40 text-xs font-mono font-bold text-cyan-300">
+            <span>3 VERIFIED WORKERS IN PROXIMITY MESH</span>
           </div>
         </div>
       )}
 
-      {/* Step 4: Live Tracking & Service Execution */}
+      {/* Step 4: Live Tracking & Execution */}
       {step === 'tracking' && (
-        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-sm border border-slate-200/80 space-y-6 animate-in fade-in duration-200">
-          <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200/80 flex items-center justify-between">
+        <div className="tech-glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6 animate-in fade-in duration-200">
+          <div className="p-4 rounded-2xl bg-emerald-950/60 border border-emerald-500/40 flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <CheckCircleIcon className="w-6 h-6 text-emerald-600" />
+              <CheckCircleIcon className="w-6 h-6 text-emerald-400" />
               <div>
-                <h4 className="font-bold text-sm text-emerald-950">Worker Matched & Dispatched!</h4>
-                <p className="text-xs text-emerald-800">Assigned from {matchedWorker.coop}</p>
+                <h4 className="font-bold text-sm text-emerald-300">Worker Matched & Dispatched!</h4>
+                <p className="text-xs text-slate-400">Assigned from {matchedWorker.coop}</p>
               </div>
             </div>
             <div className="text-right">
-              <span className="text-xs text-slate-500 block">Arrival OTP Code:</span>
-              <span className="text-lg font-mono font-black text-slate-900 bg-white px-3 py-1 rounded-lg border border-slate-200">
+              <span className="text-[10px] font-mono text-slate-400 uppercase block">Arrival OTP Code:</span>
+              <span className="text-xl font-mono font-black text-cyan-400 bg-slate-950 px-3 py-1 rounded-lg border border-cyan-500/40">
                 {matchedWorker.otp}
               </span>
             </div>
@@ -402,21 +402,21 @@ export default function CustomerPortal() {
           {/* Worker Profile Card */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="md:col-span-2 space-y-4">
-              <div className="p-5 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+              <div className="p-5 rounded-2xl bg-slate-950/80 border border-slate-800 flex items-center justify-between">
                 <div className="flex items-center space-x-4">
-                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold text-xl shadow-md">
+                  <div className="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-500 to-blue-600 text-white flex items-center justify-center font-bold text-xl shadow-lg shadow-cyan-500/20">
                     {matchedWorker.name.charAt(0)}
                   </div>
                   <div>
-                    <h4 className="font-extrabold text-slate-900 text-base flex items-center">
+                    <h4 className="font-black text-white text-base flex items-center">
                       {matchedWorker.name}
-                      <CheckBadgeIcon className="w-4 h-4 ml-1.5 text-blue-600" />
+                      <CheckBadgeIcon className="w-4 h-4 ml-1.5 text-cyan-400" />
                     </h4>
-                    <p className="text-xs text-slate-500">{matchedWorker.coop}</p>
-                    <div className="flex items-center space-x-3 mt-1 text-xs">
-                      <span className="text-amber-600 font-bold">⭐ {matchedWorker.rating}</span>
-                      <span className="text-slate-400">•</span>
-                      <span className="text-slate-600">{matchedWorker.jobs} gigs completed</span>
+                    <p className="text-xs text-slate-400">{matchedWorker.coop}</p>
+                    <div className="flex items-center space-x-3 mt-1 text-xs font-mono">
+                      <span className="text-amber-400 font-bold">⭐ {matchedWorker.rating}</span>
+                      <span className="text-slate-600">•</span>
+                      <span className="text-slate-400">{matchedWorker.jobs} GIGS</span>
                     </div>
                   </div>
                 </div>
@@ -430,8 +430,8 @@ export default function CustomerPortal() {
                     <PhoneIcon className="w-5 h-5" />
                   </button>
                   <button 
-                    onClick={() => alert(`Opening encrypted chat with ${matchedWorker.name}`)}
-                    className="p-3 rounded-xl bg-blue-600 text-white hover:bg-blue-500 transition-colors shadow-xs"
+                    onClick={() => alert(`Opening encrypted telemetry chat with ${matchedWorker.name}`)}
+                    className="p-3 rounded-xl bg-cyan-600 text-white hover:bg-cyan-500 transition-colors shadow-xs"
                     title="In-App Chat"
                   >
                     <ChatBubbleLeftRightIcon className="w-5 h-5" />
@@ -439,81 +439,79 @@ export default function CustomerPortal() {
                 </div>
               </div>
 
-              {/* Live Tracking Status */}
-              <div className="p-5 rounded-2xl bg-slate-900 text-white space-y-4">
-                <div className="flex justify-between items-center text-xs">
-                  <span className="font-bold uppercase tracking-wider text-emerald-400">Live GPS Status</span>
-                  <span className="font-mono text-slate-300">ETA: {matchedWorker.eta} ({matchedWorker.distance})</span>
+              {/* Live Tracking Telemetry */}
+              <div className="p-5 rounded-2xl bg-[#060A13] border border-slate-800 space-y-4">
+                <div className="flex justify-between items-center text-xs font-mono">
+                  <span className="font-bold text-cyan-400 uppercase tracking-wider">// GPS TELEMETRY</span>
+                  <span className="text-slate-300">ETA: {matchedWorker.eta} ({matchedWorker.distance})</span>
                 </div>
 
-                {/* Progress Timeline */}
-                <div className="grid grid-cols-4 gap-2 text-center text-[10px]">
-                  <div className="p-2 rounded-lg bg-blue-600 text-white font-bold">1. Accepted</div>
-                  <div className="p-2 rounded-lg bg-blue-600 text-white font-bold animate-pulse">2. On The Way</div>
-                  <div className="p-2 rounded-lg bg-slate-800 text-slate-400">3. In Progress</div>
-                  <div className="p-2 rounded-lg bg-slate-800 text-slate-400">4. Completed</div>
+                <div className="grid grid-cols-4 gap-2 text-center text-[10px] font-mono font-bold">
+                  <div className="p-2 rounded-lg bg-cyan-600 text-white">1. ACCEPTED</div>
+                  <div className="p-2 rounded-lg bg-cyan-600 text-white animate-pulse">2. EN ROUTE</div>
+                  <div className="p-2 rounded-lg bg-slate-900 text-slate-500">3. IN WORK</div>
+                  <div className="p-2 rounded-lg bg-slate-900 text-slate-500">4. SETTLED</div>
                 </div>
 
-                <p className="text-[11px] text-slate-400 leading-relaxed text-center">
-                  Worker is currently traveling along Nashik-Pune Highway. Share the 4-digit OTP <strong>{matchedWorker.otp}</strong> upon arrival to verify GPS check-in.
+                <p className="text-[11px] text-slate-400 text-center font-mono">
+                  Share OTP <strong>{matchedWorker.otp}</strong> upon physical arrival to verify geofence.
                 </p>
               </div>
             </div>
 
             {/* Complete Job Action Card */}
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200/80 flex flex-col justify-between">
+            <div className="tech-glass-card p-6 rounded-2xl border border-slate-800 flex flex-col justify-between">
               <div>
-                <h4 className="font-bold text-slate-900 text-sm mb-2">Service Execution</h4>
-                <p className="text-xs text-slate-500 mb-4">
-                  Once the worker completes your task, confirm completion to release the escrow payment.
+                <h4 className="font-mono font-bold text-white text-sm mb-2">// EXECUTION CONTROL</h4>
+                <p className="text-xs text-slate-400 mb-4">
+                  Confirm completion to unlock and release smart escrow payout.
                 </p>
 
-                <div className="space-y-2 bg-white p-3 rounded-xl border border-slate-200 text-xs">
+                <div className="space-y-2 bg-slate-950 p-3 rounded-xl border border-slate-800 text-xs font-mono">
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Service:</span>
-                    <span className="font-semibold text-slate-800">{selectedCategory?.name}</span>
+                    <span className="text-slate-500">Trade:</span>
+                    <span className="font-bold text-white">{selectedCategory?.name}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-slate-500">Agreed Wage:</span>
-                    <span className="font-bold text-emerald-700">₹{calculateEstimate()}</span>
+                    <span className="text-slate-500">Escrow:</span>
+                    <span className="font-black text-emerald-400">₹{calculateEstimate()}</span>
                   </div>
                 </div>
               </div>
 
               <button
                 onClick={() => setStep('completed')}
-                className="w-full mt-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md shadow-emerald-600/30 transition-all"
+                className="w-full mt-6 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs shadow-lg shadow-emerald-600/30 transition-all"
               >
-                Confirm Completion & Pay
+                Confirm Completion & Release Escrow
               </button>
             </div>
           </div>
         </div>
       )}
 
-      {/* Step 5: Completed & Feedback */}
+      {/* Step 5: Completed */}
       {step === 'completed' && (
-        <div className="bg-white rounded-3xl p-8 max-w-lg mx-auto text-center shadow-md border border-slate-200/80 space-y-5 animate-in fade-in zoom-in-95 duration-200">
-          <div className="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 mx-auto flex items-center justify-center">
+        <div className="tech-glass-card rounded-3xl p-8 max-w-lg mx-auto text-center border border-emerald-500/40 space-y-5 animate-in fade-in zoom-in-95 duration-200">
+          <div className="w-16 h-16 rounded-full bg-emerald-950 border border-emerald-500/40 text-emerald-400 mx-auto flex items-center justify-center">
             <CheckCircleIcon className="w-10 h-10" />
           </div>
 
           <div>
-            <h3 className="text-xl font-black text-slate-900">Job Completed Successfully!</h3>
-            <p className="text-xs text-slate-500 mt-1">
-              ₹{calculateEstimate()} escrow released: 80% directly to {matchedWorker.name} via UPI, and 10% to the Cooperative Welfare Corpus.
+            <h3 className="text-xl font-black text-white font-mono">SERVICE EXECUTION SETTLED</h3>
+            <p className="text-xs text-slate-400 mt-1">
+              ₹{calculateEstimate()} escrow successfully disbursed: 80% to {matchedWorker.name} via UPI, and 10% to the Cooperative Welfare Corpus.
             </p>
           </div>
 
-          {/* Rating */}
           <div className="py-2">
-            <label className="block text-xs font-bold text-slate-700 mb-2">Rate Worker Performance:</label>
+            <label className="block text-xs font-mono font-bold text-slate-400 mb-2">RATE WORKER TELEMETRY:</label>
             <div className="flex justify-center space-x-2">
               {[1, 2, 3, 4, 5].map((star) => (
                 <button
                   key={star}
                   onClick={() => setRating(star)}
-                  className={`text-2xl transition-transform hover:scale-125 ${star <= rating ? 'text-amber-400' : 'text-slate-200'}`}
+                  className={`text-2xl transition-transform hover:scale-125 ${star <= rating ? 'text-amber-400' : 'text-slate-700'}`}
                 >
                   ★
                 </button>
@@ -526,9 +524,9 @@ export default function CustomerPortal() {
               setStep('category');
               setSelectedCategory(null);
             }}
-            className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs shadow-md transition-all"
+            className="w-full py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-bold text-xs shadow-md transition-all"
           >
-            Book Another Service
+            Dispatch Another Service
           </button>
         </div>
       )}

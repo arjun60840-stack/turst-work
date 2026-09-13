@@ -17,38 +17,41 @@ interface DataTableProps<T> {
 function DataTable<T>({ columns, data, onRowClick, isLoading = false, emptyMessage = 'No records found' }: DataTableProps<T>) {
   if (isLoading) {
     return (
-      <div className="w-full h-48 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+      <div className="w-full h-48 flex flex-col items-center justify-center space-y-3 bg-[#0B1120] rounded-2xl border border-slate-800">
+        <div className="relative w-8 h-8">
+          <div className="w-8 h-8 rounded-full border-2 border-cyan-500/20 border-t-cyan-400 animate-spin"></div>
+        </div>
+        <span className="text-xs font-mono text-cyan-400">QUERYING TELEMETRY MESH...</span>
       </div>
     );
   }
 
   if (!data || data.length === 0) {
     return (
-      <div className="w-full h-48 flex items-center justify-center text-slate-500 bg-slate-50 rounded-lg border border-slate-200 border-dashed">
-        {emptyMessage}
+      <div className="w-full h-48 flex items-center justify-center text-slate-500 bg-[#0B1120] rounded-2xl border border-slate-800 border-dashed text-xs font-mono">
+        // {emptyMessage.toUpperCase()}
       </div>
     );
   }
 
   return (
     <div className="overflow-x-auto">
-      <table className="w-full text-left text-sm text-slate-600">
-        <thead className="text-xs text-slate-500 uppercase bg-slate-50 border-b border-slate-200">
+      <table className="w-full text-left text-xs text-slate-300">
+        <thead className="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider bg-slate-950/80 border-b border-slate-800">
           <tr>
             {columns.map((col, index) => (
-              <th key={index} scope="col" className={`px-6 py-4 font-medium ${col.className || ''}`}>
+              <th key={index} scope="col" className={`px-6 py-3.5 font-bold ${col.className || ''}`}>
                 {col.header}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-slate-100">
+        <tbody className="divide-y divide-slate-800/80">
           {data.map((row, rowIndex) => (
             <tr 
               key={rowIndex} 
               onClick={() => onRowClick?.(row)}
-              className={`bg-white hover:bg-slate-50 transition-colors ${onRowClick ? 'cursor-pointer' : ''}`}
+              className={`bg-[#0B1120]/40 hover:bg-slate-800/60 hover:text-white transition-all ${onRowClick ? 'cursor-pointer' : ''}`}
             >
               {columns.map((col, colIndex) => (
                 <td key={colIndex} className={`px-6 py-4 whitespace-nowrap ${col.className || ''}`}>

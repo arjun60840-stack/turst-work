@@ -6,10 +6,8 @@ import {
   UsersIcon, 
   CheckBadgeIcon, 
   ClockIcon, 
-  StarIcon,
   MagnifyingGlassIcon,
-  ShieldCheckIcon,
-  MapPinIcon
+  ShieldCheckIcon
 } from '@heroicons/react/24/outline';
 
 interface Worker {
@@ -53,47 +51,40 @@ export default function Workers() {
 
   const columns = [
     {
-      header: 'Worker Profile',
+      header: 'Worker Node',
       accessor: (row: Worker) => (
         <div className="flex items-center space-x-3">
-          <div className="w-9 h-9 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-xs">
+          <div className="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 flex items-center justify-center font-mono font-bold text-xs shadow-xs">
             {row.name.charAt(0)}
           </div>
           <div>
-            <p className="font-semibold text-slate-900 text-xs flex items-center">
-              {row.name}
-              {row.status === 'verified' && (
-                <CheckBadgeIcon className="w-3.5 h-3.5 ml-1 text-blue-600 inline" title="DigiLocker Verified" />
-              )}
-            </p>
+            <span className="font-extrabold text-white text-xs block">{row.name}</span>
             <span className="text-[11px] text-slate-400 font-mono">{row.phone}</span>
           </div>
         </div>
       ),
     },
     {
-      header: 'Primary Skills & Trades',
+      header: 'Skill Cluster',
       accessor: (row: Worker) => (
-        <div className="max-w-xs">
-          <p className="text-xs font-medium text-slate-800">{row.skills}</p>
-          <span className="text-[10px] text-blue-600 font-medium">Coop: {row.cooperative}</span>
+        <span className="text-xs text-slate-300 font-medium">{row.skills}</span>
+      ),
+    },
+    {
+      header: 'Affiliated Cooperative',
+      accessor: (row: Worker) => (
+        <div>
+          <span className="text-xs text-cyan-400 font-medium block">{row.cooperative}</span>
+          <span className="text-[11px] text-slate-500 font-mono">{row.district}</span>
         </div>
       ),
     },
     {
-      header: 'Location',
-      accessor: (row: Worker) => (
-        <span className="text-xs text-slate-600 flex items-center">
-          <MapPinIcon className="w-3.5 h-3.5 mr-1 text-slate-400" /> {row.district}
-        </span>
-      ),
-    },
-    {
-      header: 'Performance & Rating',
+      header: 'Telemetry & Rating',
       accessor: (row: Worker) => (
         <div>
-          <span className="text-xs font-bold text-amber-600 block">⭐ {row.rating} / 5.0</span>
-          <span className="text-[11px] text-slate-500">{row.jobsCompleted} gigs done</span>
+          <span className="text-xs font-mono font-bold text-amber-400 block">⭐ {row.rating} / 5.0</span>
+          <span className="text-[11px] font-mono text-slate-400">{row.jobsCompleted} gigs done</span>
         </div>
       ),
     },
@@ -101,20 +92,20 @@ export default function Workers() {
       header: 'Reliability Index',
       accessor: (row: Worker) => (
         <div className="flex items-center space-x-2">
-          <div className="w-16 bg-slate-100 rounded-full h-1.5 overflow-hidden">
+          <div className="w-16 bg-slate-800 rounded-full h-1.5 overflow-hidden">
             <div 
-              className={`h-full rounded-full ${row.reliabilityScore >= 90 ? 'bg-emerald-500' : 'bg-amber-500'}`}
+              className={`h-full rounded-full ${row.reliabilityScore >= 90 ? 'bg-emerald-400' : 'bg-amber-400'}`}
               style={{ width: `${row.reliabilityScore}%` }}
             ></div>
           </div>
-          <span className="text-xs font-bold text-slate-700">{row.reliabilityScore}%</span>
+          <span className="text-xs font-mono font-bold text-slate-300">{row.reliabilityScore}%</span>
         </div>
       ),
     },
     {
       header: 'Daily Base Wage',
       accessor: (row: Worker) => (
-        <span className="text-xs font-semibold text-slate-800">{row.dailyRate}</span>
+        <span className="text-xs font-mono font-bold text-emerald-400">{row.dailyRate}</span>
       ),
     },
     {
@@ -126,7 +117,7 @@ export default function Workers() {
       accessor: (row: Worker) => (
         <button
           onClick={() => setSelectedWorker(row)}
-          className="text-xs px-2.5 py-1 rounded-md bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-600 font-medium transition-colors border border-slate-200"
+          className="text-xs font-mono px-2.5 py-1 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 transition-all cursor-pointer shadow-xs"
         >
           View Passport
         </button>
@@ -141,140 +132,143 @@ export default function Workers() {
         <StatCard 
           title="Total Registered Workers" 
           value="254 Workers" 
-          icon={<UsersIcon className="w-5 h-5 text-blue-600" />} 
+          icon={<UsersIcon className="w-5 h-5 text-cyan-400" />} 
           trend={{ value: 12, isPositive: true }} 
         />
         <StatCard 
           title="Verified Skill Passports" 
           value="198 Active" 
-          icon={<CheckBadgeIcon className="w-5 h-5 text-emerald-600" />} 
+          icon={<CheckBadgeIcon className="w-5 h-5 text-emerald-400" />} 
           trend={{ value: 8, isPositive: true }} 
         />
         <StatCard 
           title="Pending KYC Review" 
           value="14 Pending" 
-          icon={<ClockIcon className="w-5 h-5 text-amber-600" />} 
+          icon={<ClockIcon className="w-5 h-5 text-amber-400" />} 
           trend={{ value: 3, isPositive: false }} 
         />
         <StatCard 
           title="Avg Reliability Score" 
           value="94.6%" 
-          icon={<ShieldCheckIcon className="w-5 h-5 text-indigo-600" />} 
+          icon={<ShieldCheckIcon className="w-5 h-5 text-indigo-400" />} 
           trend={{ value: 2, isPositive: true }} 
         />
       </div>
 
       {/* Filter and Search */}
-      <div className="bg-white p-4 rounded-xl shadow-xs border border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="tech-glass-card p-4 rounded-2xl border border-cyan-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="relative w-full sm:w-80">
-          <MagnifyingGlassIcon className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
+          <MagnifyingGlassIcon className="w-4 h-4 absolute left-3 top-3 text-cyan-400/60" />
           <input
             type="text"
             placeholder="Search worker, trade, district, coop..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-9 pr-3 py-2 text-xs rounded-xl bg-slate-950/80 text-white placeholder-slate-500 border border-slate-800 focus:outline-none focus:border-cyan-500 transition-colors font-sans"
           />
         </div>
 
         <div className="flex items-center space-x-2 w-full sm:w-auto">
-          <span className="text-xs text-slate-500 font-medium">Status:</span>
+          <span className="text-xs text-slate-400 font-mono">STATUS FILTER:</span>
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="text-xs px-3 py-1.5 rounded-lg border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="text-xs px-3 py-2 rounded-xl bg-slate-950/80 text-cyan-300 border border-slate-800 focus:outline-none focus:border-cyan-500 font-mono"
           >
-            <option value="all">All Workers ({initialWorkers.length})</option>
-            <option value="verified">Verified Only</option>
-            <option value="active">Active Only</option>
-            <option value="pending">Pending Only</option>
+            <option value="all">ALL WORKERS ({initialWorkers.length})</option>
+            <option value="verified">VERIFIED ONLY</option>
+            <option value="active">ACTIVE ONLY</option>
+            <option value="pending">PENDING ONLY</option>
           </select>
         </div>
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-xl shadow-xs border border-slate-200/80 overflow-hidden">
-        <div className="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
-          <h3 className="text-sm font-bold text-slate-800">Worker Skill Passport Registry</h3>
-          <span className="text-xs text-slate-500">{filtered.length} workers registered</span>
+      <div className="tech-glass-card rounded-2xl border border-cyan-500/20 overflow-hidden shadow-2xl">
+        <div className="px-6 py-4 border-b border-slate-800/80 flex justify-between items-center bg-slate-900/60">
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+            <h3 className="text-sm font-bold text-white tracking-wide">Worker Skill Passport Registry</h3>
+          </div>
+          <span className="text-xs font-mono text-cyan-400">{filtered.length} nodes active</span>
         </div>
         <DataTable columns={columns} data={filtered} />
       </div>
 
       {/* Worker Skill Passport Modal */}
       {selectedWorker && (
-        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 animate-in fade-in zoom-in-95 duration-150">
-            <div className="flex justify-between items-start border-b border-slate-100 pb-4">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="tech-glass-card bg-slate-950/95 rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-cyan-500/30 animate-in fade-in zoom-in-95 duration-150">
+            <div className="flex justify-between items-start border-b border-slate-800 pb-4">
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-cyan-600 to-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-lg font-mono">
                   {selectedWorker.name.charAt(0)}
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900 text-base flex items-center">
+                  <h3 className="font-extrabold text-white text-base flex items-center">
                     {selectedWorker.name}
                     {selectedWorker.status === 'verified' && (
-                      <CheckBadgeIcon className="w-4 h-4 ml-1.5 text-blue-600" />
+                      <CheckBadgeIcon className="w-4 h-4 ml-1.5 text-cyan-400" />
                     )}
                   </h3>
-                  <p className="text-xs text-slate-500">{selectedWorker.id} • {selectedWorker.district}</p>
+                  <p className="text-xs text-slate-400 font-mono">{selectedWorker.id} • {selectedWorker.district}</p>
                 </div>
               </div>
               <button 
                 onClick={() => setSelectedWorker(null)}
-                className="text-slate-400 hover:text-slate-600 text-sm font-bold p-1"
+                className="text-slate-400 hover:text-white text-sm font-bold p-1 cursor-pointer"
               >
                 ✕
               </button>
             </div>
 
             <div className="py-4 space-y-3 text-xs">
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-3 rounded-xl border border-blue-100 flex items-center justify-between">
+              <div className="bg-slate-900/80 p-3.5 rounded-2xl border border-cyan-500/30 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] text-blue-700 font-bold uppercase tracking-wide">Work Trust Skill Passport</span>
-                  <p className="text-sm font-bold text-blue-900 mt-0.5">{selectedWorker.skills}</p>
-                  <span className="text-[11px] text-blue-700">Affiliated: {selectedWorker.cooperative}</span>
+                  <span className="text-[10px] text-cyan-400 font-mono font-bold uppercase tracking-wider">SIH Cryptographic Passport</span>
+                  <p className="text-sm font-bold text-white mt-0.5">{selectedWorker.skills}</p>
+                  <span className="text-[11px] text-slate-400">Cooperative: {selectedWorker.cooperative}</span>
                 </div>
                 <div className="text-right">
-                  <span className="text-lg font-bold text-emerald-700 block">{selectedWorker.reliabilityScore}%</span>
-                  <span className="text-[10px] text-slate-500">Trust Score</span>
+                  <span className="text-lg font-mono font-black text-emerald-400 block">{selectedWorker.reliabilityScore}%</span>
+                  <span className="text-[10px] font-mono text-slate-400">Trust Index</span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 bg-slate-50 p-3 rounded-xl">
+              <div className="grid grid-cols-2 gap-3 bg-slate-900/60 p-3.5 rounded-2xl border border-slate-800">
                 <div>
-                  <span className="text-slate-400 block text-[11px]">Contact Telephone</span>
-                  <span className="font-semibold text-slate-800">{selectedWorker.phone}</span>
+                  <span className="text-slate-500 block text-[11px] font-mono">TELEPHONE</span>
+                  <span className="font-mono font-semibold text-slate-200">{selectedWorker.phone}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[11px]">Fair Base Wage</span>
-                  <span className="font-semibold text-emerald-700">{selectedWorker.dailyRate}</span>
+                  <span className="text-slate-500 block text-[11px] font-mono">FAIR BASE WAGE</span>
+                  <span className="font-mono font-bold text-emerald-400">{selectedWorker.dailyRate}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[11px]">Jobs Completed</span>
-                  <span className="font-semibold text-slate-800">{selectedWorker.jobsCompleted} gigs</span>
+                  <span className="text-slate-500 block text-[11px] font-mono">COMPLETED GIGS</span>
+                  <span className="font-mono font-semibold text-slate-200">{selectedWorker.jobsCompleted} gigs</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[11px]">Customer Feedback</span>
-                  <span className="font-bold text-amber-600">⭐ {selectedWorker.rating} / 5.0</span>
+                  <span className="text-slate-500 block text-[11px] font-mono">FEEDBACK RATING</span>
+                  <span className="font-mono font-bold text-amber-400">⭐ {selectedWorker.rating} / 5.0</span>
                 </div>
               </div>
 
-              <div className="p-3 bg-slate-50 rounded-xl border border-slate-100">
-                <span className="font-bold text-slate-700 block mb-1">SIH 2026 Skill Passport Verification:</span>
-                <p className="text-[11px] text-slate-600 leading-relaxed">
+              <div className="p-3.5 bg-slate-900/40 rounded-2xl border border-slate-800">
+                <span className="font-bold text-cyan-300 block mb-1">SIH 2026 Skill Passport Verification:</span>
+                <p className="text-[11px] text-slate-400 leading-relaxed">
                   Verified via Aadhaar OTP, ITI/PMKVY Trade Certification, and Cooperative Society Recommendation. 
                   Entitled to 80% instant direct payout and 10% welfare dividend coverage.
                 </p>
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-100 flex justify-end space-x-2">
+            <div className="pt-3 border-t border-slate-800 flex justify-end space-x-2">
               <button
                 onClick={() => setSelectedWorker(null)}
-                className="px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors"
+                className="px-5 py-2 rounded-xl text-xs font-mono font-bold text-cyan-300 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 transition-all cursor-pointer"
               >
-                Close
+                Close Window
               </button>
             </div>
           </div>

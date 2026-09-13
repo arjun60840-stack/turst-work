@@ -8,8 +8,7 @@ import {
   MapIcon, 
   BanknotesIcon,
   MagnifyingGlassIcon,
-  CheckBadgeIcon,
-  DocumentTextIcon
+  CheckBadgeIcon
 } from '@heroicons/react/24/outline';
 
 interface Cooperative {
@@ -48,53 +47,53 @@ export default function Cooperatives() {
 
   const columns = [
     {
-      header: 'Cooperative Society',
+      header: 'Cooperative Entity',
       accessor: (row: Cooperative) => (
         <div>
-          <p className="font-bold text-slate-900 text-xs flex items-center">
+          <p className="font-bold text-white text-xs flex items-center">
             {row.name}
-            {row.status === 'verified' && <CheckBadgeIcon className="w-3.5 h-3.5 ml-1 text-blue-600 inline" />}
+            {row.status === 'verified' && <CheckBadgeIcon className="w-3.5 h-3.5 ml-1 text-cyan-400 inline" />}
           </p>
           <p className="text-[11px] text-slate-400 font-mono mt-0.5">{row.regNumber}</p>
         </div>
       ),
     },
     {
-      header: 'District / State',
+      header: 'District / Jurisdiction',
       accessor: (row: Cooperative) => (
         <div>
-          <span className="text-xs font-medium text-slate-700 block">{row.district}</span>
-          <span className="text-[11px] text-slate-400 block">{row.state}</span>
+          <span className="text-xs font-mono font-medium text-slate-200 block">{row.district}</span>
+          <span className="text-[11px] text-slate-500 block">{row.state}</span>
         </div>
       ),
     },
     {
-      header: 'Lead Officer',
+      header: 'Elected Lead Officer',
       accessor: (row: Cooperative) => (
         <div>
-          <span className="text-xs font-semibold text-slate-800 block">{row.leadOfficer}</span>
-          <span className="text-[11px] text-slate-500 block">{row.phone}</span>
+          <span className="text-xs font-semibold text-slate-200 block">{row.leadOfficer}</span>
+          <span className="text-[11px] text-slate-400 font-mono block">{row.phone}</span>
         </div>
       ),
     },
     {
       header: 'Affiliated Workers',
       accessor: (row: Cooperative) => (
-        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-blue-50 text-blue-700">
-          👥 {row.workersCount} workers
+        <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-mono font-bold bg-cyan-950/60 text-cyan-300 border border-cyan-500/30">
+          👥 {row.workersCount} nodes
         </span>
       ),
     },
     {
       header: 'Active Gigs',
       accessor: (row: Cooperative) => (
-        <span className="text-xs font-semibold text-slate-700">{row.activeGigs} active</span>
+        <span className="text-xs font-mono font-semibold text-slate-300">{row.activeGigs} active</span>
       ),
     },
     {
       header: 'Welfare Corpus (10%)',
       accessor: (row: Cooperative) => (
-        <span className="text-xs font-bold text-emerald-700">{row.welfareCorpus}</span>
+        <span className="text-xs font-mono font-bold text-emerald-400">{row.welfareCorpus}</span>
       ),
     },
     {
@@ -102,11 +101,11 @@ export default function Cooperatives() {
       accessor: (row: Cooperative) => <StatusBadge status={row.status} />,
     },
     {
-      header: 'Action',
+      header: 'Audit',
       accessor: (row: Cooperative) => (
         <button
           onClick={() => setSelectedCoop(row)}
-          className="text-xs px-2.5 py-1 rounded-md bg-slate-100 hover:bg-blue-50 text-slate-700 hover:text-blue-600 font-medium transition-colors border border-slate-200"
+          className="text-xs font-mono px-2.5 py-1 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 transition-all cursor-pointer shadow-xs"
         >
           Audit Society
         </button>
@@ -121,111 +120,114 @@ export default function Cooperatives() {
         <StatCard 
           title="Registered Cooperatives" 
           value="14 Active" 
-          icon={<BuildingOffice2Icon className="w-5 h-5" />} 
+          icon={<BuildingOffice2Icon className="w-5 h-5 text-cyan-400" />} 
           trend={{ value: 16, isPositive: true }} 
         />
         <StatCard 
           title="Affiliated Rural Workers" 
           value="486 Members" 
-          icon={<UsersIcon className="w-5 h-5" />} 
+          icon={<UsersIcon className="w-5 h-5 text-emerald-400" />} 
           trend={{ value: 24, isPositive: true }} 
         />
         <StatCard 
           title="Rural Districts Covered" 
           value="12 Districts" 
-          icon={<MapIcon className="w-5 h-5" />} 
+          icon={<MapIcon className="w-5 h-5 text-blue-400" />} 
           trend={{ value: 3, isPositive: true }} 
         />
         <StatCard 
           title="Total Welfare Corpus (10%)" 
           value="₹6.42 Lakhs" 
-          icon={<BanknotesIcon className="w-5 h-5" />} 
+          icon={<BanknotesIcon className="w-5 h-5 text-purple-400" />} 
           trend={{ value: 18, isPositive: true }} 
         />
       </div>
 
       {/* Search & Actions */}
-      <div className="bg-white p-4 rounded-xl shadow-xs border border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="tech-glass-card p-4 rounded-2xl border border-cyan-500/20 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="relative w-full sm:w-80">
-          <MagnifyingGlassIcon className="w-4 h-4 absolute left-3 top-3 text-slate-400" />
+          <MagnifyingGlassIcon className="w-4 h-4 absolute left-3 top-3 text-cyan-400/60" />
           <input
             type="text"
             placeholder="Search cooperative, district, reg #..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-9 pr-3 py-1.5 text-xs rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full pl-9 pr-3 py-2 text-xs rounded-xl bg-slate-950/80 text-white placeholder-slate-500 border border-slate-800 focus:outline-none focus:border-cyan-500 font-sans transition-colors"
           />
         </div>
         <button
           onClick={() => alert('Cooperative onboarding form: Upload Society Bylaws, District Registrar Certificate, and Secretary Aadhaar.')}
-          className="w-full sm:w-auto px-4 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold flex items-center justify-center transition-colors shadow-xs"
+          className="w-full sm:w-auto px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-mono font-bold flex items-center justify-center transition-all shadow-lg cursor-pointer"
         >
           + Register New Cooperative
         </button>
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-xl shadow-xs border border-slate-200/80 overflow-hidden">
-        <div className="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
-          <h3 className="text-sm font-bold text-slate-800">Affiliated Cooperative Societies</h3>
-          <span className="text-xs text-slate-500">{filtered.length} cooperatives active</span>
+      <div className="tech-glass-card rounded-2xl border border-cyan-500/20 overflow-hidden shadow-2xl">
+        <div className="px-6 py-4 border-b border-slate-800/80 flex justify-between items-center bg-slate-900/60">
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+            <h3 className="text-sm font-bold text-white tracking-wide">Affiliated Cooperative Societies</h3>
+          </div>
+          <span className="text-xs font-mono text-cyan-400">{filtered.length} cooperatives federated</span>
         </div>
         <DataTable columns={columns} data={filtered} />
       </div>
 
       {/* Cooperative Detail Modal */}
       {selectedCoop && (
-        <div className="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 animate-in fade-in zoom-in-95 duration-150">
-            <div className="flex justify-between items-start border-b border-slate-100 pb-4">
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+          <div className="tech-glass-card bg-slate-950/95 rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-cyan-500/30 animate-in fade-in zoom-in-95 duration-150">
+            <div className="flex justify-between items-start border-b border-slate-800 pb-4">
               <div>
-                <h3 className="font-bold text-slate-900 text-base">{selectedCoop.name}</h3>
-                <p className="text-xs text-slate-500">{selectedCoop.district}, {selectedCoop.state} • {selectedCoop.regNumber}</p>
+                <h3 className="font-extrabold text-white text-base">{selectedCoop.name}</h3>
+                <p className="text-xs text-slate-400 font-mono">{selectedCoop.district}, {selectedCoop.state} • {selectedCoop.regNumber}</p>
               </div>
               <button 
                 onClick={() => setSelectedCoop(null)}
-                className="text-slate-400 hover:text-slate-600 text-sm font-bold p-1"
+                className="text-slate-400 hover:text-white text-sm font-bold p-1 cursor-pointer"
               >
                 ✕
               </button>
             </div>
 
             <div className="py-4 space-y-3 text-xs">
-              <div className="bg-blue-50/60 p-3 rounded-lg border border-blue-100 flex items-center justify-between">
+              <div className="bg-slate-900/80 p-3.5 rounded-2xl border border-cyan-500/30 flex items-center justify-between">
                 <div>
-                  <span className="text-[11px] text-blue-700 font-semibold block">Cooperative Welfare Fund</span>
-                  <span className="text-lg font-bold text-blue-900">{selectedCoop.welfareCorpus}</span>
+                  <span className="text-[11px] text-cyan-400 font-mono font-bold block">Cooperative Welfare Vault</span>
+                  <span className="text-lg font-mono font-black text-emerald-400">{selectedCoop.welfareCorpus}</span>
                 </div>
                 <button 
                   onClick={() => alert(`Initiating welfare dividend payout for members of ${selectedCoop.name}`)}
-                  className="px-3 py-1.5 rounded-lg bg-blue-600 text-white font-medium text-xs hover:bg-blue-700"
+                  className="px-3.5 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-xs font-bold transition-all shadow-md cursor-pointer"
                 >
                   Disburse Dividends
                 </button>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 bg-slate-50 p-3 rounded-lg">
+              <div className="grid grid-cols-2 gap-3 bg-slate-900/60 p-3.5 rounded-2xl border border-slate-800 font-mono">
                 <div>
-                  <span className="text-slate-400 block text-[11px]">Representative / President</span>
-                  <span className="font-semibold text-slate-800">{selectedCoop.leadOfficer}</span>
+                  <span className="text-slate-500 block text-[11px]">ELECTED PRESIDENT</span>
+                  <span className="font-semibold text-slate-200">{selectedCoop.leadOfficer}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[11px]">Contact Telephone</span>
-                  <span className="font-semibold text-slate-800">{selectedCoop.phone}</span>
+                  <span className="text-slate-500 block text-[11px]">TELEPHONE</span>
+                  <span className="font-semibold text-slate-200">{selectedCoop.phone}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[11px]">Active Group Gigs</span>
-                  <span className="font-semibold text-slate-800">{selectedCoop.activeGigs} agricultural contracts</span>
+                  <span className="text-slate-500 block text-[11px]">ACTIVE GIGS</span>
+                  <span className="font-semibold text-slate-200">{selectedCoop.activeGigs} agricultural contracts</span>
                 </div>
                 <div>
-                  <span className="text-slate-400 block text-[11px]">Verification Status</span>
+                  <span className="text-slate-500 block text-[11px]">REGISTRATION STATUS</span>
                   <StatusBadge status={selectedCoop.status} />
                 </div>
               </div>
 
-              <div className="p-3 bg-slate-50 rounded-lg border border-slate-100">
-                <span className="font-bold text-slate-700 block mb-1 text-xs">Compliance Verification:</span>
-                <ul className="list-disc list-inside text-[11px] text-slate-600 space-y-0.5">
+              <div className="p-3.5 bg-slate-900/40 rounded-2xl border border-slate-800">
+                <span className="font-bold text-cyan-300 block mb-1 font-mono text-xs">COMPLIANCE LEDGER:</span>
+                <ul className="list-disc list-inside text-[11px] text-slate-400 space-y-1">
                   <li>Registrar of Co-operative Societies (RCS) Registration: Verified ✅</li>
                   <li>Bank Escrow Mandate: Active (Bank of Baroda Rural Branch) ✅</li>
                   <li>10% Statutory Welfare Contribution: Compliant ✅</li>
@@ -233,12 +235,12 @@ export default function Cooperatives() {
               </div>
             </div>
 
-            <div className="pt-3 border-t border-slate-100 flex justify-end space-x-2">
+            <div className="pt-3 border-t border-slate-800 flex justify-end space-x-2">
               <button
                 onClick={() => setSelectedCoop(null)}
-                className="px-4 py-1.5 rounded-lg text-xs font-semibold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-colors"
+                className="px-5 py-2 rounded-xl text-xs font-mono font-bold text-cyan-300 bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 transition-all cursor-pointer"
               >
-                Done
+                Close Audit
               </button>
             </div>
           </div>
