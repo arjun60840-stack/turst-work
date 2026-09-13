@@ -19,8 +19,9 @@ async function seed(knex) {
     }
     const now = new Date().toISOString();
     const pastDate = (daysAgo) => new Date(Date.now() - daysAgo * 86400000).toISOString();
-    const demoPasswordHash = await bcryptjs_1.default.hash('Demo@12345', 10);
-    const adminPasswordHash = await bcryptjs_1.default.hash('NexvionDemo@2026', 10);
+    const bcrypt = bcryptjs_1.default || bcryptjs_1;
+    const demoPasswordHash = await bcrypt.hash('Demo@12345', 10);
+    const adminPasswordHash = await bcrypt.hash('NexvionDemo@2026', 10);
     // 1. Service Categories
     const categories = [
         { id: (0, uuid_1.v4)(), name: 'Electrical', icon: '⚡', description: 'Wiring, circuit maintenance, and electrical repairs', is_active: true },

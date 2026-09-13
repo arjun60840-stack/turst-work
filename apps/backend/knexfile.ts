@@ -17,11 +17,11 @@ const config = {
   useNullAsDefault: true,
   migrations: {
     directory: './migrations',
-    extension: 'ts',
+    loadExtensions: ['.js', '.ts'],
   },
   seeds: {
     directory: './seeds',
-    extension: 'ts',
+    loadExtensions: ['.js', '.ts'],
   }
 };
 
