@@ -8,7 +8,7 @@
     "apps/*"
   ],
   "scripts": {
-    "build": "npm --prefix apps/admin run build",
+    "build": "npm --prefix apps/admin run build && node -e \"const fs = require('fs'); fs.cpSync('apps/admin/dist', 'public', {recursive: true}); fs.cpSync('apps/admin/dist', 'dist', {recursive: true});\"",
     "dev:backend": "npm --prefix apps/backend run dev",
     "dev:admin": "npm --prefix apps/admin run dev",
     "dev:mobile": "npm --prefix apps/mobile run web",
