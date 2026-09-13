@@ -31,8 +31,11 @@ import {
   Legend 
 } from 'recharts';
 import { Link } from 'react-router-dom';
+import { useThemeStore } from '../store/themeStore';
 
 export default function Dashboard() {
+  const { theme } = useThemeStore();
+  const isLight = theme === 'light';
   const stats = [
     { 
       title: 'Active Registered Workers', 
@@ -95,7 +98,11 @@ export default function Dashboard() {
   return (
     <div className="space-y-6">
       {/* High-Tech Mission Control Hero Banner */}
-      <div className="relative overflow-hidden rounded-3xl tech-glass-card p-6 sm:p-8 text-white shadow-2xl border border-cyan-500/20">
+      <div className={`relative overflow-hidden rounded-3xl p-6 sm:p-8 transition-all duration-300 ${
+        isLight
+          ? 'bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 text-white shadow-xl border border-blue-900/40'
+          : 'tech-glass-card p-6 sm:p-8 text-white shadow-2xl border border-cyan-500/20'
+      }`}>
         {/* Animated Neon Ambient Background */}
         <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-cyan-500/15 blur-3xl pointer-events-none"></div>
         <div className="absolute -bottom-32 -right-32 w-80 h-80 rounded-full bg-blue-600/15 blur-3xl pointer-events-none"></div>
@@ -104,7 +111,7 @@ export default function Dashboard() {
           <div className="space-y-2 max-w-2xl">
             <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-[11px] font-mono font-bold text-cyan-300">
               <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-              <span>NEURAL DISPATCH ENGINE • SIH 2026 #26089</span>
+              <span>NEURAL DISPATCH ENGINE • LIVE ENTERPRISE</span>
             </div>
 
             <h1 className="text-2xl sm:text-4xl font-black tracking-tight leading-tight">
@@ -120,15 +127,15 @@ export default function Dashboard() {
           <div className="flex flex-wrap items-center gap-2.5">
             <Link
               to="/customer-portal"
-              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-xs shadow-lg shadow-cyan-500/20 transition-all flex items-center space-x-2"
+              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 !text-white font-bold text-xs shadow-lg shadow-cyan-500/20 transition-all flex items-center space-x-2"
             >
               <BoltIcon className="w-4 h-4 text-cyan-200" />
-              <span>Launch Customer App</span>
+              <span>Launch Client App</span>
             </Link>
 
             <Link
               to="/worker-portal"
-              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs shadow-lg shadow-emerald-500/20 transition-all flex items-center space-x-2"
+              className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 !text-white font-bold text-xs shadow-lg shadow-emerald-500/20 transition-all flex items-center space-x-2"
             >
               <CpuChipIcon className="w-4 h-4 text-emerald-200" />
               <span>Launch Worker App</span>
@@ -139,7 +146,7 @@ export default function Dashboard() {
               className="px-4 py-2.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-amber-300 border border-amber-500/40 font-bold text-xs transition-all flex items-center space-x-2"
             >
               <SparklesIcon className="w-4 h-4 text-amber-400" />
-              <span>SIH Presentation</span>
+              <span>System Architecture</span>
             </Link>
           </div>
         </div>
@@ -171,13 +178,17 @@ export default function Dashboard() {
       {/* Visual Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Job Status Donut Chart */}
-        <div className="tech-glass-card p-6 rounded-2xl border border-slate-800/80">
+        <div className={`p-6 rounded-2xl border transition-all ${
+          isLight ? 'bg-white border-slate-200 shadow-sm' : 'tech-glass-card border-slate-800/80'
+        }`}>
           <div className="flex justify-between items-center mb-4">
             <div>
-              <h3 className="text-sm font-black text-white font-mono tracking-wide uppercase">// GIG LIFECYCLE MESH</h3>
-              <p className="text-[11px] text-slate-400">Real-time breakdown of all platform service transactions</p>
+              <h3 className={`text-sm font-black font-mono tracking-wide uppercase ${isLight ? 'text-slate-900' : 'text-white'}`}>// GIG LIFECYCLE MESH</h3>
+              <p className={`text-[11px] ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>Real-time breakdown of all platform service transactions</p>
             </div>
-            <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-md bg-emerald-950/80 text-emerald-400 border border-emerald-500/30">
+            <span className={`text-[10px] font-mono font-bold px-2.5 py-1 rounded-md border ${
+              isLight ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-emerald-950/80 text-emerald-400 border-emerald-500/30'
+            }`}>
               98.2% FULFILLMENT
             </span>
           </div>
@@ -185,7 +196,8 @@ export default function Dashboard() {
             <PieChart>
               <Pie 
                 data={pieData} 
-                innerRadius={65} 
+                innerRadius={65 
+                } 
                 outerRadius={95} 
                 paddingAngle={6} 
                 dataKey="value"
@@ -195,31 +207,49 @@ export default function Dashboard() {
                 ))}
               </Pie>
               <Tooltip 
-                contentStyle={{ backgroundColor: '#0B1120', borderColor: '#1E293B', borderRadius: '12px', fontSize: '11px', color: '#F8FAFC' }} 
+                contentStyle={{ 
+                  backgroundColor: isLight ? '#FFFFFF' : '#0B1120', 
+                  borderColor: isLight ? '#E2E8F0' : '#1E293B', 
+                  borderRadius: '12px', 
+                  fontSize: '11px', 
+                  color: isLight ? '#0F172A' : '#F8FAFC',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.08)' 
+                }} 
               />
-              <Legend wrapperStyle={{ fontSize: '11px', paddingTop: '8px', color: '#94A3B8' }} />
+              <Legend wrapperStyle={{ fontSize: '11px', paddingTop: '8px', color: isLight ? '#475569' : '#94A3B8' }} />
             </PieChart>
           </ResponsiveContainer>
         </div>
 
         {/* Demand by Category Bar Chart */}
-        <div className="tech-glass-card p-6 rounded-2xl border border-slate-800/80">
+        <div className={`p-6 rounded-2xl border transition-all ${
+          isLight ? 'bg-white border-slate-200 shadow-sm' : 'tech-glass-card border-slate-800/80'
+        }`}>
           <div className="flex justify-between items-center mb-4">
             <div>
-              <h3 className="text-sm font-black text-white font-mono tracking-wide uppercase">// RURAL SERVICE DEMAND</h3>
-              <p className="text-[11px] text-slate-400">Service requests matched by AI geospatial engine</p>
+              <h3 className={`text-sm font-black font-mono tracking-wide uppercase ${isLight ? 'text-slate-900' : 'text-white'}`}>// RURAL SERVICE DEMAND</h3>
+              <p className={`text-[11px] ${isLight ? 'text-slate-500' : 'text-slate-400'}`}>Service requests matched by AI geospatial engine</p>
             </div>
-            <span className="text-[10px] font-mono font-bold px-2.5 py-1 rounded-md bg-cyan-950/80 text-cyan-400 border border-cyan-500/30">
+            <span className={`text-[10px] font-mono font-bold px-2.5 py-1 rounded-md border ${
+              isLight ? 'bg-cyan-50 text-cyan-700 border-cyan-200' : 'bg-cyan-950/80 text-cyan-400 border-cyan-500/30'
+            }`}>
               KHARIF SURGE (+42%)
             </span>
           </div>
           <ResponsiveContainer width="100%" height={260}>
             <BarChart data={barData} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#1E293B" />
-              <XAxis dataKey="name" tick={{ fontSize: 11, fill: '#94A3B8' }} tickLine={false} axisLine={false} />
-              <YAxis tick={{ fontSize: 11, fill: '#94A3B8' }} tickLine={false} axisLine={false} />
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={isLight ? '#F1F5F9' : '#1E293B'} />
+              <XAxis dataKey="name" tick={{ fontSize: 11, fill: isLight ? '#64748B' : '#94A3B8' }} tickLine={false} axisLine={false} />
+              <YAxis tick={{ fontSize: 11, fill: isLight ? '#64748B' : '#94A3B8' }} tickLine={false} axisLine={false} />
               <Tooltip 
-                contentStyle={{ backgroundColor: '#0B1120', borderColor: '#1E293B', borderRadius: '12px', fontSize: '11px', color: '#F8FAFC' }} 
+                contentStyle={{ 
+                  backgroundColor: isLight ? '#FFFFFF' : '#0B1120', 
+                  borderColor: isLight ? '#E2E8F0' : '#1E293B', 
+                  borderRadius: '12px', 
+                  fontSize: '11px', 
+                  color: isLight ? '#0F172A' : '#F8FAFC',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.08)'
+                }} 
               />
               <Bar dataKey="demand" radius={[6, 6, 0, 0]}>
                 {barData.map((entry, index) => (
@@ -234,69 +264,84 @@ export default function Dashboard() {
       {/* Bottom Section: Live Activity Stream & Cooperative Spotlight */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Live Activity Stream */}
-        <div className="lg:col-span-2 tech-glass-card p-6 rounded-2xl border border-slate-800/80">
-          <div className="flex justify-between items-center mb-4 pb-3 border-b border-slate-800">
+        <div className={`lg:col-span-2 p-6 rounded-2xl border transition-all ${
+          isLight ? 'bg-white border-slate-200 shadow-sm' : 'tech-glass-card border-slate-800/80'
+        }`}>
+          <div className={`flex justify-between items-center mb-4 pb-3 border-b ${isLight ? 'border-slate-100' : 'border-slate-800'}`}>
             <div className="flex items-center space-x-2">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-              <h3 className="text-sm font-black font-mono text-white tracking-wide uppercase">// REAL-TIME TELEMETRY FEED</h3>
+              <span className="w-2 h-2 rounded-full bg-cyan-500 animate-ping"></span>
+              <h3 className={`text-sm font-black font-mono tracking-wide uppercase ${isLight ? 'text-slate-900' : 'text-white'}`}>// REAL-TIME TELEMETRY FEED</h3>
             </div>
-            <Link to="/audit-logs" className="text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 flex items-center">
+            <Link to="/audit-logs" className={`text-xs font-mono font-bold flex items-center ${isLight ? 'text-blue-600 hover:text-blue-700' : 'text-cyan-400 hover:text-cyan-300'}`}>
               SHA-256 LOGS <ArrowRightIcon className="w-3.5 h-3.5 ml-1" />
             </Link>
           </div>
 
           <div className="space-y-3">
             {liveEvents.map((evt) => (
-              <div key={evt.id} className="flex items-start space-x-3 p-3 rounded-xl bg-slate-950/60 border border-slate-800/80 hover:border-cyan-500/40 transition-colors">
+              <div 
+                key={evt.id} 
+                className={`flex items-start space-x-3 p-3 rounded-xl border transition-colors ${
+                  isLight 
+                    ? 'bg-slate-50/80 border-slate-200/80 hover:border-blue-400 hover:bg-slate-100/60' 
+                    : 'bg-slate-950/60 border-slate-800/80 hover:border-cyan-500/40'
+                }`}
+              >
                 <span className={`w-2 h-2 mt-1.5 rounded-full ${evt.dot} shrink-0`}></span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs font-bold text-white">{evt.title}</p>
-                  <p className="text-[11px] text-slate-400 truncate mt-0.5">{evt.desc}</p>
+                  <p className={`text-xs font-bold ${isLight ? 'text-slate-900' : 'text-white'}`}>{evt.title}</p>
+                  <p className={`text-[11px] truncate mt-0.5 ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>{evt.desc}</p>
                 </div>
-                <span className="text-[10px] font-mono text-slate-500 shrink-0">{evt.time}</span>
+                <span className={`text-[10px] font-mono shrink-0 ${isLight ? 'text-slate-400' : 'text-slate-500'}`}>{evt.time}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Featured Cooperative Spotlight Card */}
-        <div className="tech-glass-card p-6 rounded-2xl border border-indigo-500/30 flex flex-col justify-between relative overflow-hidden">
+        <div className={`p-6 rounded-2xl border flex flex-col justify-between relative overflow-hidden transition-all ${
+          isLight ? 'bg-white border-indigo-200 shadow-sm' : 'tech-glass-card border-indigo-500/30'
+        }`}>
           <div className="absolute -top-16 -right-16 w-32 h-32 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
           <div>
             <div className="flex items-center justify-between mb-3">
-              <span className="px-2.5 py-0.5 rounded-md bg-amber-500/15 text-amber-300 border border-amber-500/30 text-[10px] font-mono font-bold uppercase tracking-wider">
+              <span className={`px-2.5 py-0.5 rounded-md border text-[10px] font-mono font-bold uppercase tracking-wider ${
+                isLight ? 'bg-amber-50 text-amber-800 border-amber-200' : 'bg-amber-500/15 text-amber-300 border-amber-500/30'
+              }`}>
                 ★ FEATURED COOP
               </span>
-              <BuildingOffice2Icon className="w-5 h-5 text-indigo-400" />
+              <BuildingOffice2Icon className={`w-5 h-5 ${isLight ? 'text-indigo-600' : 'text-indigo-400'}`} />
             </div>
 
-            <h3 className="text-base font-black text-white mt-1">
+            <h3 className={`text-base font-black mt-1 ${isLight ? 'text-slate-900' : 'text-white'}`}>
               Sahyadri Agro Labour Sahakari
             </h3>
-            <p className="text-xs text-slate-400 flex items-center mt-1 font-mono">
-              <MapPinIcon className="w-3.5 h-3.5 text-cyan-400 mr-1" /> NASHIK & PUNE DISTRICT
+            <p className={`text-xs flex items-center mt-1 font-mono ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
+              <MapPinIcon className={`w-3.5 h-3.5 mr-1 ${isLight ? 'text-blue-600' : 'text-cyan-400'}`} /> NASHIK & PUNE DISTRICT
             </p>
 
-            <div className="mt-4 grid grid-cols-2 gap-3 bg-slate-950/60 p-3 rounded-xl border border-slate-800/80 font-mono">
+            <div className={`mt-4 grid grid-cols-2 gap-3 p-3 rounded-xl border font-mono ${
+              isLight ? 'bg-slate-50 border-slate-200' : 'bg-slate-950/60 border-slate-800/80'
+            }`}>
               <div>
-                <span className="text-[10px] text-slate-500 uppercase font-bold block">CREW MEMBERS</span>
-                <span className="text-lg font-black text-white">84 WORKERS</span>
+                <span className={`text-[10px] uppercase font-bold block ${isLight ? 'text-slate-500' : 'text-slate-500'}`}>CREW MEMBERS</span>
+                <span className={`text-lg font-black ${isLight ? 'text-slate-900' : 'text-white'}`}>84 WORKERS</span>
               </div>
               <div>
-                <span className="text-[10px] text-emerald-400 uppercase font-bold block">WELFARE VAULT</span>
-                <span className="text-lg font-black text-emerald-300">₹1.45 LAKHS</span>
+                <span className={`text-[10px] uppercase font-bold block ${isLight ? 'text-emerald-700' : 'text-emerald-400'}`}>WELFARE VAULT</span>
+                <span className={`text-lg font-black ${isLight ? 'text-emerald-700' : 'text-emerald-300'}`}>₹1.45 LAKHS</span>
               </div>
             </div>
 
-            <p className="text-[11px] text-slate-400 mt-4 leading-relaxed">
+            <p className={`text-[11px] mt-4 leading-relaxed ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
               Pioneering Primary Agricultural Credit Society (PACS) managing harvest crews and statutory 10% dividend distributions.
             </p>
           </div>
 
           <Link
             to="/cooperatives"
-            className="mt-6 w-full py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs text-center transition-all shadow-md shadow-blue-600/30"
+            className="mt-6 w-full py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 !text-white font-bold text-xs text-center transition-all shadow-md shadow-blue-600/30"
           >
             Audit Cooperative Portfolio
           </Link>

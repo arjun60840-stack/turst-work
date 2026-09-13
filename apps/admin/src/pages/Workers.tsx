@@ -225,7 +225,7 @@ export default function Workers() {
             <div className="py-4 space-y-3 text-xs">
               <div className="bg-slate-900/80 p-3.5 rounded-2xl border border-cyan-500/30 flex items-center justify-between">
                 <div>
-                  <span className="text-[10px] text-cyan-400 font-mono font-bold uppercase tracking-wider">SIH Cryptographic Passport</span>
+                  <span className="text-[10px] text-cyan-400 font-mono font-bold uppercase tracking-wider">Cryptographic Skill Passport</span>
                   <p className="text-sm font-bold text-white mt-0.5">{selectedWorker.skills}</p>
                   <span className="text-[11px] text-slate-400">Cooperative: {selectedWorker.cooperative}</span>
                 </div>
@@ -255,7 +255,7 @@ export default function Workers() {
               </div>
 
               <div className="p-3.5 bg-slate-900/40 rounded-2xl border border-slate-800">
-                <span className="font-bold text-cyan-300 block mb-1">SIH 2026 Skill Passport Verification:</span>
+                <span className="font-bold text-cyan-300 block mb-1">Skill Passport Verification:</span>
                 <p className="text-[11px] text-slate-400 leading-relaxed">
                   Verified via Aadhaar OTP, ITI/PMKVY Trade Certification, and Cooperative Society Recommendation. 
                   Entitled to 80% instant direct payout and 10% welfare dividend coverage.

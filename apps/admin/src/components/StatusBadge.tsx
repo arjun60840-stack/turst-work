@@ -1,36 +1,50 @@
 import React from 'react';
+import { useThemeStore } from '../store/themeStore';
 
 interface StatusBadgeProps {
   status: string;
 }
 
 const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
+  const { theme } = useThemeStore();
+  const isLight = theme === 'light';
+
   const getStyles = () => {
     switch (status.toLowerCase()) {
       case 'verified':
       case 'completed':
       case 'paid':
       case 'resolved':
-        return 'bg-emerald-950/80 text-emerald-400 border border-emerald-500/40 shadow-xs shadow-emerald-500/10';
+        return isLight 
+          ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' 
+          : 'bg-emerald-950/80 text-emerald-400 border border-emerald-500/40 shadow-xs shadow-emerald-500/10';
       case 'pending':
       case 'processing':
       case 'under_review':
       case 'requested':
       case 'matching':
-        return 'bg-amber-950/80 text-amber-400 border border-amber-500/40 shadow-xs shadow-amber-500/10';
+        return isLight 
+          ? 'bg-amber-50 text-amber-800 border border-amber-200' 
+          : 'bg-amber-950/80 text-amber-400 border border-amber-500/40 shadow-xs shadow-amber-500/10';
       case 'rejected':
       case 'failed':
       case 'cancelled':
       case 'disputed':
-        return 'bg-rose-950/80 text-rose-400 border border-rose-500/40 shadow-xs shadow-rose-500/10';
+        return isLight 
+          ? 'bg-rose-50 text-rose-700 border border-rose-200' 
+          : 'bg-rose-950/80 text-rose-400 border border-rose-500/40 shadow-xs shadow-rose-500/10';
       case 'active':
       case 'in_progress':
       case 'assigned':
       case 'arriving':
       case 'booked':
-        return 'bg-cyan-950/80 text-cyan-400 border border-cyan-500/40 shadow-xs shadow-cyan-500/10';
+        return isLight 
+          ? 'bg-cyan-50 text-cyan-800 border border-cyan-200' 
+          : 'bg-cyan-950/80 text-cyan-400 border border-cyan-500/40 shadow-xs shadow-cyan-500/10';
       default:
-        return 'bg-slate-900 text-slate-400 border border-slate-700';
+        return isLight 
+          ? 'bg-slate-100 text-slate-700 border border-slate-200' 
+          : 'bg-slate-900 text-slate-400 border border-slate-700';
     }
   };
 

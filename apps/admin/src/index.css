@@ -100,15 +100,16 @@ html.light, body.light {
 }
 
 .light .tech-glass {
-  background: rgba(255, 255, 255, 0.9) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
   border: 1px solid #E2E8F0 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
   color: #0F172A !important;
 }
 
 .light header {
   background-color: rgba(255, 255, 255, 0.95) !important;
   border-color: #E2E8F0 !important;
-  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.04) !important;
   color: #0F172A !important;
 }
 
@@ -124,56 +125,54 @@ html.light, body.light {
   border-color: #E2E8F0 !important;
 }
 
-.light .text-white {
-  color: #0F172A !important;
+/* Headings in Light Mode */
+.light h1:not([class*="text-white-force"]):not([class*="gradient-text-tech"]):not([class*="gradient-text-gold"]),
+.light h2:not([class*="text-white-force"]):not([class*="gradient-text-tech"]):not([class*="gradient-text-gold"]),
+.light h3:not([class*="text-white-force"]):not([class*="gradient-text-tech"]):not([class*="gradient-text-gold"]),
+.light h4:not([class*="text-white-force"]),
+.light h5:not([class*="text-white-force"]),
+.light h6:not([class*="text-white-force"]) {
+  color: #0F172A;
 }
 
-.light .text-slate-100,
-.light .text-slate-200,
-.light .text-slate-300 {
-  color: #334155 !important;
+/* Ensure buttons and colored banners keep pure crisp white text */
+.light button[class*="text-white"],
+.light a[class*="text-white"],
+.light [class*="!text-white"],
+.light [class*="bg-blue-600"] > span,
+.light [class*="bg-blue-600"],
+.light [class*="bg-emerald-600"],
+.light [class*="from-blue-600"] span,
+.light [class*="from-blue-600"],
+.light [class*="from-emerald-600"] span,
+.light [class*="from-emerald-600"] {
+  color: #FFFFFF !important;
 }
 
-.light .text-slate-400 {
-  color: #64748B !important;
-}
-
-.light .bg-slate-950\/80,
-.light .bg-slate-950\/60,
-.light .bg-slate-950\/95,
-.light .bg-slate-950,
-.light .bg-slate-900\/90,
-.light .bg-slate-900\/80,
-.light .bg-slate-900\/60,
-.light .bg-slate-900\/40,
-.light .bg-slate-900,
-.light .bg-\[\#070A12\],
-.light .bg-\[\#050811\],
-.light .bg-\[\#090D16\],
-.light .bg-\[\#0B1120\],
-.light .bg-\[\#0B1120\]\/80 {
-  background-color: #F8FAFC !important;
-  border-color: #E2E8F0 !important;
-}
-
-.light .border-slate-800,
-.light .border-slate-800\/80,
-.light .border-slate-800\/60,
-.light .border-slate-800\/40,
-.light .border-slate-700,
-.light .border-slate-700\/60 {
-  border-color: #E2E8F0 !important;
-}
-
+/* Inputs, Selects & Forms */
 .light input,
-.light select {
+.light select,
+.light textarea {
   background-color: #FFFFFF !important;
   color: #0F172A !important;
   border-color: #CBD5E1 !important;
 }
 
-.light input::placeholder {
+.light input:focus,
+.light select:focus,
+.light textarea:focus {
+  border-color: #3B82F6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15) !important;
+}
+
+.light input::placeholder,
+.light textarea::placeholder {
   color: #94A3B8 !important;
+}
+
+/* Tables in Light Mode */
+.light table {
+  color: #1E293B !important;
 }
 
 .light table thead {
@@ -182,20 +181,65 @@ html.light, body.light {
   border-color: #E2E8F0 !important;
 }
 
+.light table thead th {
+  color: #475569 !important;
+  background-color: #F8FAFC !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+}
+
 .light table tbody {
   background-color: #FFFFFF !important;
 }
 
 .light table tbody tr {
+  background-color: #FFFFFF !important;
   border-color: #F1F5F9 !important;
+  color: #1E293B !important;
 }
 
 .light table tbody tr:hover {
   background-color: #F8FAFC !important;
 }
 
-.light .divide-slate-800,
-.light .divide-slate-800\/80,
-.light .divide-slate-800\/60 {
-  border-color: #E2E8F0 !important;
+.light table tbody td {
+  color: #1E293B !important;
+  border-bottom: 1px solid #F1F5F9 !important;
 }
+
+/* Transform Dark Ink Blotches into Clean Pastel Badges in Light Mode */
+.light [class*="bg-cyan-950"],
+.light [class*="bg-cyan-900"] {
+  background-color: #ECFEFF !important;
+  color: #0E7490 !important;
+  border-color: #A5F3FC !important;
+}
+
+.light [class*="bg-emerald-950"],
+.light [class*="bg-emerald-900"] {
+  background-color: #ECFDF5 !important;
+  color: #047857 !important;
+  border-color: #A7F3D0 !important;
+}
+
+.light [class*="bg-amber-950"],
+.light [class*="bg-amber-900"] {
+  background-color: #FFFBEB !important;
+  color: #B45309 !important;
+  border-color: #FDE68A !important;
+}
+
+.light [class*="bg-rose-950"],
+.light [class*="bg-rose-900"] {
+  background-color: #FFF1F2 !important;
+  color: #BE123C !important;
+  border-color: #FECDD3 !important;
+}
+
+.light [class*="bg-purple-950"],
+.light [class*="bg-purple-900"],
+.light [class*="bg-indigo-950"] {
+  background-color: #F5F3FF !important;
+  color: #6D28D9 !important;
+  border-color: #DDD6FE !important;
+}
+

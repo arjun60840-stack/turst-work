@@ -164,8 +164,8 @@ export default function AuditLogs() {
           </select>
 
           <button
-            onClick={() => alert('Exporting full tamper-evident audit trail (CSV + PGP Signature) for SIH 2026 jury review.')}
-            className="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-mono text-xs font-bold flex items-center transition-all shadow-lg cursor-pointer"
+            onClick={() => alert('Exporting full tamper-evident audit trail (CSV + PGP Signature) for compliance review.')}
+            className="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 !text-white font-mono text-xs font-bold flex items-center transition-all shadow-lg cursor-pointer"
           >
             <ArrowDownTrayIcon className="w-3.5 h-3.5 mr-1" />
             Export Audit Log

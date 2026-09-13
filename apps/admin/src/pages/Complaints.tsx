@@ -231,7 +231,7 @@ export default function Complaints() {
               <div className="p-3.5 bg-slate-900/40 rounded-2xl border border-slate-800">
                 <span className="text-cyan-300 font-bold block mb-1 font-mono text-xs">COOPERATIVE OMBUDSMAN PROTOCOL:</span>
                 <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Under SIH 2026 Cooperative Guidelines, escrow funds are temporarily held. Arbitrators may release 50% to worker and refund 50% to customer, or approve full release upon proof.
+                  Under Work Trust Cooperative Guidelines, escrow funds are temporarily held. Arbitrators may release 50% to worker and refund 50% to client, or approve full release upon proof.
                 </p>
               </div>
             </div>

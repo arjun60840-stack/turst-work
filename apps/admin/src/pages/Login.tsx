@@ -21,7 +21,7 @@ export default function Login() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (email && password) {
-      setAuth('worktrust-jwt-token-sih2026', { 
+      setAuth('worktrust-jwt-token-prod', { 
         email, 
         role: 'admin',
         name: 'Chief Platform Administrator'
@@ -45,7 +45,7 @@ export default function Login() {
       {/* Top Banner Tag */}
       <div className="mb-6 inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-xs font-semibold backdrop-blur-md">
         <SparklesIcon className="w-3.5 h-3.5 text-blue-400" />
-        <span>Smart India Hackathon 2026 • Problem ID: 26089</span>
+        <span>Work Trust Enterprise Cooperative Platform</span>
       </div>
 
       <div className="max-w-md w-full relative z-10">

@@ -89,7 +89,7 @@ export default function DemandAnalytics() {
             <SparklesIcon className="w-6 h-6 text-cyan-400 animate-spin" />
           </div>
           <div>
-            <h4 className="font-bold text-sm tracking-wide">AI Predictive Labor Dispatch (SIH 2026 Engine)</h4>
+            <h4 className="font-bold text-sm tracking-wide">AI Predictive Labor Dispatch (Neural Engine)</h4>
             <p className="text-xs text-slate-400 mt-0.5">
               Forecasting +65% surge in wheat harvesting across Punjab & Haryana next month. Cooperative pre-allocation active.
             </p>

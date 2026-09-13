@@ -26,21 +26,20 @@ export default function TechnicalApproach() {
 
   return (
     <div className="space-y-8 max-w-6xl mx-auto">
-      {/* SIH 2026 Header Banner */}
+      {/* Enterprise Architecture Header Banner */}
       <div className="rounded-3xl bg-gradient-to-r from-slate-950 via-blue-950/90 to-indigo-950 p-8 text-white shadow-2xl relative overflow-hidden border border-cyan-500/30 tech-glow-blue">
         <div className="absolute top-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
         <div className="relative z-10">
           <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-400/30 text-xs font-mono font-bold mb-3">
             <SparklesIcon className="w-3.5 h-3.5 text-amber-300 animate-spin" />
-            <span>SIH 2026 • TECHNICAL SPECIFICATION & SYSTEM ARCHITECTURE</span>
+            <span>ENTERPRISE SPECIFICATION & SYSTEM ARCHITECTURE</span>
           </div>
 
           <h1 className="text-2xl sm:text-4xl font-black tracking-tight font-sans">
             Work Trust: Technical Architecture & Cooperative Framework
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-3xl leading-relaxed">
-            Problem Statement ID: <strong className="text-cyan-400 font-mono">26089</strong> • Theme: <strong className="text-amber-400">Agriculture, Foodtech & Rural Development</strong>. 
-            A cooperative-first digital platform replacing extractive private gig monopolies with decentralized worker ownership, 100% transparent escrow, and AI geospatial allocation.
+            Decentralized Cooperative Platform for Skilled & Manual Labor. Combining AI geospatial dispatch, DigiLocker KYC, zero-trust geofencing, and instant 80/10/10 UPI escrow settlements.
           </p>
         </div>
       </div>
@@ -65,7 +64,7 @@ export default function TechnicalApproach() {
               <tr>
                 <th className="p-4">Evaluation Dimension</th>
                 <th className="p-4 text-rose-400 bg-rose-950/20">Private Platforms (Urban Co, Uber, TaskRabbit)</th>
-                <th className="p-4 text-emerald-400 bg-emerald-950/20">Work Trust (SIH Cooperative Platform)</th>
+                <th className="p-4 text-emerald-400 bg-emerald-950/20">Work Trust (Cooperative Platform)</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/80 bg-slate-950/60">
