@@ -7,20 +7,22 @@ export const APP_TAGLINE = 'Cooperative Gig Services Platform';
 
 export const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://worktrust-api.onrender.com/api';
 
-// Service categories with icons
+// 14 Comprehensive Service Categories (SIH 2026 Problem ID: 26089)
 export const DEFAULT_SERVICE_CATEGORIES = [
-  { name: 'Electrical', icon: '⚡', description: 'Electrical repair and installation' },
-  { name: 'Plumbing', icon: '🔧', description: 'Plumbing repair and maintenance' },
-  { name: 'Carpentry', icon: '🪚', description: 'Woodwork and carpentry services' },
-  { name: 'Painting', icon: '🎨', description: 'Interior and exterior painting' },
-  { name: 'Masonry', icon: '🧱', description: 'Brickwork and masonry' },
-  { name: 'Cleaning', icon: '🧹', description: 'Household and commercial cleaning' },
-  { name: 'Agriculture', icon: '🌾', description: 'Agricultural work and farm services' },
-  { name: 'Repair & Maintenance', icon: '🔨', description: 'General repair and maintenance' },
-  { name: 'Household Help', icon: '🏠', description: 'General household services' },
-  { name: 'Community Services', icon: '🤝', description: 'Community development services' },
-  { name: 'Gardening', icon: '🌿', description: 'Garden maintenance and landscaping' },
-  { name: 'Construction', icon: '🏗️', description: 'Small-scale construction work' },
+  { id: 'electrician', name: 'Electrician', icon: '⚡', description: 'Wiring, MCB, inverter, farm pump starter & motor repair', baseWage: 450, subcategories: ['Inverter & Battery', 'Farm Motor Starter', 'House Wiring', 'Short Circuit Fix'] },
+  { id: 'carpenter', name: 'Carpenter', icon: '🪚', description: 'Woodwork, door/window fix, farm storage & furniture repair', baseWage: 500, subcategories: ['Furniture Repair', 'Door/Window Fitting', 'Trellis & Wood Frame', 'Custom Shed Work'] },
+  { id: 'hvac', name: 'AC Mechanic / HVAC Technician', icon: '❄️', description: 'AC servicing, cold-storage refrigeration & gas refill', baseWage: 600, subcategories: ['Split/Window AC Service', 'Cold Storage Chiller', 'Gas Leakage & Refill', 'Compressor Repair'] },
+  { id: 'appliance', name: 'Appliance Repair Technician', icon: '📺', description: 'Washing machine, refrigerator, microwave & mixer repair', baseWage: 400, subcategories: ['Refrigerator', 'Washing Machine', 'Microwave & Oven', 'Water Heater / Geyser'] },
+  { id: 'painter', name: 'Painter', icon: '🎨', description: 'Interior/exterior whitewash, waterproofing & distemper', baseWage: 650, subcategories: ['Interior Wall Painting', 'Exterior Weatherproof', 'Waterproofing & Putty', 'Texture & Enamel'] },
+  { id: 'cleaner', name: 'Cleaner / Housekeeping Staff', icon: '🧹', description: 'Home deep cleaning, water tank & farm shed sanitation', baseWage: 400, subcategories: ['Home Deep Cleaning', 'Overhead Water Tank', 'Farm Shed Sanitation', 'Bathroom & Floor Scrub'] },
+  { id: 'mason', name: 'Mason / Raj Mistri', icon: '🧱', description: 'Brickwork, plastering, boundary wall & silo concrete work', baseWage: 800, subcategories: ['Brickwork & Plastering', 'Grain Silo Concrete', 'Boundary Wall / Fencing', 'Foundation & PCC'] },
+  { id: 'labourer', name: 'Labourer / Daily-Wage Worker', icon: '👷', description: 'Daily-wage helper, crop harvesting, loading/unloading & digging', baseWage: 550, subcategories: ['Crop Harvesting & Threshing', 'Loading & Shifting Goods', 'Trench Digging & Earthwork', 'Construction Helper', 'General Daily Wage'] },
+  { id: 'welder', name: 'Welder / Fabricator', icon: '👨‍🏭', description: 'Gate fabrication, farm equipment welding & tin shed repair', baseWage: 650, subcategories: ['Iron Gate & Grills', 'Tractor Trolley Welding', 'Tin Shed Fabrication', 'Emergency Spot Welding'] },
+  { id: 'cctv_network', name: 'CCTV / Wi-Fi / RO Technician', icon: '📹', description: 'CCTV installation, broadband router & water purifier repair', baseWage: 450, subcategories: ['CCTV Camera Setup', 'Wi-Fi / Fiber Router', 'RO Filter Replacement', 'Smart Farm IoT Sensor'] },
+  { id: 'pest_control', name: 'Pest-Control Worker', icon: '🦗', description: 'Termite treatment, grain store pest fumigation & mosquito fogging', baseWage: 550, subcategories: ['Termite Protection', 'Grain Store Fumigation', 'Cockroach / Ant Shield', 'Rodent Control'] },
+  { id: 'gardener', name: 'Gardener / Mali', icon: '🌿', description: 'Hedge trimming, lawn mowing, organic manure & nursery care', baseWage: 400, subcategories: ['Lawn Mowing & Weeding', 'Tree Pruning & Shape', 'Organic Compost & Manure', 'Plant Nursery Setup'] },
+  { id: 'driver_helper', name: 'Driver / Shifting Helper', icon: '🚚', description: 'Pickup truck driving, tempo goods shifting & tractor logistics', baseWage: 600, subcategories: ['Tractor / Tempo Driving', 'Agricultural Produce Haul', 'Household Shifting Crew', 'Commercial Delivery'] },
+  { id: 'flooring_ceiling', name: 'Tiles, Flooring & False-Ceiling', icon: '🏗️', description: 'Floor tiles fitting, granite polishing & gypsum false ceiling', baseWage: 750, subcategories: ['Vitrified Tiles Laying', 'Granite & Marble Polish', 'Gypsum False Ceiling', 'Bathroom Tile Repair'] },
 ] as const;
 
 // Default matching weights

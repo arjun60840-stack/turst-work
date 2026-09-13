@@ -16,6 +16,10 @@ import Complaints from './pages/Complaints';
 import ComplaintDetail from './pages/ComplaintDetail';
 import DemandAnalytics from './pages/DemandAnalytics';
 import AuditLogs from './pages/AuditLogs';
+import CustomerPortal from './pages/CustomerPortal';
+import WorkerPortal from './pages/WorkerPortal';
+import TechnicalApproach from './pages/TechnicalApproach';
+import Welfare from './pages/Welfare';
 
 function App() {
   return (
@@ -26,6 +30,14 @@ function App() {
         <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          
+          {/* User Experience Portals */}
+          <Route path="/customer-portal" element={<CustomerPortal />} />
+          <Route path="/worker-portal" element={<WorkerPortal />} />
+          <Route path="/technical-approach" element={<TechnicalApproach />} />
+          <Route path="/welfare" element={<Welfare />} />
+
+          {/* Admin Operations Pages */}
           <Route path="/workers" element={<Workers />} />
           <Route path="/workers/:id" element={<WorkerDetail />} />
           <Route path="/customers" element={<Customers />} />

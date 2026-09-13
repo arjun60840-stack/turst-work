@@ -13,6 +13,10 @@ export default function Layout() {
   const getPageTitle = (path: string) => {
     switch (path) {
       case '/dashboard': return 'Dashboard Overview';
+      case '/customer-portal': return 'Customer / Farmer Booking App';
+      case '/worker-portal': return 'Worker Gig & Instant Wallet App';
+      case '/technical-approach': return 'SIH 2026 Technical Presentation & Architecture';
+      case '/welfare': return 'Worker Welfare & Social Security Corpus';
       case '/workers': return 'Worker Directory & Profiles';
       case '/customers': return 'Customer Accounts';
       case '/cooperatives': return 'Worker Cooperatives (SHGs)';
