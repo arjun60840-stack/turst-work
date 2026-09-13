@@ -1,5 +1,6 @@
 {
-  "buildCommand": "npm run build",
+  "installCommand": "echo 'Skipping install - using pre-built public directory'",
+  "buildCommand": "echo 'Skipping build - using pre-built public directory'",
   "outputDirectory": "public",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }

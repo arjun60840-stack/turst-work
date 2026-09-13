@@ -5,7 +5,7 @@
 export const APP_NAME = 'NEXVION';
 export const APP_TAGLINE = 'Cooperative Gig Services Platform';
 
-export const API_BASE_URL = 'http://localhost:3000/api';
+export const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://worktrust-api.onrender.com/api';
 
 // Service categories with icons
 export const DEFAULT_SERVICE_CATEGORIES = [
