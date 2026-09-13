@@ -8,6 +8,7 @@
     "apps/*"
   ],
   "scripts": {
+    "build": "npm --prefix apps/admin run build",
     "dev:backend": "npm --prefix apps/backend run dev",
     "dev:admin": "npm --prefix apps/admin run dev",
     "dev:mobile": "npm --prefix apps/mobile run web",
