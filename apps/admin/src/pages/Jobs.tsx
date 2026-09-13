@@ -72,7 +72,7 @@ export default function Jobs() {
       ),
     },
     {
-      header: 'Customer / Farmstead',
+      header: 'Client / Site',
       accessor: (row: Job) => (
         <div>
           <span className="text-xs font-medium text-slate-200 block">{row.customerName}</span>
@@ -218,7 +218,7 @@ export default function Jobs() {
             <div className="py-4 space-y-4 text-xs">
               <div className="grid grid-cols-2 gap-3 bg-slate-900/60 p-3.5 rounded-2xl border border-slate-800">
                 <div>
-                  <span className="text-slate-500 block text-[11px] font-mono">CUSTOMER</span>
+                  <span className="text-slate-500 block text-[11px] font-mono">CLIENT</span>
                   <span className="font-semibold text-slate-200">{selectedJob.customerName}</span>
                 </div>
                 <div>

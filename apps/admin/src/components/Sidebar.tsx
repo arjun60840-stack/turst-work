@@ -19,7 +19,7 @@ import {
 import { useAuthStore } from '../store/authStore';
 
 const userPortals = [
-  { name: 'Customer Booking App', href: '/customer-portal', icon: DevicePhoneMobileIcon, badge: 'Voice / SOS', color: 'text-cyan-400' },
+  { name: 'Client Booking App', href: '/customer-portal', icon: DevicePhoneMobileIcon, badge: 'Voice / SOS', color: 'text-cyan-400' },
   { name: 'Worker Gig & Wallet App', href: '/worker-portal', icon: CpuChipIcon, badge: 'Rapido 30s', color: 'text-emerald-400' },
   { name: 'Worker Welfare & e-Shram', href: '/welfare', icon: HeartIcon, badge: '10% Fund', color: 'text-rose-400' },
   { name: 'SIH Tech Architecture', href: '/technical-approach', icon: BookOpenIcon, highlight: true, color: 'text-amber-400' },
@@ -28,7 +28,7 @@ const userPortals = [
 const adminNavigation = [
   { name: 'Control Dashboard', href: '/dashboard', icon: ChartPieIcon },
   { name: 'Workers & Passports', href: '/workers', icon: UsersIcon, badge: '254' },
-  { name: 'Customers & Farms', href: '/customers', icon: UserGroupIcon, badge: '1.2k' },
+  { name: 'Clients & Accounts', href: '/customers', icon: UserGroupIcon, badge: '1.2k' },
   { name: 'Cooperative Societies', href: '/cooperatives', icon: UsersIcon, badge: '14' },
   { name: 'DigiLocker KYC Queue', href: '/verification', icon: CheckBadgeIcon, alertBadge: '4' },
   { name: 'Live Gig Dispatch', href: '/jobs', icon: BriefcaseIcon, badge: '45 active' },

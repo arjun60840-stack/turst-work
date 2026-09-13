@@ -127,54 +127,46 @@ export default function Login() {
             </button>
           </form>
 
-          {/* Quick Demo Fill Buttons */}
+          {/* Quick Demo Fill Buttons (Strictly 3 Core Roles: Admin, Worker, Client) */}
           <div className="mt-6 pt-5 border-t border-slate-800/80">
-            <span className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider text-center mb-3">
-              ⚡ Quick One-Click Demo Logins:
+            <span className="block text-[11px] font-mono font-bold text-cyan-400 uppercase tracking-wider text-center mb-3">
+              ⚡ ONE-CLICK DEMO LOGIN (SELECT ROLE):
             </span>
-            <div className="grid grid-cols-2 gap-2 text-xs">
+            <div className="grid grid-cols-3 gap-2 text-xs">
+              {/* 1. Admin */}
               <button
                 type="button"
                 onClick={() => fillCredentials('admin@nexvion.demo', 'NexvionDemo@2026')}
-                className="p-2 rounded-lg bg-slate-800/80 hover:bg-blue-600/20 hover:border-blue-500/40 border border-slate-700/60 text-left transition-colors"
+                className="p-2.5 rounded-xl bg-slate-950/80 hover:bg-blue-600/20 border border-blue-500/40 text-left transition-all cursor-pointer shadow-sm hover:scale-[1.02]"
               >
                 <div className="font-bold text-blue-400 flex items-center text-[11px]">
-                  <ShieldCheckIcon className="w-3.5 h-3.5 mr-1" /> Super Admin
+                  <ShieldCheckIcon className="w-3.5 h-3.5 mr-1 shrink-0" /> Admin
                 </div>
-                <span className="text-[10px] text-slate-400 block truncate">admin@nexvion.demo</span>
+                <span className="text-[10px] text-slate-400 font-mono block truncate mt-0.5">admin@nexvion.demo</span>
               </button>
 
+              {/* 2. Worker */}
               <button
                 type="button"
                 onClick={() => fillCredentials('worker@nexvion.demo', 'Demo@12345')}
-                className="p-2 rounded-lg bg-slate-800/80 hover:bg-emerald-600/20 hover:border-emerald-500/40 border border-slate-700/60 text-left transition-colors"
+                className="p-2.5 rounded-xl bg-slate-950/80 hover:bg-emerald-600/20 border border-emerald-500/40 text-left transition-all cursor-pointer shadow-sm hover:scale-[1.02]"
               >
                 <div className="font-bold text-emerald-400 flex items-center text-[11px]">
-                  <UsersIcon className="w-3.5 h-3.5 mr-1" /> Farm Worker
+                  <UsersIcon className="w-3.5 h-3.5 mr-1 shrink-0" /> Worker
                 </div>
-                <span className="text-[10px] text-slate-400 block truncate">worker@nexvion.demo</span>
+                <span className="text-[10px] text-slate-400 font-mono block truncate mt-0.5">worker@nexvion.demo</span>
               </button>
 
+              {/* 3. Client */}
               <button
                 type="button"
                 onClick={() => fillCredentials('customer@nexvion.demo', 'Demo@12345')}
-                className="p-2 rounded-lg bg-slate-800/80 hover:bg-amber-600/20 hover:border-amber-500/40 border border-slate-700/60 text-left transition-colors"
+                className="p-2.5 rounded-xl bg-slate-950/80 hover:bg-cyan-600/20 border border-cyan-500/40 text-left transition-all cursor-pointer shadow-sm hover:scale-[1.02]"
               >
-                <div className="font-bold text-amber-400 flex items-center text-[11px]">
-                  🌾 Farmer / Client
+                <div className="font-bold text-cyan-400 flex items-center text-[11px]">
+                  <UsersIcon className="w-3.5 h-3.5 mr-1 shrink-0" /> Client
                 </div>
-                <span className="text-[10px] text-slate-400 block truncate">customer@nexvion.demo</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => fillCredentials('coop1@nexvion.demo', 'Demo@12345')}
-                className="p-2 rounded-lg bg-slate-800/80 hover:bg-purple-600/20 hover:border-purple-500/40 border border-slate-700/60 text-left transition-colors"
-              >
-                <div className="font-bold text-purple-400 flex items-center text-[11px]">
-                  <BuildingOffice2Icon className="w-3.5 h-3.5 mr-1" /> Cooperative SHG
-                </div>
-                <span className="text-[10px] text-slate-400 block truncate">coop1@nexvion.demo</span>
+                <span className="text-[10px] text-slate-400 font-mono block truncate mt-0.5">customer@nexvion.demo</span>
               </button>
             </div>
           </div>

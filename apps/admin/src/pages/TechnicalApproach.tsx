@@ -200,19 +200,19 @@ export default function TechnicalApproach() {
           <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 text-center space-y-1 hover:border-cyan-500/50 transition-colors">
             <div className="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-cyan-400 font-mono font-bold mx-auto flex items-center justify-center">1</div>
             <p className="font-bold text-white mt-2">Demand Ingestion</p>
-            <p className="text-[11px] text-slate-400">Farmer books via voice/app across 14 categories. Escrow wage funded.</p>
+            <p className="text-[11px] text-slate-400">Client books via voice/app across 14 categories. Escrow wage funded.</p>
           </div>
 
           <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 text-center space-y-1 hover:border-cyan-500/50 transition-colors">
             <div className="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-cyan-400 font-mono font-bold mx-auto flex items-center justify-center">2</div>
             <p className="font-bold text-white mt-2">Geospatial Matching</p>
-            <p className="text-[11px] text-slate-400">Nearest verified cooperative worker notified with 30s Rapido timer.</p>
+            <p className="text-[11px] text-slate-400">Nearest verified worker notified with 30s Rapido timer.</p>
           </div>
 
           <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 text-center space-y-1 hover:border-cyan-500/50 transition-colors">
             <div className="w-8 h-8 rounded-full bg-cyan-500/20 border border-cyan-400/40 text-cyan-400 font-mono font-bold mx-auto flex items-center justify-center">3</div>
             <p className="font-bold text-white mt-2">Geofence Check-in</p>
-            <p className="text-[11px] text-slate-400">Worker arrives at farmstead. GPS boundary confirmed via 4-digit OTP.</p>
+            <p className="text-[11px] text-slate-400">Worker arrives at client site. GPS boundary confirmed via 4-digit OTP.</p>
           </div>
 
           <div className="p-4 rounded-2xl bg-slate-950/80 border border-slate-800 text-center space-y-1 hover:border-cyan-500/50 transition-colors">

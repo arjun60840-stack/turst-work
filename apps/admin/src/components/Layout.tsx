@@ -26,13 +26,13 @@ export default function Layout() {
 
   const getPageTitle = (path: string) => {
     switch (path) {
-      case '/dashboard': return 'Cooperative Control Center';
-      case '/customer-portal': return 'Customer / Farmer Dispatch Console';
+      case '/dashboard': return 'Admin Operations & Control Center';
+      case '/customer-portal': return 'Client Booking & Dispatch Console';
       case '/worker-portal': return 'Worker Telemetry & Instant Wallet';
       case '/technical-approach': return 'SIH 2026 Technical Architecture & Specifications';
       case '/welfare': return 'Worker Social Security & Welfare Corpus';
       case '/workers': return 'Worker Skill Passport Registry';
-      case '/customers': return 'Client & Farmstead Directory';
+      case '/customers': return 'Client Directory & Accounts';
       case '/cooperatives': return 'District Cooperative Federation (PACS)';
       case '/verification': return 'DigiLocker & Aadhaar KYC Engine';
       case '/jobs': return 'Live Job Dispatch & Geofence Pipeline';
@@ -63,7 +63,7 @@ export default function Layout() {
             </div>
           </div>
 
-          {/* Quick Experience Switcher Strip */}
+          {/* Quick Experience Switcher Strip (3 Roles: Admin, Client, Worker) */}
           <div className="hidden lg:flex items-center space-x-1.5 bg-slate-900/90 p-1 rounded-xl border border-slate-800 text-xs font-bold">
             <Link
               to="/dashboard"
@@ -74,7 +74,7 @@ export default function Layout() {
               }`}
             >
               <ChartPieIcon className="w-3.5 h-3.5" />
-              <span>Admin Ops</span>
+              <span>Admin</span>
             </Link>
 
             <Link
@@ -86,7 +86,7 @@ export default function Layout() {
               }`}
             >
               <DevicePhoneMobileIcon className="w-3.5 h-3.5 text-cyan-400" />
-              <span>Customer App</span>
+              <span>Client</span>
             </Link>
 
             <Link
@@ -98,7 +98,7 @@ export default function Layout() {
               }`}
             >
               <CpuChipIcon className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Worker App</span>
+              <span>Worker</span>
             </Link>
 
             <Link

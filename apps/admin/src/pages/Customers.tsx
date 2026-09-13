@@ -114,16 +114,16 @@ export default function Customers() {
 
   return (
     <div className="space-y-6">
-      {/* 4 Metrics for Customers */}
+      {/* 4 Metrics for Clients */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <StatCard 
-          title="Active Farm Customers" 
+          title="Total Active Clients" 
           value="1,420 Users" 
           icon={<UserGroupIcon className="w-5 h-5 text-cyan-400" />} 
           trend={{ value: 16, isPositive: true }} 
         />
         <StatCard 
-          title="Verified Farmsteads" 
+          title="Verified Client Accounts" 
           value="984 Verified" 
           icon={<CheckCircleIcon className="w-5 h-5 text-emerald-400" />} 
           trend={{ value: 9, isPositive: true }} 
@@ -148,7 +148,7 @@ export default function Customers() {
           <MagnifyingGlassIcon className="w-4 h-4 absolute left-3 top-3 text-cyan-400/60" />
           <input
             type="text"
-            placeholder="Search customer, location, phone..."
+            placeholder="Search client, location, phone..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-9 pr-3 py-2 text-xs rounded-xl bg-slate-950/80 text-white placeholder-slate-500 border border-slate-800 focus:outline-none focus:border-cyan-500 font-sans transition-colors"
@@ -162,7 +162,7 @@ export default function Customers() {
             onChange={(e) => setFilterStatus(e.target.value)}
             className="text-xs px-3 py-2 rounded-xl bg-slate-950/80 text-cyan-300 border border-slate-800 focus:outline-none focus:border-cyan-500 font-mono"
           >
-            <option value="all">ALL FARM CLIENTS ({initialCustomers.length})</option>
+            <option value="all">ALL CLIENTS ({initialCustomers.length})</option>
             <option value="verified">VERIFIED ONLY</option>
             <option value="active">ACTIVE ONLY</option>
           </select>
@@ -224,8 +224,8 @@ export default function Customers() {
               </div>
 
               <div className="p-3.5 bg-slate-900/40 rounded-2xl border border-slate-800">
-                <p className="text-[11px] text-slate-400 leading-relaxed">
-                  Verified Farmstead Account with direct NPCI Auto-Escrow capability. 
+                <p className="text-[11px] text-slate-400 leading-relaxed font-mono">
+                  Verified Client Account with direct NPCI Auto-Escrow capability. 
                   Zero cancellation fee penalty history recorded.
                 </p>
               </div>
