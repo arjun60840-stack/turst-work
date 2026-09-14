@@ -137,7 +137,7 @@ export const LandingPage: React.FC = () => {
                 <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span>India's Smart Gig Cooperative Ecosystem</span>
                 <span className="text-slate-500">•</span>
-                <span className="text-teal-400 font-bold">SIH 2024</span>
+                <span className="text-teal-400 font-bold">SIH 2026</span>
               </div>
 
               {/* Main Headline */}
