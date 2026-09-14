@@ -137,7 +137,7 @@ export const LandingPage: React.FC = () => {
                 <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span>India's Smart Gig Cooperative Ecosystem</span>
                 <span className="text-slate-500">•</span>
-                <span className="text-teal-400 font-bold">SIH 2026</span>
+                <span className="text-teal-400 font-bold">Enterprise 2026</span>
               </div>
 
               {/* Main Headline */}
@@ -550,7 +550,7 @@ export const LandingPage: React.FC = () => {
 
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500">
             <div>
-              © 2026 NEXVION Technologies. Built for Smart India Hackathon. All rights reserved.
+              © 2026 NEXVION Technologies. Next-Generation Autonomous Cooperative Infrastructure. All rights reserved.
             </div>
             <div className="flex items-center gap-2 text-emerald-400 font-mono">
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />

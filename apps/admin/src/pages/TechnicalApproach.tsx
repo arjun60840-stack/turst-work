@@ -319,7 +319,7 @@ export default function TechnicalApproach() {
             </h2>
           </div>
           <p className="text-xs text-slate-400 mt-1">
-            Structured delivery plan aligned with Smart India Hackathon guidelines
+            Structured delivery plan aligned with National Skill Development & Cooperative Architecture Standards
           </p>
         </div>
 
