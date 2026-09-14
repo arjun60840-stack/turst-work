@@ -13,14 +13,16 @@ import {
   DevicePhoneMobileIcon, 
   HeartIcon, 
   CpuChipIcon,
-  GlobeAltIcon
+  GlobeAltIcon,
+  UserPlusIcon
 } from '@heroicons/react/24/outline';
 import { useAuthStore } from '../store/authStore';
 import { useThemeStore } from '../store/themeStore';
 
 const userPortals = [
   { name: 'Public Landing / Hero', href: '/', icon: GlobeAltIcon, badge: 'V2 Showcase', color: 'text-blue-400' },
-  { name: 'Client Booking App', href: '/customer-portal', icon: DevicePhoneMobileIcon, badge: 'Voice / SOS', color: 'text-cyan-500' },
+  { name: 'Client & Group Booking', href: '/customer-portal', icon: DevicePhoneMobileIcon, badge: 'Big Crews', color: 'text-cyan-500' },
+  { name: 'Worker Register & KYC', href: '/worker-register', icon: UserPlusIcon, badge: 'Aadhaar e-KYC', color: 'text-teal-400' },
   { name: 'Worker Gig & Wallet App', href: '/worker-portal', icon: CpuChipIcon, badge: 'Rapido 30s', color: 'text-emerald-500' },
   { name: 'Worker Welfare & e-Shram', href: '/welfare', icon: HeartIcon, badge: '10% Fund', color: 'text-rose-500' },
 ];

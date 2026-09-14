@@ -21,13 +21,15 @@ import WorkerPortal from './pages/WorkerPortal';
 import TechnicalApproach from './pages/TechnicalApproach';
 import Welfare from './pages/Welfare';
 import LandingPage from './pages/LandingPage';
+import WorkerRegistration from './pages/WorkerRegistration';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Public High-Impact Landing Page */}
+        {/* Public High-Impact Landing Page & Onboarding */}
         <Route path="/" element={<LandingPage />} />
+        <Route path="/worker-register" element={<WorkerRegistration />} />
         <Route path="/login" element={<Login />} />
         
         <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>

@@ -83,7 +83,9 @@ export const LandingPage: React.FC = () => {
             <a href="#features" className="hover:text-white transition">Features</a>
             <a href="#matching" className="hover:text-white transition">Smart Matching</a>
             <a href="#showcase" className="hover:text-white transition">Verified Trades</a>
-            <a href="#welfare" className="hover:text-white transition">Welfare Shield</a>
+            <Link to="/worker-register" className="text-teal-400 hover:text-teal-300 transition font-bold">
+              Worker Registration
+            </Link>
             <a href="#faq" className="hover:text-white transition">FAQ</a>
           </nav>
 
@@ -154,29 +156,37 @@ export const LandingPage: React.FC = () => {
               </p>
 
               {/* CTA Group */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
                 <Link
                   to="/customer-portal"
-                  className="px-6 py-3.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 shadow-xl shadow-blue-600/25 transition transform hover:-translate-y-0.5 flex items-center gap-2"
+                  className="px-5 py-3.5 rounded-xl font-bold text-sm text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 shadow-xl shadow-blue-600/25 transition transform hover:-translate-y-0.5 flex items-center gap-2"
                 >
                   <UsersIcon className="w-4 h-4" />
-                  <span>Hire Verified Workers</span>
+                  <span>Hire Workers & Big Crews</span>
                   <ArrowRightIcon className="w-4 h-4" />
                 </Link>
 
                 <Link
-                  to="/worker-portal"
-                  className="px-6 py-3.5 rounded-xl font-bold text-sm text-slate-200 hover:text-white bg-slate-900/90 border border-slate-700 hover:border-slate-600 hover:bg-slate-800 transition flex items-center gap-2"
+                  to="/worker-register"
+                  className="px-5 py-3.5 rounded-xl font-bold text-sm text-teal-300 hover:text-white bg-slate-900/90 border border-teal-500/40 hover:border-teal-400 hover:bg-slate-800 transition flex items-center gap-2 shadow-lg shadow-teal-500/10"
                 >
-                  <TrophyIcon className="w-4 h-4 text-teal-400" />
-                  <span>Worker Skill Passport</span>
+                  <DocumentCheckIcon className="w-4 h-4 text-teal-400" />
+                  <span>Register as Worker (KYC)</span>
+                </Link>
+
+                <Link
+                  to="/worker-portal"
+                  className="px-4 py-3.5 rounded-xl font-semibold text-xs text-slate-300 hover:text-white bg-slate-950 border border-slate-800 hover:border-slate-700 transition flex items-center gap-1.5"
+                >
+                  <TrophyIcon className="w-4 h-4 text-amber-400" />
+                  <span>Passport</span>
                 </Link>
 
                 <Link
                   to="/dashboard"
-                  className="px-4 py-3.5 rounded-xl font-semibold text-xs text-slate-400 hover:text-slate-200 bg-slate-950 border border-slate-800 hover:border-slate-700 transition flex items-center gap-1.5"
+                  className="px-3.5 py-3.5 rounded-xl font-semibold text-xs text-slate-400 hover:text-slate-200 bg-slate-950 border border-slate-800 hover:border-slate-700 transition flex items-center gap-1"
                 >
-                  <span>Admin Hub</span>
+                  <span>Admin</span>
                   <ArrowRightIcon className="w-3.5 h-3.5" />
                 </Link>
               </div>
