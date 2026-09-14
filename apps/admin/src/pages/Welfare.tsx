@@ -36,7 +36,7 @@ export default function Welfare() {
             Social Protection for Rural & Daily-Wage Workers
           </h1>
           <p className="text-xs sm:text-sm text-emerald-200/80 mt-1 max-w-2xl leading-relaxed">
-            Unlike private aggregators that offer zero protections, Work Trust automatically deposits 10% of every completed gig into a collective social security and healthcare safety net.
+            Unlike private aggregators that offer zero protections, NEXVION automatically deposits 10% of every completed gig into a collective social security and healthcare safety net.
           </p>
         </div>
       </div>

@@ -46,7 +46,7 @@ export const useThemeStore = create<ThemeState>()(
       },
     }),
     {
-      name: 'worktrust-theme-preference',
+      name: 'nexvion-theme-preference',
     }
   )
 );

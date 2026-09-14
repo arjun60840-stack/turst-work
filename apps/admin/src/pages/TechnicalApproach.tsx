@@ -36,7 +36,7 @@ export default function TechnicalApproach() {
           </div>
 
           <h1 className="text-2xl sm:text-4xl font-black tracking-tight font-sans">
-            Work Trust: Technical Architecture & Cooperative Framework
+            NEXVION: Technical Architecture & Cooperative Framework
           </h1>
           <p className="text-xs sm:text-sm text-slate-300 mt-2 max-w-3xl leading-relaxed">
             Decentralized Cooperative Platform for Skilled & Manual Labor. Combining AI geospatial dispatch, DigiLocker KYC, zero-trust geofencing, and instant 80/10/10 UPI escrow settlements.
@@ -44,13 +44,13 @@ export default function TechnicalApproach() {
         </div>
       </div>
 
-      {/* 1. Comparison: Private Gig Monopoly vs Work Trust Cooperative */}
+      {/* 1. Comparison: Private Gig Monopoly vs NEXVION Cooperative */}
       <div className="tech-glass-card rounded-3xl p-6 sm:p-8 space-y-4 border border-cyan-500/20">
         <div>
           <div className="flex items-center space-x-2">
             <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
             <h2 className="text-lg font-black text-white tracking-wide">
-              1. Comparative Analysis: Private Aggregators vs Work Trust Cooperative
+              1. Comparative Analysis: Private Aggregators vs NEXVION Cooperative
             </h2>
           </div>
           <p className="text-xs text-slate-400 mt-1">
@@ -64,7 +64,7 @@ export default function TechnicalApproach() {
               <tr>
                 <th className="p-4">Evaluation Dimension</th>
                 <th className="p-4 text-rose-400 bg-rose-950/20">Private Platforms (Urban Co, Uber, TaskRabbit)</th>
-                <th className="p-4 text-emerald-400 bg-emerald-950/20">Work Trust (Cooperative Platform)</th>
+                <th className="p-4 text-emerald-400 bg-emerald-950/20">NEXVION (Cooperative Platform)</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-800/80 bg-slate-950/60">
@@ -236,7 +236,7 @@ export default function TechnicalApproach() {
             <span>INTERACTIVE FAIR WAGE SIMULATOR</span>
           </div>
           <h2 className="text-xl font-black text-white">
-            Calculate Worker Take-Home: Private Exploitation vs Work Trust
+            Calculate Worker Take-Home: Private Exploitation vs NEXVION
           </h2>
           <p className="text-xs text-slate-400">
             See how much more rural workers and daily labourers earn every month under our cooperative structure.
@@ -296,7 +296,7 @@ export default function TechnicalApproach() {
 
             <div className="flex justify-between text-emerald-300 bg-emerald-950/40 p-3 rounded-xl border border-emerald-500/30">
               <div>
-                <span className="font-bold block">Work Trust Worker Net (80%):</span>
+                <span className="font-bold block">NEXVION Worker Net (80%):</span>
                 <span className="text-[10px] text-emerald-400 font-mono">+ ₹{workTrustCoopWelfare.toLocaleString()} in Welfare Vault</span>
               </div>
               <span className="text-lg font-black font-mono text-emerald-400">₹{workTrustWorkerNet.toLocaleString()}</span>

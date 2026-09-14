@@ -45,7 +45,7 @@ export default function Login() {
       {/* Top Banner Tag */}
       <div className="mb-6 inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-xs font-semibold backdrop-blur-md">
         <SparklesIcon className="w-3.5 h-3.5 text-blue-400" />
-        <span>Work Trust Enterprise Cooperative Platform</span>
+        <span>NEXVION Enterprise Cooperative Platform</span>
       </div>
 
       <div className="max-w-md w-full relative z-10">
@@ -58,7 +58,7 @@ export default function Login() {
           <div className="text-center">
             <div className="relative inline-block mb-3">
               <div className="w-20 h-20 rounded-2xl bg-white p-2 mx-auto shadow-xl ring-2 ring-blue-500/40 flex items-center justify-center">
-                <img src="/logo.png" alt="Work Trust" className="h-full w-full object-contain" />
+                <img src="/logo.png" alt="NEXVION" className="h-full w-full object-contain" />
               </div>
               <span className="absolute -bottom-1 -right-1 flex h-4 w-4">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -67,8 +67,8 @@ export default function Login() {
             </div>
 
             <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight flex items-center justify-center">
-              <span className="bg-gradient-to-r from-blue-400 to-indigo-300 bg-clip-text text-transparent mr-2">WORK</span>
-              <span className="text-white">TRUST</span>
+              <span className="bg-gradient-to-r from-blue-400 via-teal-300 to-indigo-300 bg-clip-text text-transparent mr-2">NEXVION</span>
+              <span className="text-white font-mono text-sm px-2 py-0.5 rounded bg-blue-600/30 border border-blue-500/40">PRO</span>
             </h2>
             <p className="text-xs font-semibold text-emerald-400 mt-1 uppercase tracking-wider">
               Administration & Operations Console

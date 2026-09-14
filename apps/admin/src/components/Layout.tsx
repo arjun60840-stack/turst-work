@@ -54,7 +54,7 @@ export default function Layout() {
       case '/complaints': return 'Ombudsman Arbitration Board';
       case '/analytics': return 'AI Predictive Demand Heatmaps';
       case '/audit-logs': return 'Immutable SHA-256 Audit Trail';
-      default: return 'Work Trust Neural Node';
+      default: return 'NEXVION Neural Node';
     }
   };
 
@@ -169,7 +169,7 @@ export default function Layout() {
                 <div className={`w-full h-full rounded-[10px] flex items-center justify-center font-mono font-bold text-xs ${
                   theme === 'light' ? 'bg-white text-blue-700' : 'bg-[#0B1120] text-cyan-400'
                 }`}>
-                  WT
+                  NX
                 </div>
               </div>
               <div className="hidden sm:block text-left">

@@ -312,7 +312,7 @@ export default function Verification() {
               <div className="border border-dashed border-cyan-500/40 rounded-2xl p-4 bg-slate-900/40 text-center">
                 <DocumentCheckIcon className="w-8 h-8 text-cyan-400 mx-auto mb-1" />
                 <p className="text-xs font-bold text-white font-mono">Digital Skill Passport Certificate</p>
-                <p className="text-[11px] text-slate-400 mt-0.5">Cryptographically signed by Work Trust Cooperative Authority</p>
+                <p className="text-[11px] text-slate-400 mt-0.5">Cryptographically signed by NEXVION Cooperative Authority</p>
               </div>
             </div>
 

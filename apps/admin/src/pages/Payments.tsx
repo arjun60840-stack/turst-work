@@ -151,7 +151,7 @@ export default function Payments() {
             <ShieldCheckIcon className="w-6 h-6 text-cyan-400" />
           </div>
           <div>
-            <h4 className="font-bold text-sm tracking-wide">Work Trust 100% Transparent Fee Split Model</h4>
+            <h4 className="font-bold text-sm tracking-wide">NEXVION 100% Transparent Fee Split Model</h4>
             <p className="text-xs text-slate-400 mt-0.5">
               Guaranteed 80% to Worker • 10% to Village Cooperative Welfare Fund • 10% Platform Maintenance
             </p>

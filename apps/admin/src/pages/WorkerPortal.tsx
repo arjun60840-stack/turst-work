@@ -343,7 +343,7 @@ export default function WorkerPortal() {
           </div>
           <h3 className="text-xl font-black text-white font-mono">JOB COMPLETE & PAID</h3>
           <p className="text-xs text-slate-400">
-            ₹4,800 wage deposited directly into your Work Trust wallet. 10% cooperative welfare credit recorded.
+            ₹4,800 wage deposited directly into your NEXVION wallet. 10% cooperative welfare credit recorded.
           </p>
           <button
             onClick={() => {

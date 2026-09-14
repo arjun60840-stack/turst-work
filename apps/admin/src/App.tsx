@@ -20,15 +20,17 @@ import CustomerPortal from './pages/CustomerPortal';
 import WorkerPortal from './pages/WorkerPortal';
 import TechnicalApproach from './pages/TechnicalApproach';
 import Welfare from './pages/Welfare';
+import LandingPage from './pages/LandingPage';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Public High-Impact Landing Page */}
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         
         <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
           <Route path="/dashboard" element={<Dashboard />} />
           
           {/* User Experience Portals */}

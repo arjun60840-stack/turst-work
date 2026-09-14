@@ -121,7 +121,7 @@ export default function Dashboard() {
             </div>
 
             <h1 className={`text-2xl sm:text-3xl font-black tracking-tight leading-tight mt-3 ${isLight ? 'text-slate-900' : 'text-white'}`}>
-              Work Trust <span className={isLight ? 'text-blue-600' : 'gradient-text-tech'}>Command Center</span>
+              NEXVION <span className={isLight ? 'text-blue-600' : 'gradient-text-tech'}>Command Center</span>
             </h1>
 
             <p className={`text-xs sm:text-sm leading-relaxed ${isLight ? 'text-slate-600' : 'text-slate-300'}`}>

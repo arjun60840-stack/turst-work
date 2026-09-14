@@ -12,12 +12,14 @@ import {
   ArrowRightOnRectangleIcon, 
   DevicePhoneMobileIcon, 
   HeartIcon, 
-  CpuChipIcon 
+  CpuChipIcon,
+  GlobeAltIcon
 } from '@heroicons/react/24/outline';
 import { useAuthStore } from '../store/authStore';
 import { useThemeStore } from '../store/themeStore';
 
 const userPortals = [
+  { name: 'Public Landing / Hero', href: '/', icon: GlobeAltIcon, badge: 'V2 Showcase', color: 'text-blue-400' },
   { name: 'Client Booking App', href: '/customer-portal', icon: DevicePhoneMobileIcon, badge: 'Voice / SOS', color: 'text-cyan-500' },
   { name: 'Worker Gig & Wallet App', href: '/worker-portal', icon: CpuChipIcon, badge: 'Rapido 30s', color: 'text-emerald-500' },
   { name: 'Worker Welfare & e-Shram', href: '/welfare', icon: HeartIcon, badge: '10% Fund', color: 'text-rose-500' },
@@ -55,14 +57,14 @@ export default function Sidebar() {
           <div className={`w-full h-full rounded-[10px] p-1 flex items-center justify-center ${isLight ? 'bg-white' : 'bg-[#0A0F1D]'}`}>
             <img 
               src="/logo.png" 
-              alt="Work Trust" 
+              alt="NEXVION" 
               className="h-full w-full object-contain" 
             />
           </div>
         </div>
         <div className="flex flex-col">
           <h1 className={`text-base font-black tracking-tight flex items-center leading-none ${isLight ? 'text-slate-900' : 'text-white'}`}>
-            <span className="gradient-text-tech mr-1">WORK</span>TRUST
+            <span className="gradient-text-tech mr-1">NEXVION</span>
           </h1>
           <span className={`text-[9px] font-mono font-bold uppercase tracking-widest mt-1 ${isLight ? 'text-cyan-700' : 'text-cyan-400'}`}>
             COOPERATIVE AI MESH
