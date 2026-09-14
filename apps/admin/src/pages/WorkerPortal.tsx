@@ -103,8 +103,11 @@ export default function WorkerPortal() {
 
             <div>
               <div className="flex items-center space-x-2">
-                <h2 className="text-xl font-black text-white">Santosh Gavit</h2>
+                <h2 className="text-xl font-black text-white">Santosh G.</h2>
                 <CheckBadgeIcon className="w-5 h-5 text-cyan-400" title="DigiLocker Verified" />
+                <span className="px-2 py-0.5 rounded-md text-[9px] font-mono font-bold bg-cyan-950 text-cyan-300 border border-cyan-500/30">
+                  ID: #NX-W7821
+                </span>
                 <span className="px-2 py-0.5 rounded-md text-[9px] font-mono font-bold bg-emerald-950 text-emerald-400 border border-emerald-500/30">
                   CREW LEAD
                 </span>
@@ -113,7 +116,7 @@ export default function WorkerPortal() {
                 Combine Harvester & Daily-Wage Agricultural Crew
               </p>
               <p className="text-[11px] text-slate-400 font-mono">
-                Sahyadri Agro Labour Sahakari • Nashik District
+                Sahyadri Agro Labour Sahakari • Nashik District • 🔒 DPDP 2023 Protected
               </p>
             </div>
           </div>
@@ -153,6 +156,23 @@ export default function WorkerPortal() {
         </div>
       </div>
 
+      {/* DPDP Act 2023 Privacy & Zero-PII Notice */}
+      <div className="p-3.5 rounded-2xl bg-slate-950/70 border border-cyan-500/30 flex items-center justify-between gap-3 text-xs font-mono">
+        <div className="flex items-center space-x-2 text-cyan-400">
+          <ShieldCheckIcon className="w-5 h-5 text-cyan-400 shrink-0" />
+          <span className="font-bold text-white">WORKER PRIVACY & DATA ISOLATION SHIELD:</span>
+          <span className="text-slate-300 hidden md:inline">
+            Customer direct mobile numbers, residential addresses, and other workers' private earnings are completely protected. Calls route through encrypted in-app proxy relays.
+          </span>
+          <span className="text-slate-300 md:hidden">
+            Direct customer phone numbers and other workers' data are cryptographically isolated.
+          </span>
+        </div>
+        <span className="px-2 py-0.5 rounded bg-cyan-950 text-cyan-300 border border-cyan-500/30 text-[10px] shrink-0 font-bold">
+          DPDP 2023 SECURE
+        </span>
+      </div>
+
       {/* Rapido-Style Incoming Job Card */}
       {isOnline && incomingJob && jobState === 'idle' && (
         <div className="tech-glass-card rounded-3xl p-6 sm:p-8 shadow-2xl border-2 border-cyan-500/60 relative overflow-hidden animate-pulse-subtle">
@@ -175,7 +195,11 @@ export default function WorkerPortal() {
               </h3>
               <p className="text-xs text-slate-300 flex items-center font-mono">
                 <MapPinIcon className="w-4 h-4 mr-1 text-cyan-400" />
-                Suresh Patel Farm • Nashik Rural (2.4 km away)
+                <span>Client #NX-C942 (Verified) • Nashik Rural Sector 4 (2.4 km away)</span>
+              </p>
+              <p className="text-[11px] text-emerald-400 font-mono flex items-center">
+                <ShieldCheckIcon className="w-3.5 h-3.5 mr-1 inline" />
+                <span>Zero-PII Active: Client phone number and exact gate coordinate revealed on arrival OTP.</span>
               </p>
               <div className="flex flex-wrap gap-2 text-[10px] font-mono pt-1">
                 <span className="px-2 py-0.5 rounded-md bg-slate-900 text-cyan-400 border border-slate-800">DAILY-WAGE CREW</span>
@@ -215,22 +239,35 @@ export default function WorkerPortal() {
       {/* Active Job Execution Workflow */}
       {jobState === 'en_route' && (
         <div className="tech-glass-card rounded-3xl p-6 sm:p-8 border border-slate-800 space-y-6">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800 pb-4 gap-4">
             <div>
               <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-cyan-950 text-cyan-400 uppercase">
                 // STEP 1: TRAVELING TO LOCATION
               </span>
               <h3 className="text-lg font-extrabold text-white mt-1">
-                Navigating to Suresh Patel Farm (Nashik Rural)
+                Navigating to Worksite #NX-C942 (Nashik Rural Sector 4)
               </h3>
+              <p className="text-xs text-slate-400 font-mono mt-0.5 flex items-center">
+                <ShieldCheckIcon className="w-3.5 h-3.5 mr-1 text-emerald-400 inline" />
+                <span>Masked VoIP Active • Direct client number hidden under DPDP Act</span>
+              </p>
             </div>
-            <button 
-              onClick={() => alert('Launching Google Maps / MapMyIndia navigation to farmstead coordinates')}
-              className="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold transition-colors flex items-center space-x-1.5 shadow-xs"
-            >
-              <MapPinIcon className="w-4 h-4" />
-              <span>Open GPS Turn-by-Turn</span>
-            </button>
+            <div className="flex items-center space-x-2">
+              <button 
+                onClick={() => alert('🔒 Secure In-App VoIP Bridge: Dialing Client #NX-C942 via Encrypted Nexvion Relay (+91 80000 0XXXX). Client direct mobile number is kept private.')}
+                className="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold font-mono transition-colors flex items-center space-x-1.5 shadow-xs"
+              >
+                <PhoneIcon className="w-4 h-4" />
+                <span>Call Client (Proxy)</span>
+              </button>
+              <button 
+                onClick={() => alert('Launching GPS turn-by-turn navigation to geofenced cluster pin')}
+                className="px-3.5 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-bold font-mono transition-colors flex items-center space-x-1.5 shadow-xs"
+              >
+                <MapPinIcon className="w-4 h-4" />
+                <span>Open GPS</span>
+              </button>
+            </div>
           </div>
 
           {/* Arrival OTP Input */}

@@ -67,20 +67,22 @@ export default function CustomerPortal() {
   const [projectName, setProjectName] = useState('Commercial Villa Renovation & Rewiring');
 
   // Multi-Worker Crew Roster for Group Hiring Mode
-  const assignedSquad: CrewMemberAssignment[] = [
-    { name: 'Rajesh Sharma', trade: 'Master Electrician', phone: '+91 98765 43210', rating: 4.96, distance: '1.8 km', coop: 'Bhubaneswar Urban Power Guild', wage: '₹550/hr', avatarLetter: 'R' },
-    { name: 'Dharmendra Nayak', trade: 'Civil Mason & Tile Layer', phone: '+91 94371 88291', rating: 4.95, distance: '2.9 km', coop: 'Capital Builders Federation', wage: '₹680/hr', avatarLetter: 'D' },
-    { name: 'Sunil Mahapatra', trade: 'Senior Plumber', phone: '+91 97762 10943', rating: 4.92, distance: '2.4 km', coop: 'Coastal Trades Federation', wage: '₹480/hr', avatarLetter: 'S' },
-    { name: 'Prakash Jena', trade: 'Mason Assistant', phone: '+91 98610 99402', rating: 4.88, distance: '2.9 km', coop: 'Capital Builders Federation', wage: '₹500/hr', avatarLetter: 'P' },
-    { name: 'Ramesh Pradhan', trade: 'Site Lead & Craftsman', phone: '+91 99370 44102', rating: 4.94, distance: '3.1 km', coop: 'Kisan Shakti Cooperative', wage: '₹450/hr', avatarLetter: 'R' },
-    { name: 'Bikash Mohanty', trade: 'Daily-Wage Helper', phone: '+91 97771 22894', rating: 4.90, distance: '3.4 km', coop: 'Kisan Shakti Cooperative', wage: '₹450/hr', avatarLetter: 'B' },
-    { name: 'Manas Rout', trade: 'Material Shifter', phone: '+91 94390 11983', rating: 4.89, distance: '3.2 km', coop: 'Kisan Shakti Cooperative', wage: '₹450/hr', avatarLetter: 'M' }
+  // Multi-Worker Crew Roster for Group Hiring Mode (Privacy-Preserving Tokens)
+  const assignedSquad = [
+    { workerId: 'NX-W4812', name: 'Rajesh S.', trade: 'Master Electrician', rating: 4.96, distance: '1.8 km', coop: 'Bhubaneswar Urban Power Guild', wage: '₹550/hr', avatarLetter: 'R' },
+    { workerId: 'NX-W9102', name: 'Dharmendra N.', trade: 'Civil Mason & Tile Layer', rating: 4.95, distance: '2.9 km', coop: 'Capital Builders Federation', wage: '₹680/hr', avatarLetter: 'D' },
+    { workerId: 'NX-W3401', name: 'Sunil M.', trade: 'Senior Plumber', rating: 4.92, distance: '2.4 km', coop: 'Coastal Trades Federation', wage: '₹480/hr', avatarLetter: 'S' },
+    { workerId: 'NX-W5529', name: 'Prakash J.', trade: 'Mason Assistant', rating: 4.88, distance: '2.9 km', coop: 'Capital Builders Federation', wage: '₹500/hr', avatarLetter: 'P' },
+    { workerId: 'NX-W8841', name: 'Ramesh P.', trade: 'Site Lead & Craftsman', rating: 4.94, distance: '3.1 km', coop: 'Kisan Shakti Cooperative', wage: '₹450/hr', avatarLetter: 'R' },
+    { workerId: 'NX-W1290', name: 'Bikash M.', trade: 'Daily-Wage Helper', rating: 4.90, distance: '3.4 km', coop: 'Kisan Shakti Cooperative', wage: '₹450/hr', avatarLetter: 'B' },
+    { workerId: 'NX-W7719', name: 'Manas R.', trade: 'Material Shifter', rating: 4.89, distance: '3.2 km', coop: 'Kisan Shakti Cooperative', wage: '₹450/hr', avatarLetter: 'M' }
   ];
 
-  // Simulated single matched worker
+  // Simulated single matched worker (Zero-PII Tokenized Worker Profile)
   const matchedWorker = {
-    name: 'Santosh Gavit',
-    phone: '+91 97654 32109',
+    name: 'Santosh G.',
+    workerId: 'NX-W7821',
+    maskedPhone: '+91 80000 0XXXX (Encrypted Relay)',
     rating: 4.9,
     jobs: 112,
     eta: '12 mins',
@@ -257,8 +259,25 @@ export default function CustomerPortal() {
           </div>
         </div>
 
+        {/* DPDP Act 2023 Privacy Protection Banner */}
+        <div className="mt-5 p-3 rounded-2xl bg-slate-950/70 border border-emerald-500/30 flex items-center justify-between gap-3 text-xs font-mono">
+          <div className="flex items-center space-x-2 text-emerald-400">
+            <ShieldCheckIcon className="w-5 h-5 text-emerald-400 shrink-0" />
+            <span className="font-bold text-white">DPDP ACT 2023 PRIVACY MESH:</span>
+            <span className="text-slate-300 hidden md:inline">
+              Personal telephone numbers, residential coordinates, and other customers' orders are cryptographically isolated. Direct voice calls use masked VoIP proxies.
+            </span>
+            <span className="text-slate-300 md:hidden">
+              Zero PII Exposure: Direct phone numbers and client data are masked.
+            </span>
+          </div>
+          <span className="px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-500/30 text-[10px] shrink-0 font-bold">
+            ZERO-PII SECURE
+          </span>
+        </div>
+
         {/* MODE SELECTOR: Single Worker vs Group Hiring (Multi-Worker Crew) */}
-        <div className="mt-6 pt-5 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-5 pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex bg-slate-950 p-1.5 rounded-2xl border border-slate-800 w-full sm:w-auto">
             <button
               onClick={() => {
@@ -858,30 +877,40 @@ export default function CustomerPortal() {
                       <h4 className="font-black text-white text-base flex items-center">
                         {matchedWorker.name}
                         <CheckBadgeIcon className="w-4 h-4 ml-1.5 text-cyan-400" />
+                        <span className="ml-2 px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-cyan-950 text-cyan-300 border border-cyan-500/30">
+                          {matchedWorker.workerId}
+                        </span>
                       </h4>
                       <p className="text-xs text-slate-400">{matchedWorker.coop}</p>
                       <div className="flex items-center space-x-3 mt-1 text-xs font-mono">
                         <span className="text-amber-400 font-bold">⭐ {matchedWorker.rating}</span>
                         <span className="text-slate-600">•</span>
                         <span className="text-slate-400">{matchedWorker.jobs} GIGS</span>
+                        <span className="text-slate-600">•</span>
+                        <span className="text-emerald-400 font-semibold flex items-center">
+                          <ShieldCheckIcon className="w-3.5 h-3.5 mr-0.5 inline" />
+                          DPDP 2023 Masked
+                        </span>
                       </div>
                     </div>
                   </div>
 
                   <div className="flex space-x-2">
                     <button 
-                      onClick={() => alert(`Calling worker at ${matchedWorker.phone}`)}
-                      className="p-3 rounded-xl bg-emerald-600 text-white hover:bg-emerald-500 transition-colors shadow-xs cursor-pointer"
-                      title="Direct Call"
+                      onClick={() => alert('🔒 Secure In-App Voice Relay Connected.\n\nWorker personal telephone number is masked under DPDP Act 2023.\nRouting via Nexvion Encrypted Voice Bridge (+91 80000 0XXXX).')}
+                      className="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition-colors shadow-xs cursor-pointer flex items-center space-x-1.5 text-xs font-mono font-bold"
+                      title="Encrypted Masked Call"
                     >
-                      <PhoneIcon className="w-5 h-5" />
+                      <PhoneIcon className="w-4 h-4" />
+                      <span className="hidden sm:inline">Secure Call</span>
                     </button>
                     <button 
-                      onClick={() => alert(`Opening encrypted telemetry chat with ${matchedWorker.name}`)}
-                      className="p-3 rounded-xl bg-cyan-600 text-white hover:bg-cyan-500 transition-colors shadow-xs cursor-pointer"
-                      title="In-App Chat"
+                      onClick={() => alert(`🔒 End-to-End Encrypted Chat session established with ${matchedWorker.name} (${matchedWorker.workerId}). No personal contact data is shared.`)}
+                      className="px-3 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white transition-colors shadow-xs cursor-pointer flex items-center space-x-1.5 text-xs font-mono font-bold"
+                      title="In-App Secure Chat"
                     >
-                      <ChatBubbleLeftRightIcon className="w-5 h-5" />
+                      <ChatBubbleLeftRightIcon className="w-4 h-4" />
+                      <span className="hidden sm:inline">Secure Chat</span>
                     </button>
                   </div>
                 </div>

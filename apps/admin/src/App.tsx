@@ -34,16 +34,17 @@ function App() {
         <Route path="/worker-register" element={<WorkerRegistration />} />
         <Route path="/login" element={<Login />} />
         
+        {/* Public User Experience Portals (Directly accessible with full Layout & Navigation) */}
+        <Route element={<Layout />}>
+          <Route path="/worker-portal" element={<WorkerPortal />} />
+          <Route path="/customer-portal" element={<CustomerPortal />} />
+          <Route path="/welfare" element={<Welfare />} />
+          <Route path="/technical-approach" element={<TechnicalApproach />} />
+        </Route>
+
+        {/* Admin-Protected Operations Control Center */}
         <Route element={<ProtectedRoute><Layout /></ProtectedRoute>}>
           <Route path="/dashboard" element={<Dashboard />} />
-          
-          {/* User Experience Portals */}
-          <Route path="/customer-portal" element={<CustomerPortal />} />
-          <Route path="/worker-portal" element={<WorkerPortal />} />
-          <Route path="/technical-approach" element={<TechnicalApproach />} />
-          <Route path="/welfare" element={<Welfare />} />
-
-          {/* Admin Operations Pages */}
           <Route path="/workers" element={<Workers />} />
           <Route path="/workers/:id" element={<WorkerDetail />} />
           <Route path="/customers" element={<Customers />} />
