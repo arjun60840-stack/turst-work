@@ -108,10 +108,10 @@ export const LandingPage: React.FC = () => {
             </Link>
 
             <Link
-              to="/customer-portal"
+              to="/register"
               className="px-4 py-2 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-blue-600 to-teal-500 hover:from-blue-500 hover:to-teal-400 shadow-md shadow-blue-500/20 transition flex items-center gap-1.5"
             >
-              <span>Get Started</span>
+              <span>Register / Get Started</span>
               <ArrowRightIcon className="w-3.5 h-3.5" />
             </Link>
           </div>

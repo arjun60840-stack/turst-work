@@ -22,6 +22,7 @@ import TechnicalApproach from './pages/TechnicalApproach';
 import Welfare from './pages/Welfare';
 import LandingPage from './pages/LandingPage';
 import WorkerRegistration from './pages/WorkerRegistration';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <Routes>
         {/* Public High-Impact Landing Page & Onboarding */}
         <Route path="/" element={<LandingPage />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/worker-register" element={<WorkerRegistration />} />
         <Route path="/login" element={<Login />} />
         

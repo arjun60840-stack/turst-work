@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 import { 
   ShieldCheckIcon, 
@@ -9,7 +9,8 @@ import {
   LockClosedIcon,
   EnvelopeIcon,
   UsersIcon,
-  BuildingOffice2Icon
+  BuildingOffice2Icon,
+  UserPlusIcon
 } from '@heroicons/react/24/outline';
 
 export default function Login() {
@@ -78,8 +79,26 @@ export default function Login() {
             </p>
           </div>
 
+          {/* Mode Switcher: Login vs Create Account */}
+          <div className="mt-6 flex bg-slate-950 p-1 rounded-2xl border border-slate-800 text-xs font-bold">
+            <button
+              type="button"
+              className="flex-1 py-2 rounded-xl bg-blue-600 text-white shadow-md flex items-center justify-center gap-1.5 cursor-pointer"
+            >
+              <LockClosedIcon className="w-3.5 h-3.5" />
+              <span>Login / Sign In</span>
+            </button>
+            <Link
+              to="/register"
+              className="flex-1 py-2 rounded-xl text-slate-400 hover:text-white flex items-center justify-center gap-1.5 transition text-center"
+            >
+              <UserPlusIcon className="w-3.5 h-3.5 text-teal-400" />
+              <span>Create Account</span>
+            </Link>
+          </div>
+
           {/* Form */}
-          <form className="mt-8 space-y-4" onSubmit={handleLogin}>
+          <form className="mt-4 space-y-4" onSubmit={handleLogin}>
             <div>
               <label className="block text-xs font-semibold text-slate-300 mb-1">
                 Admin Email Address
@@ -120,11 +139,27 @@ export default function Login() {
 
             <button 
               type="submit" 
-              className="w-full mt-2 py-3 px-4 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-blue-500 shadow-lg shadow-blue-600/30 flex items-center justify-center space-x-2 transition-all duration-150 transform active:scale-95"
+              className="w-full mt-2 py-3 px-4 rounded-xl text-xs font-bold text-white bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-slate-900 focus:ring-blue-500 shadow-lg shadow-blue-600/30 flex items-center justify-center space-x-2 transition-all duration-150 transform active:scale-95 cursor-pointer"
             >
               <span>Access Control Console</span>
               <ArrowRightIcon className="w-4 h-4" />
             </button>
+
+            {/* Divider */}
+            <div className="relative my-3 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-slate-800"></div></div>
+              <div className="relative bg-slate-900 px-3 text-[10px] font-mono font-bold text-slate-500 uppercase">OR FIRST TIME HERE?</div>
+            </div>
+
+            {/* Create Account / Register First Button */}
+            <Link
+              to="/register"
+              className="w-full py-2.5 px-4 rounded-xl text-xs font-bold text-teal-300 bg-teal-950/40 hover:bg-teal-900/40 border border-teal-500/40 hover:border-teal-400 text-center flex items-center justify-center space-x-2 transition shadow-md cursor-pointer"
+            >
+              <UserPlusIcon className="w-4 h-4 text-teal-400" />
+              <span>Create Account / Register First</span>
+              <ArrowRightIcon className="w-3.5 h-3.5 text-teal-400" />
+            </Link>
           </form>
 
           {/* Quick Demo Fill Buttons (Strictly 3 Core Roles: Admin, Worker, Client) */}
